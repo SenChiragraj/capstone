@@ -5,7 +5,8 @@ import java.util.Set;
 
 @Entity
 public class Doctor extends User {
-   // implement doctor entity
+
+
   
     private Set<Appointment> appointments;
     
@@ -56,6 +57,5 @@ public class Doctor extends User {
     public void setAvailability(String availability) {
         this.availability = availability;
     }
-
 
 }
