@@ -16,17 +16,17 @@ public class User {
     private String email;
     private String role;
 
-    coonstructor()
+    User()
     {}
 
-    constructor(String id, String username, String password, String email, String role)
-    {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.role = role;
-    }
+    // public User(Long id, String username, String password, String email, String role)
+    // {
+    //     this.id = id;
+    //     this.username = username;
+    //     this.password = password;
+    //     this.email = email;
+    //     this.role = role;
+    // }
 
     public Long getId()
     {
@@ -63,4 +63,13 @@ public class User {
     {
         this.email = email;
     }
+
+    public String getRole(){
+        return role;
+    }
+
+    public void setRole(String role){
+        this.role=role;
+    }
+
 }
