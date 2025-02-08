@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="sticky-navbar">
+  <span class="site-title">MediCap</span>
+  <span class="spacer"></span>
+  <button
+    mat-button
+    [disabled]="isLoggedIn"
+    class="no-border-button small-button text-sm"
+    routerLink="/login"
+  >
+    Login - SignUp
+  </button>
+  <button mat-icon-button class="small-icon-button text-sm">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    mat-button
+    [matMenuTriggerFor]="menu"
+    class="small-icon-button"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+</mat-toolbar>
