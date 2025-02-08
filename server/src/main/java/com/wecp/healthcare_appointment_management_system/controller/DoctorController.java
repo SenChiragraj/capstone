@@ -20,6 +20,7 @@ public class DoctorController {
     @Autowired
     private DoctorService doctorService;    
 
+
     @GetMapping("/api/doctor/appointments")
     public ResponseEntity<List<Appointment>> viewAppointments(@RequestParam Long doctorId) {
         // view appointments
