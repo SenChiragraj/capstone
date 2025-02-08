@@ -6,4 +6,9 @@ import java.util.Set;
 
 public class Doctor extends User {
    // implement doctor entity
+
+   @Id
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+
 }
