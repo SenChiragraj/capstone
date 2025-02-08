@@ -16,8 +16,6 @@ import java.util.List;
 
 public class DoctorController {
 
-    
-
 
     @GetMapping("/api/doctor/appointments")
     public ResponseEntity<List<Appointment>> viewAppointments(@RequestParam Long doctorId) {
