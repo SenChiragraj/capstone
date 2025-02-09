@@ -21,47 +21,65 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-public class UserService  
+public class UserService
 {
     @Autowired
     private UserRepository userRepository;
-    
-    
-    public Patient registerPatient(Patient patient) 
+
+    @Autowired
+    private PatientRepository patientRepository;
+
+    @Autowired
+    private DoctorRepository doctorRepository;
+
+    @Autowired
+    private ReceptionistRepository receptionistRepository;
+
+
+    public Patient registerPatient(Patient patient)
     {
         // register patient
-        return userRepository.save(patient);
+        return patientRepository.save(patient);
     }
 
-    public Doctor registerDoctor(Doctor doctor) 
+    public Doctor registerDoctor(Doctor doctor)
     {
-        return userRepository.save(doctor);
+        return doctorRepository.save(doctor);
         // register doctor
     }
 
-    public Receptionist registerReceptionist(Receptionist receptionist) 
+    public Receptionist registerReceptionist(Receptionist receptionist)
     {
-        return userRepository.save(receptionist);
+        return receptionistRepository.save(receptionist);
        // register receptionist
     }
-    
-    //change the token
-    public LoginResponse loginUser(LoginRequest loginRequest) 
-    {
-        String token="token"; 
-        if(token == "token")
-        {
-            return new LoginResponse(null, token, token, token, token);
-        }
-        else
-        {
-            System.out.println("EXCEPTION 401");
-        }
-        return null;
 
-      // login user and return jwt in LoginResponse object
-        // return 401 unauthorized if authentication fail
+    //change the token
+    public LoginResponse loginUser(LoginRequest loginRequest)
+    {
+        // String token = "token";
+        // if (token == "token") {
+        //     return new LoginResponse(null, token, token, token, token);
+        // } else {
+        //     System.out.println("EXCEPTION 401");
+        // }
+        return new LoginResponse(null, null, null, null, null);
+    }
+
+    public List<Patient> getAllPatients() {
+        return patientRepository.findAll();
+    }
+
+    public List<Doctor> getAllDoctors() {
+        return doctorRepository.findAll();
+    }
+
+    public List<Receptionist> getAllReceptionists() {
+        return receptionistRepository.findAll();
     }
 }

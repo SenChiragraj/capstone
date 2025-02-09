@@ -4,13 +4,12 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Patient extends User 
+public class Patient extends User
 {
     Set<MedicalRecord> medicalRecords;
     Set<Appointment> appointments;
 
-    public Patient()
-    {
+    public Patient(){
         super();
     }
 
@@ -30,6 +29,6 @@ public class Patient extends User
         this.appointments = appointments;
     }
 
-    
+
     // implement patient entity
 }
