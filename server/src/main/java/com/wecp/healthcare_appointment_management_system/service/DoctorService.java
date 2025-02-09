@@ -14,8 +14,12 @@ import java.util.List;
 @Service
 public class DoctorService  {
 
-    @Autowired 
+    @Autowired
     private DoctorRepository doctorRepository;
+
+    public List<Doctor> getAllDoctor() {
+        return doctorRepository.findAll();
+    }
 
     public List<Appointment> viewAppointments(Long doctorId){
         Doctor doctor = doctorRepository.findById(doctorId).orElseThrow(() -> new DoctorNotFoundException("Doctor not found with id: "+doctorId));
@@ -23,12 +27,19 @@ public class DoctorService  {
     }
 
     public Doctor manageAvailability(Long doctorId, String availability) {
-        Doctor doctor = doctorRepository.findById(doctorId).orElseThrow(() -> new DoctorNotFoundException("Doctor not found with id: " + doctorId));
+        Doctor doctor = doctorRepository.findById(doctorId)
+                .orElseThrow(() -> new DoctorNotFoundException("Doctor not found with id: " + doctorId));
         doctor.setAvailability(availability);
         return doctorRepository.save(doctor);
     }
 
-    
+    public Doctor findDoctorById(Long doctorId) {
+        return doctorRepository.findById(doctorId).orElse(null);
+    }
+
+
+
+
 
 
 

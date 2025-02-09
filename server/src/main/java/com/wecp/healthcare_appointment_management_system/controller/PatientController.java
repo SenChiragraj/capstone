@@ -13,48 +13,79 @@ import com.wecp.healthcare_appointment_management_system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
-
+@RestController
 public class PatientController {
 
     @Autowired
     UserService userService;
 
+    @Autowired
+    DoctorService doctorService;
+
+    @Autowired
+    AppointmentService appointmentService;
+
+    @Autowired
+    MedicalRecordService medicalRecordService;
+
+
+
     @PostMapping("/api/patient/register")
     public ResponseEntity<?> registerPatient(@RequestBody Patient patient) {
-        // register patient
+        // Register patient
         return new ResponseEntity<>(userService.registerPatient(patient), HttpStatus.OK);
     }
 
-    // @GetMapping("/api/patient/get")
+    @GetMapping("/api/patient/doctors")
+    public ResponseEntity<List<Doctor>> getDoctors() {
+        // Get all doctors
+        return new ResponseEntity<>(doctorService.getAllDoctor(), HttpStatus.OK);
+    }
 
-    // @GetMapping("/api/patient/doctors")
-    // public ResponseEntity<List<Doctor>> getDoctors() {
-    //     // get all doctors
-    //     return new ResponseEntity<>()
-    // }
+    @PostMapping("/api/patient/appointment")
+    public ResponseEntity<?> scheduleAppointment(@RequestParam Long patientId,
+                                                 @RequestParam Long doctorId,
+                                                 @RequestBody TimeDto timeDto) {
+        // Schedule appointment
+        Patient patient = userService.findPatientById(patientId);
+        Doctor doctor = doctorService.findDoctorById(doctorId);
 
-    // @PostMapping("/api/patient/appointment")
-    // public ResponseEntity<?> scheduleAppointment(@RequestParam Long patientId,
-    //                                              @RequestParam Long doctorId,
-    //                                              @RequestBody TimeDto timeDto) {
-    //   // schedule appointment
-    // }
+        if (patient == null || doctor == null) {
+            return new ResponseEntity<>("Invalid patient or doctor ID", HttpStatus.BAD_REQUEST);
+        }
 
-    // @GetMapping("/api/patient/appointments")
-    // public ResponseEntity<List<Appointment>> getAppointmentsByPatientId(@RequestParam Long patientId) {
-    //     // get appointments by patient id
-    // }
+        Appointment appointment = new Appointment();
+        appointment.setPatient(patient);
+        appointment.setDoctor(doctor);
+        appointment.setAppointmentTime(timeDto.getTime());
+        appointment.setStatus("Scheduled");
 
-    // @GetMapping("/api/patient/medicalrecords")
-    // public ResponseEntity<List<MedicalRecord>> viewMedicalRecords(@RequestParam Long patientId) {
-    //     // view medical records
-    // }
+        appointmentService.saveAppointment(appointment);
+
+        return new ResponseEntity<>("Appointment scheduled successfully", HttpStatus.OK);
+    }
+
+    @GetMapping("/api/patient/appointments")
+    public ResponseEntity<List<Appointment>> getAppointmentsByPatientId(@RequestParam Long patientId) {
+        // Get appointments by patient ID
+        List<Appointment> appointments = appointmentService.findAppointmentsByPatientId(patientId);
+        if (appointments == null || appointments.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(appointments, HttpStatus.OK);
+    }
+
+    @GetMapping("/api/patient/medicalrecords")
+    public ResponseEntity<List<MedicalRecord>> viewMedicalRecords(@RequestParam Long patientId) {
+        // View medical records
+        List<MedicalRecord> medicalRecords = medicalRecordService.findMedicalRecordsByPatientId(patientId);
+        if (medicalRecords == null || medicalRecords.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(medicalRecords, HttpStatus.OK);
+    }
 }

@@ -5,57 +5,43 @@ import java.util.Set;
 
 @Entity
 public class Doctor extends User {
-
-
-  
-    private Set<Appointment> appointments;
-    
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     private Set<MedicalRecord> medicalRecords;
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    private Set<Appointment> appointments;
 
     private String specialty;
     private String availability;
 
-    public Doctor(){
-        super(); // Calling the constructor of the superclass (User)
-    }
-
-    // public Doctor(Long id,String username, String password, String email, String role, String specialty, String availability) {
-    //     super(id,username, password, email, role); // Calling the constructor of the superclass (User)
-    //     this.specialty = specialty;
-    //     this.availability = availability;
-    // }
-       
-
-    public Set<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(Set<Appointment> appointments) {
-        this.appointments = appointments;
+    public Doctor() {
     }
 
     public Set<MedicalRecord> getMedicalRecords() {
         return medicalRecords;
     }
-
     public void setMedicalRecords(Set<MedicalRecord> medicalRecords) {
         this.medicalRecords = medicalRecords;
     }
-
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
+    }
     public String getSpecialty() {
         return specialty;
     }
-
     public void setSpecialty(String specialty) {
         this.specialty = specialty;
     }
-
     public String getAvailability() {
         return availability;
     }
-
     public void setAvailability(String availability) {
         this.availability = availability;
     }
+
+    // Getters and Setters
 
 }

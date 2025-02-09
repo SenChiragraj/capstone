@@ -17,18 +17,30 @@ public class AppointmentService {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-    public Appointment scheduleAppointment(Appointment appointment) 
+    public Appointment scheduleAppointment(Appointment appointment)
     {
         return appointmentRepository.save(appointment);
     }
 
-    public List<Appointment> getAppointmentsByPatientId(Long patientId) 
+    public List<Appointment> getAppointmentsByPatientId(Long patientId)
     {
         return appointmentRepository.findByPatientId(patientId);
     }
 
-    public List<Appointment> getAppointmentsByDoctorId(Long doctorId) 
+    public List<Appointment> getAppointmentsByDoctorId(Long doctorId)
     {
+        return appointmentRepository.findByDoctorId(doctorId);
+    }
+
+    public Appointment saveAppointment(Appointment appointment) {
+        return appointmentRepository.save(appointment);
+    }
+
+    public List<Appointment> findAppointmentsByPatientId(Long patientId) {
+        return appointmentRepository.findByPatientId(patientId);
+    }
+
+    public List<Appointment> findAppointmentsByDoctorId(Long doctorId) {
         return appointmentRepository.findByDoctorId(doctorId);
     }
 }

@@ -1,18 +1,16 @@
 package com.wecp.healthcare_appointment_management_system.entity;
-
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Patient extends User
-{
-    Set<MedicalRecord> medicalRecords;
-    Set<Appointment> appointments;
+public class Patient extends User {
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private Set<MedicalRecord> medicalRecords;
 
-    public Patient(){
-        super();
-    }
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private Set<Appointment> appointments;
 
+    // Getters and Setters
     public Set<MedicalRecord> getMedicalRecords() {
         return medicalRecords;
     }
@@ -28,7 +26,4 @@ public class Patient extends User
     public void setAppointments(Set<Appointment> appointments) {
         this.appointments = appointments;
     }
-
-
-    // implement patient entity
 }
