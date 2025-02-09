@@ -26,11 +26,11 @@ public class DoctorController {
     @Autowired
     private UserService uService;
 
-    @PostMapping("/api/doctor/register")
-    public ResponseEntity<Doctor> registerDoctor(@RequestBody Doctor doctor) {
-        // register doctor
-        return new ResponseEntity<>(uService.registerDoctor(doctor), HttpStatus.CREATED);
-    }
+    // @PostMapping("/api/doctor/register")
+    // public ResponseEntity<Doctor> registerDoctor(@RequestBody Doctor doctor) {
+    //     // register doctor
+    //     return new ResponseEntity<>(uService.registerDoctor(doctor), HttpStatus.CREATED);
+    // }
 
 
     @GetMapping("/api/doctor/appointments")

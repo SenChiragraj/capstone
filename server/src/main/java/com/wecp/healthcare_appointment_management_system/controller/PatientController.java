@@ -34,11 +34,11 @@ public class PatientController {
 
 
 
-    @PostMapping("/api/patient/register")
-    public ResponseEntity<?> registerPatient(@RequestBody Patient patient) {
-        // Register patient
-        return new ResponseEntity<>(userService.registerPatient(patient), HttpStatus.OK);
-    }
+    // @PostMapping("/api/patient/register")
+    // public ResponseEntity<?> registerPatient(@RequestBody Patient patient) {
+    //     // Register patient
+    //     return new ResponseEntity<>(userService.registerPatient(patient), HttpStatus.OK);
+    // }
 
     @GetMapping("/api/patient/doctors")
     public ResponseEntity<List<Doctor>> getDoctors() {
