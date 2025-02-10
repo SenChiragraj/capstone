@@ -8,20 +8,60 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./patient-appointment.component.scss']
 })
 export class PatientAppointmentComponent implements OnInit {
-  appointmentList: any = []
-  constructor (public httpService: HttpService) {}
 
-  ngOnInit (): void {
-    this.getAppointments()
-  }
-  getAppointments () {
-    const userIdString = localStorage.getItem('userId')
+  appointmentForm!: FormGroup;
+  appointments: any[] = [];
 
-    // Parse userId to an integer, if it exists
-    const userId = userIdString ? parseInt(userIdString, 10) : 0
-    this.httpService.getAppointmentByPatient(userId).subscribe(data => {
-      this.appointmentList = data
-      console.log(this.appointmentList)
-    })
+  constructor(
+    private httpService: HttpService,
+    private formBuilder: FormBuilder
+  ) { }
+
+  ngOnInit(): void {
+    this.appointmentForm = this.formBuilder.group({
+      patientId: ['']
+    });
+    this.fetchAppointments();
   }
+
+  fetchAppointments(): void {
+    const userIdString = localStorage.getItem('userId');
+    const userId = userIdString ? parseInt(userIdString, 10) : 0;
+
+    this.httpService.getAppointmentsByPatient(userId).subscribe(data => {
+      this.appointments = data;
+      console.log(this.appointments);
+    }, error => {
+      console.error('Error fetching appointments', error);
+    });
+  }
+
+  rescheduleAppointment(appointmentId: number): void {
+    console.log('Rescheduling appointment with ID:', appointmentId);
+    // Implement your reschedule logic here
+  }
+
+
+
+
+
+
+
+
+  // appointmentList: any = []
+  // constructor (public httpService: HttpService) {}
+
+  // ngOnInit (): void {
+  //   this.getAppointments()
+  // }
+  // getAppointments () {
+  //   const userIdString = localStorage.getItem('userId')
+
+  //   // Parse userId to an integer, if it exists
+  //   const userId = userIdString ? parseInt(userIdString, 10) : 0
+  //   this.httpService.getAppointmentByPatient(userId).subscribe(data => {
+  //     this.appointmentList = data
+  //     console.log(this.appointmentList)
+  //   })
+  // }
 }
