@@ -32,14 +32,6 @@ public class PatientController {
     @Autowired
     MedicalRecordService medicalRecordService;
 
-
-
-    // @PostMapping("/api/patient/register")
-    // public ResponseEntity<?> registerPatient(@RequestBody Patient patient) {
-    //     // Register patient
-    //     return new ResponseEntity<>(userService.registerPatient(patient), HttpStatus.OK);
-    // }
-
     @GetMapping("/api/patient/doctors")
     public ResponseEntity<List<Doctor>> getDoctors() {
         // Get all doctors
@@ -87,5 +79,40 @@ public class PatientController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(medicalRecords, HttpStatus.OK);
+    }
+
+    @PostMapping("/api/patient/medicalrecord")
+    public ResponseEntity<?> addMedicalRecord(@RequestParam Long patientId,
+            @RequestBody MedicalRecord medicalRecord) {
+        // Add medical record
+        Patient patient = userService.findPatientById(patientId);
+        if (patient == null) {
+            return new ResponseEntity<>("Invalid patient ID", HttpStatus.BAD_REQUEST);
+        }
+        medicalRecord.setPatient(patient);
+        medicalRecordService.saveMedicalRecord(medicalRecord);
+        return new ResponseEntity<>("Medical record added successfully", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/api/patient/medicalrecord")
+    public ResponseEntity<?> deleteMedicalRecord(@RequestParam Long medicalRecordId) {
+        // Delete medical record
+        medicalRecordService.deleteMedicalRecord(medicalRecordId);
+        return new ResponseEntity<>("Medical record deleted successfully", HttpStatus.OK);
+    }
+
+    @PutMapping("/api/patient/medicalrecord")
+    public ResponseEntity<?> updateMedicalRecord(@RequestParam Long medicalRecordId,
+            @RequestBody MedicalRecord medicalRecord) {
+        // Update medical record
+        MedicalRecord existingMedicalRecord = medicalRecordService.getMedicalRecordById(medicalRecordId);
+        if (existingMedicalRecord == null) {
+            return new ResponseEntity<>("Invalid medical record ID", HttpStatus.BAD_REQUEST);
+        }
+
+        medicalRecord.setId(medicalRecordId);
+        medicalRecordService.saveMedicalRecord(medicalRecord);
+
+        return new ResponseEntity<>("Medical record updated successfully", HttpStatus.OK);
     }
 }
