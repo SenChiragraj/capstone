@@ -9,4 +9,4 @@ import { DatePipe } from '@angular/common'
   styleUrls: ['./receptionist-appointments.component.scss'],
   providers: [DatePipe]
 })
-export class ReceptionistAppointmentsComponent {} //todo: complete missing code..
+export class ReceptionistAppointmentsComponent {} 
