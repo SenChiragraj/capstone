@@ -231,6 +231,25 @@ export class HttpService {
     Login(loginDetails: any): Observable<any> {
       return this.http.post(`${this.serverName}/api/user/login`, loginDetails, {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+
+      }
+    )
+  }
+
+  post (url: string, data: any): Observable<any> {
+    return this.http.post(url, data)
+  }
+
+  scheduleAppointment (url: string, data: any, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+    return this.http.post(url, data, { headers })
+  }
+
+  register (url: string, data: any, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+    return this.http.post(url, data, { headers })
+  }
       });
     }
+
 }
