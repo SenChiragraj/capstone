@@ -1,27 +1,42 @@
 <mat-toolbar color="primary" class="sticky-navbar">
-  <span class="site-title">MediCap</span>
+  <!-- Logo -->
+  <a routerLink="/" class="logo-link"> MediCap </a>
+
+  <!-- Spacer to push navigation and buttons to the right -->
   <span class="spacer"></span>
+
+  <!-- Navigation Links -->
+  <nav class="nav-links">
+    <a mat-button routerLink="/" class="nav-link">Home</a>
+    <a mat-button routerLink="/doctors" class="nav-link">Doctors</a>
+    <a mat-button routerLink="/appointments" class="nav-link">Appointments</a>
+    <a mat-button routerLink="/contact" class="nav-link">Contact</a>
+  </nav>
+
+  <!-- Call-to-Action Button -->
   <button
-    mat-button
-    [disabled]="isLoggedIn"
-    class="no-border-button small-button text-sm"
-    routerLink="/login"
+    mat-raised-button
+    color="accent"
+    class="cta-button"
+    routerLink="/book-appointment"
   >
-    Login - SignUp
+    Book Appointment
   </button>
-  <button mat-icon-button class="small-icon-button text-sm">
+
+  <!-- Search Button -->
+  <button mat-icon-button class="icon-button">
     <mat-icon>search</mat-icon>
   </button>
-  <button
-    mat-icon-button
-    mat-button
-    [matMenuTriggerFor]="menu"
-    class="small-icon-button"
-  >
+
+  <!-- Mobile Menu -->
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="icon-button">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
+    <button mat-menu-item routerLink="/">Home</button>
+    <button mat-menu-item routerLink="/doctors">Doctors</button>
+    <button mat-menu-item routerLink="/appointments">Appointments</button>
+    <button mat-menu-item routerLink="/contact">Contact</button>
+    <button mat-menu-item routerLink="/login">Login/SignUp</button>
   </mat-menu>
 </mat-toolbar>
