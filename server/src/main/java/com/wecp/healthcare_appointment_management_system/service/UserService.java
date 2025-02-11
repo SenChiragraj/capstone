@@ -113,4 +113,8 @@ public class UserService implements UserDetailsService {
     public Doctor findDoctorById(Long doctorId) {
         return doctorRepository.findById(doctorId).orElse(null);
     }
+
+    public User findUserByDetails(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 }

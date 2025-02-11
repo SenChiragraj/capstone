@@ -21,6 +21,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 public class RegisterAndLoginController {
@@ -51,5 +55,10 @@ public class RegisterAndLoginController {
       // login user and return jwt in LoginResponse object
         // return 401 unauthorized if authentication fail
         return new ResponseEntity<>(userService.loginUser(loginRequest), HttpStatus.OK);
+    }
+
+    @GetMapping("/api/user/{id}")
+    public ResponseEntity<?> getUserDetails(@PathVariable Long id) {
+        return new ResponseEntity<>(userService.findUserByDetails(id), HttpStatus.OK);
     }
 }

@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/doctors/register", "/api/patient/register", "/api/receptionist/register", "/api/user/login", "/health").permitAll()
+                .antMatchers("/api/user/**", "/api/all/**" , "/api/doctors/register", "/api/patient/register", "/api/receptionist/register", "/api/user/login", "/health").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/patient/doctors", "/api/patient/appointments").hasAnyAuthority("PATIENT", "RECEPTIONIST")
                 .antMatchers(HttpMethod.GET, "/api/patient/medicalrecords").hasAnyAuthority("PATIENT", "RECEPTIONIST", "DOCTOR")
                 .antMatchers(HttpMethod.POST, "/api/patient/appointment", "/api/patient/medicalrecord").hasAnyAuthority("PATIENT", "RECEPTIONIST")
