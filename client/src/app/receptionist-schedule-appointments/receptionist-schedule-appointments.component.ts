@@ -1,49 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpService } from '../../services/http.service';
-import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { HttpService } from '../../services/http.service'
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-receptionist-schedule-appointments',
   templateUrl: './receptionist-schedule-appointments.component.html',
-  styleUrls: ['./receptionist-schedule-appointments.component.scss'],
-  providers: [DatePipe] 
-  
+  styleUrls: ['./receptionist-schedule-appointments.component.css']
 })
 export class ReceptionistScheduleAppointmentsComponent implements OnInit {
-  
-  itemForm: FormGroup;
-  formModel:any={};
-  responseMessage:any;
-  isAdded: boolean=false;
-  constructor(public httpService:HttpService,private formBuilder: FormBuilder,private datePipe: DatePipe) {
-    this.itemForm = this.formBuilder.group({
-      patientId: [this.formModel.patientId,[ Validators.required]],
-      doctorId: [this.formModel.doctorId,[ Validators.required]],
-      time: [this.formModel.time,[ Validators.required]],
-  });
-   }
+  itemForm!: FormGroup
 
-  ngOnInit(): void {
-  
-  }
+  constructor (
+    private fb: FormBuilder,
+    private httpService: HttpService,
+    private datePipe: DatePipe
+  ) {}
 
-  onSubmit()
-  {
-   
-    debugger;
-    const formattedTime = this.datePipe.transform(this.itemForm.controls['time'].value, 'yyyy-MM-dd HH:mm:ss');
-
-    // Update the form value with the formatted date
-    this.itemForm.controls['time'].setValue(formattedTime);
-    debugger;
-    this.httpService.ScheduleAppointmentByReceptionist( this.itemForm.value).subscribe((data)=>{
-   
-      this.itemForm.reset();
-      this.responseMessage="Appointment Save Successfully";
-      this.isAdded=false;
+  ngOnInit (): void {
+    this.itemForm = this.fb.group({
+      patientId: ['', Validators.required],
+      doctorId: ['', Validators.required],
+      time: ['', Validators.required]
     })
-    
   }
 
+  scheduleAppointment (): void {
+    if (this.itemForm.valid) {
+      const formattedTime = this.datePipe.transform(
+        this.itemForm.value.time,
+        'yyyy-MM-ddTHH:mm:ss'
+      )
+      const appointmentData = { ...this.itemForm.value, time: formattedTime }
+      this.httpService
+        .post('/api/receptionist/appointment', appointmentData)
+        .subscribe(
+          response => {
+            console.log('Appointment scheduled successfully', response)
+          },
+          error => {
+            console.error('Error scheduling appointment', error)
+          }
+        )
+    }
+  }
 }
