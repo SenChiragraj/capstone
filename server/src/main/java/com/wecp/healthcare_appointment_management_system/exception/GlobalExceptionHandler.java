@@ -11,7 +11,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleException(Exception ex) {
       String body = "An error occurred. Please try again later.";
-      return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
+      return new ResponseEntity<>(ex, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)

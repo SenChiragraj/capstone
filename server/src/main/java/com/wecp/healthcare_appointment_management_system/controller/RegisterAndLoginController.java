@@ -50,6 +50,6 @@ public class RegisterAndLoginController {
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
       // login user and return jwt in LoginResponse object
         // return 401 unauthorized if authentication fail
-        return new ResponseEntity<>(userService.loginUser(loginRequest), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(userService.loginUser(loginRequest), HttpStatus.OK);
     }
 }
