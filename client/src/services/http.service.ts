@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { AuthService } from './auth.service'
+import { Appointment } from '../app/models/appointment.model'
 
 @Injectable({
   providedIn: 'root'
@@ -248,6 +249,29 @@ export class HttpService {
   register (url: string, data: any, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
     return this.http.post(url, data, { headers })
+  }
+
+
+// for test
+  getAppointmentsByPatient(patientId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(
+      `${this.serverName}/api/patient/appointments?patientId=${patientId}`,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
+
+  // for test
+  rescheduleAppointment(appointmentId: number, newTime: string): Observable<Appointment> {
+    const body = { time: newTime };
+    return this.http.put<Appointment>(
+      `${this.serverName}/api/receptionist/appointment-reschedule/${appointmentId}`,
+      body,
+      {
+        headers: this.getHeaders()
+      }
+    );
   }
       });
     }
