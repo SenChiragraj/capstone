@@ -8,7 +8,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String name;
+    private Long phone;
     private String username;
     private String password;
     private String email;
@@ -43,6 +44,18 @@ public class User {
     }
     public void setRole(String role) {
         this.role = role;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Long getPhone() {
+        return phone;
+    }
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
 
     // Getters and Setters

@@ -25,8 +25,7 @@ public class JwtUtil {
     public JwtUtil(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
-    private final String secret = "alpha";
+    private final String secret = "secretKey000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 
     private final int expiration = 86400;
 
