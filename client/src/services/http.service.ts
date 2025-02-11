@@ -273,7 +273,4 @@ export class HttpService {
       }
     );
   }
-      });
-    }
-
 }
