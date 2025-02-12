@@ -12,17 +12,23 @@ import { MedicalRecord } from '../models/medical-record';
 export class DoctorAppointmentComponent implements OnInit {
   
   appointments: Appointment[] = [];
+  errorMessage: string = '';
+  doctorId!: number;
 
   constructor(private httpService: HttpService) {
   }
 
   ngOnInit(): void {
-    const userIdString = localStorage.getItem('userId');
-      const userId = userIdString ? parseInt(userIdString, 10) : 0;
-      this.httpService.getAppointmentByDoctor(userId).subscribe(data => {
-        this.appointments = data;
-        console.log(this.appointments);
-      });
+    const userIdString = localStorage.getItem('userId')
+    this.doctorId = userIdString ? parseInt(userIdString, 10) : 0
+    const doctorName = Doctor.name;
+  }
+  getAppointmentsByDocId(): void
+  {
+    this.httpService.getAppointmentsByDoctor(this.doctorId).subscribe(
+      (data) => this.appointments = data,
+      (error) => console.error('Error fetching appointments:', error)
+    );
   }
 }
 

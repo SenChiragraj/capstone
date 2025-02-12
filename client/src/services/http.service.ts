@@ -245,9 +245,7 @@ export class HttpService {
     })
   }
 
-  cancelAppointment(appointmentId: number): Observable<any> {
-    return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, { headers: this.getHeaders() });
-  }
+  
 
   post (url: string, data: any): Observable<any> {
     return this.http.post(url, data)
@@ -314,6 +312,15 @@ export class HttpService {
   }
 
 
+  //by lakshmi
+  
+  cancelAppointment(appointmentId: number): Observable<any> {
+    return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, { headers: this.getHeaders() });
+  }
+
+  getAppointmentsByDoctor(doctorId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.serverName}?doctorId=${doctorId}`,{headers: this.getHeaders()});
+  }
 }
 
 
