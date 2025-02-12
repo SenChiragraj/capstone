@@ -142,7 +142,7 @@ export class HttpService {
 
   //for testcase
   serverName =
-    'https://ec2-3-109-150-96.projects.wecreateproblems.com/proxy/5000'
+    'https://ec2-3-7-251-38.projects.wecreateproblems.com/proxy/5000'
 
   constructor (private http: HttpClient, private authService: AuthService) {}
 
@@ -283,4 +283,33 @@ export class HttpService {
       }
     )
   }
+
+  getRegisteredPatients(token: string): Observable<any[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any[]>(`${this.serverName}/patients`, { headers });
+  }
+
+  getRegisteredDoctors(token: string): Observable<any[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any[]>(`${this.serverName}/doctors`, { headers });
+  }
+
+
+  // For testing the component only -- later to be removed
+  saveDummyData(): void {
+    const dummyPatients = [
+      { id: 1, username: 'patient1', email: 'patient1@example.com' },
+      { id: 2, username: 'patient2', email: 'patient2@example.com' }
+    ];
+    const dummyDoctors = [
+      { id: 1, username: 'doctor1', email: 'doctor1@example.com' },
+      { id: 2, username: 'doctor2', email: 'doctor2@example.com' }
+    ];
+    localStorage.setItem('patients', JSON.stringify(dummyPatients));
+    localStorage.setItem('doctors', JSON.stringify(dummyDoctors));
+  }
+
+
 }
+
+
