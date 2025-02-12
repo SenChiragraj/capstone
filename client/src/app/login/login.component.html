@@ -1,1 +1,28 @@
-//todo: complete missing code..
+//todo: complete missing code..<!-- <div class="center-container">
+  <mat-card class="login-card">
+    <h1>Welcome to Our Application</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Login</h2>
+      <mat-form-field class="full-width">
+        <mat-label>Username or Email</mat-label>
+        <input matInput formControlName="usernameOrEmail" />
+        <mat-error *ngIf="loginForm.get('usernameOrEmail')?.invalid">
+          {{ getErrorMessage('usernameOrEmail') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+        <mat-error *ngIf="loginForm.get('password')?.invalid">
+          {{ getErrorMessage('password') }}
+        </mat-error>
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit">Login</button>
+        <a mat-button color="accent" routerLink="/registration">Register</a>
+      </div>
+    </form>
+  </mat-card>
+</div> -->
