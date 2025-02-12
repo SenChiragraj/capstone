@@ -24,15 +24,15 @@ import { MatCardModule } from '@angular/material/card'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatRadioModule } from '@angular/material/radio'
 import { RouterModule } from '@angular/router'
-import { MatOptionModule } from '@angular/material/core';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { SkeletonComponent } from './components/skeleton/skeleton.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatOptionModule } from '@angular/material/core'
+import { NavbarComponent } from './components/navbar/navbar.component'
+import { FooterComponent } from './components/footer/footer.component'
+import { SkeletonComponent } from './components/skeleton/skeleton.component'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatIconModule } from '@angular/material/icon'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatListModule } from '@angular/material/list'
+import { MatMenuModule } from '@angular/material/menu'
 
 @NgModule({
   declarations: [

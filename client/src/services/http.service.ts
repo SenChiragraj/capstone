@@ -259,25 +259,28 @@ export class HttpService {
     return this.http.post(url, data, { headers })
   }
 
-
-// for test
-  getAppointmentsByPatient(patientId: number): Observable<Appointment[]> {
+  // for test
+  getAppointmentsByPatient (patientId: number): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(
       `${this.serverName}/api/patient/appointments?patientId=${patientId}`,
       {
         headers: this.getHeaders()
       }
-    );
+    )
   }
 
   // for test
-  rescheduleAppointment(appointmentId: number, newTime: string): Observable<Appointment> {
-    const body = { time: newTime };
+  rescheduleAppointment (
+    appointmentId: number,
+    newTime: string
+  ): Observable<Appointment> {
+    const body = { time: newTime }
     return this.http.put<Appointment>(
       `${this.serverName}/api/receptionist/appointment-reschedule/${appointmentId}`,
       body,
       {
         headers: this.getHeaders()
       }
-    );
+    )
   }
+}
