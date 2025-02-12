@@ -245,6 +245,10 @@ export class HttpService {
     })
   }
 
+  cancelAppointment(appointmentId: number): Observable<any> {
+    return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, { headers: this.getHeaders() });
+  }
+
   post (url: string, data: any): Observable<any> {
     return this.http.post(url, data)
   }
