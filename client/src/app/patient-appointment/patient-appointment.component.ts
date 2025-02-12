@@ -58,21 +58,4 @@ export class PatientAppointmentComponent implements OnInit {
     console.log('Rescheduling appointment with ID:', appointmentId)
     // Implement your reschedule logic here
   }
-
-  // appointmentList: any = []
-  // constructor (public httpService: HttpService) {}
-
-  // ngOnInit (): void {
-  //   this.getAppointments()
-  // }
-  // getAppointments () {
-  //   const userIdString = localStorage.getItem('userId')
-
-  //   // Parse userId to an integer, if it exists
-  //   const userId = userIdString ? parseInt(userIdString, 10) : 0
-  //   this.httpService.getAppointmentByPatient(userId).subscribe(data => {
-  //     this.appointmentList = data
-  //     console.log(this.appointmentList)
-  //   })
-  // }
 }

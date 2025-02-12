@@ -24,5 +24,8 @@
         <a mat-button color="accent" routerLink="/registration">Register</a>
       </div>
     </form>
+    <mat-error *ngIf="errorMessage">
+      {{ errorMessage }}
+    </mat-error>
   </mat-card>
 </div>
