@@ -1,0 +1,44 @@
+.main-container {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.banner {
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.appointment-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.appointment-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.no-appointments {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  padding: 20px;
+}

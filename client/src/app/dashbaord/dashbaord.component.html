@@ -1,7 +1,31 @@
 <div class="main-container">
   <app-navbar></app-navbar>
+  <div class="banner">
+    <h1>Find the Best Doctors Near You</h1>
+    <p>Book your appointment with top specialists today.</p>
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder="Search by doctor name or specialty"
+        class="search-bar"
+      />
+      <button class="btn btn-primary">Search</button>
+    </div>
+  </div>
   <div class="content-container">
-    <app-skeleton></app-skeleton>
+    <div class="doctor-list" *ngIf="doctors.length > 0; else noDoctors">
+      <div class="doctor-card" *ngFor="let doctor of doctors">
+        <img [src]="doctor.image" alt="Doctor Image" class="doctor-image" />
+        <h5>{{ doctor.name }}</h5>
+        <p>{{ doctor.specialty }}</p>
+        <button class="btn btn-outline-primary">Book Appointment</button>
+      </div>
+    </div>
+    <ng-template #noDoctors>
+      <p class="no-doctors">No doctors available</p>
+    </ng-template>
     <router-outlet></router-outlet>
+    <app-patient-appointment></app-patient-appointment>
   </div>
 </div>
++
