@@ -48,10 +48,9 @@
 // }
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
-import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-receptionist-schedule-appointments',
@@ -59,68 +58,45 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./receptionist-schedule-appointments.component.scss']
 })
 export class ReceptionistScheduleAppointmentsComponent implements OnInit {
-
-  appointmentForm!: FormGroup;
-  registeredPatients: any[] = [];
-  registeredDoctors: any[] = [];
+  appointment: any = {
+    patient: {},
+    doctor: {},
+    appointmentTime: ''
+  };
 
   constructor(
-    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private httpService: HttpService,
-    private authService: AuthService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.appointmentForm = this.formBuilder.group({
-      patientId: ['', Validators.required],
-      doctorId: ['', Validators.required],
-      appointmentTime: ['', Validators.required]
+    this.route.params.subscribe(params => {
+      const appointmentId = params['id'];
+      this.fetchAppointmentDetails(appointmentId);
     });
-    this.httpService.saveDummyData();
-    this.loadRegisteredUsers();
   }
 
-  loadRegisteredUsers(): void {
-    const token = this.authService.getToken();
-    if (token) {
-      this.httpService.getRegisteredPatients(token).subscribe(data => {
-        this.registeredPatients = data;
-      }, error => {
-        console.error('Error fetching patients', error);
-      });
-
-      this.httpService.getRegisteredDoctors(token).subscribe(data => {
-        this.registeredDoctors = data;
-      }, error => {
-        console.error('Error fetching doctors', error);
-      });
-    } else {
-      console.error('No auth token found');
-    }
+  fetchAppointmentDetails(appointmentId: number): void {
+    this.httpService.getAppointmentById(appointmentId).subscribe(
+      (response: any) => {
+        this.appointment = response;
+      },
+      (error: any) => {
+        console.error('Error fetching appointment details', error);
+      }
+    );
   }
 
   onSubmit(): void {
-    if (this.appointmentForm.valid) {
-      const formValue = this.appointmentForm.value;
-      const payload = {
-        patientId: formValue.patientId,
-        doctorId: formValue.doctorId,
-        time: formValue.appointmentTime
-      };
-
-      const token = this.authService.getToken();
-      if (token) {
-        const apiUrl = 'http://your-backend-url/api/receptionist/appointment'; // Replace with your backend URL
-        this.httpService.scheduleAppointment(apiUrl, payload, token).subscribe(response => {
-          console.log('Appointment scheduled successfully', response);
-          this.router.navigate(['/receptionist-appointments']);
-        }, error => {
-          console.error('Error scheduling appointment', error);
-        });
-      } else {
-        console.error('No auth token found');
+    this.httpService.rescheduleAppointment(this.appointment.id, this.appointment).subscribe(
+      (response) => {
+        console.log('Appointment rescheduled successfully', response);
+        this.router.navigate(['/receptionist-appointments']);
+      },
+      (error) => {
+        console.error('Error rescheduling appointment', error);
       }
-    }
+    );
   }
 }

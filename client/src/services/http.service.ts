@@ -141,7 +141,7 @@ export class HttpService {
   // }
 
   //for testcase
-  serverName =
+  private serverName =
     'https://ec2-3-7-251-38.projects.wecreateproblems.com/proxy/5000'
 
   constructor (private http: HttpClient, private authService: AuthService) {}
@@ -270,29 +270,41 @@ export class HttpService {
   }
 
   // for test
-  rescheduleAppointment (
-    appointmentId: number,
-    newTime: string
-  ): Observable<Appointment> {
-    const body = { time: newTime }
-    return this.http.put<Appointment>(
-      `${this.serverName}/api/receptionist/appointment-reschedule/${appointmentId}`,
-      body,
-      {
-        headers: this.getHeaders()
-      }
-    )
+  // rescheduleAppointment (
+  //   appointmentId: number,
+  //   newTime: string
+  // ): Observable<Appointment> {
+  //   const body = { time: newTime }
+  //   return this.http.put<Appointment>(
+  //     `${this.serverName}/api/receptionist/appointment-reschedule/${appointmentId}`,
+  //     body,
+  //     {
+  //       headers: this.getHeaders()
+  //     }
+  //   )
+  // }
+
+  getAppointmentById(appointmentId: number): Observable<Appointment> {
+    return this.http.get<Appointment>(`${this.serverName}/api/receptionist/appointments/${appointmentId}`, {
+      headers: this.getHeaders()
+    });
   }
 
-  getRegisteredPatients(token: string): Observable<any[]> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<any[]>(`${this.serverName}/patients`, { headers });
+  rescheduleAppointment(appointmentId: number, appointment: Appointment): Observable<any> {
+    return this.http.put(`${this.serverName}/api/receptionist/appointment-reschedule/${appointmentId}`, appointment, {
+      headers: this.getHeaders()
+    });
   }
 
-  getRegisteredDoctors(token: string): Observable<any[]> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<any[]>(`${this.serverName}/doctors`, { headers });
-  }
+  // getRegisteredPatients(token: string): Observable<any[]> {
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  //   return this.http.get<any[]>(`${this.serverName}/patients`, { headers });
+  // }
+
+  // getRegisteredDoctors(token: string): Observable<any[]> {
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  //   return this.http.get<any[]>(`${this.serverName}/doctors`, { headers });
+  // }
 
 
   // For testing the component only -- later to be removed
@@ -307,6 +319,23 @@ export class HttpService {
     ];
     localStorage.setItem('patients', JSON.stringify(dummyPatients));
     localStorage.setItem('doctors', JSON.stringify(dummyDoctors));
+  }
+
+
+  registerUser(registerData: any): Observable<any> {
+    let apiUrl = '';
+    switch (registerData.role) {
+      case 'PATIENT':
+        apiUrl = '/api/patient/register';
+        break;
+      case 'DOCTOR':
+        apiUrl = '/api/doctor/register';
+        break;
+      case 'RECEPTIONIST':
+        apiUrl = '/api/receptionist/register';
+        break;
+    }
+    return this.http.post(apiUrl, registerData);
   }
 
 

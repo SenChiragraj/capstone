@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { HttpService } from '../../services/http.service'
 import { AuthService } from '../../services/auth.service'
 import { DatePipe } from '@angular/common'
-import { Doctor } from '../models/appointment.model'
+import { Doctor } from '../models/doctor'
+
 
 @Component({
   selector: 'app-schedule-appointment',
