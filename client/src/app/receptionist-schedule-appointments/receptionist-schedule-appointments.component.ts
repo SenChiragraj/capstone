@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common'
 })
 export class ReceptionistScheduleAppointmentsComponent implements OnInit {
   itemForm!: FormGroup
+  responseMessage: string = ''
 
   constructor (
     private fb: FormBuilder,
@@ -25,7 +26,7 @@ export class ReceptionistScheduleAppointmentsComponent implements OnInit {
     })
   }
 
-  scheduleAppointment (): void {
+  onSubmit (): void {
     if (this.itemForm.valid) {
       const formattedTime = this.datePipe.transform(
         this.itemForm.value.time,

@@ -7,11 +7,15 @@ import com.wecp.healthcare_appointment_management_system.entity.Patient;
 import com.wecp.healthcare_appointment_management_system.entity.Receptionist;
 import com.wecp.healthcare_appointment_management_system.entity.User;
 import com.wecp.healthcare_appointment_management_system.exception.UsernameNotFoundException;
+import com.wecp.healthcare_appointment_management_system.exception.InvalidCredentialsException;
+import com.wecp.healthcare_appointment_management_system.jwt.JwtUtil;
 import com.wecp.healthcare_appointment_management_system.repository.DoctorRepository;
 import com.wecp.healthcare_appointment_management_system.repository.PatientRepository;
 import com.wecp.healthcare_appointment_management_system.repository.ReceptionistRepository;
 import com.wecp.healthcare_appointment_management_system.repository.UserRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -39,6 +43,11 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
     public Patient registerPatient(Patient patient) {
         patient.setPassword(passwordEncoder.encode(patient.getPassword())); // Encode password
         return patientRepository.save(patient);
@@ -55,16 +64,23 @@ public class UserService implements UserDetailsService {
     }
 
     public LoginResponse loginUser(LoginRequest loginRequest) {
+        logger.info("Login attempt for user: {}", loginRequest.getUsername());
         User user = userRepository.findByUsername(loginRequest.getUsername());
+        if (user == null) {
+            logger.error("Username not found: {}", loginRequest.getUsername());
+            throw new UsernameNotFoundException("Username not found!!");
+        }
 
-        if (user != null && passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
-            // Generate a token (for example purposes, returning a static token)
-            String token = "generated-jwt-token";
+        if (passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+            // Generate a token
+            String token = jwtUtil.generateToken(user.getUsername());
 
             // Return user details along with the token
-            return new LoginResponse(user.getId(), user.getUsername(), user.getRole(), token, "Login successful");
+            logger.info("User logged in successfully: {}", user.getUsername());
+            return new LoginResponse(user.getId(), token, user.getUsername(), user.getEmail(), user.getRole());
         } else {
-            return new LoginResponse(null, null, null, null, "Invalid credentials");
+            logger.warn("Invalid credentials for user: {}", loginRequest.getUsername());
+            throw new InvalidCredentialsException("Invalid credentials");
         }
     }
 
@@ -98,5 +114,7 @@ public class UserService implements UserDetailsService {
         return doctorRepository.findById(doctorId).orElse(null);
     }
 
-
+    public User findUserByDetails(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 }

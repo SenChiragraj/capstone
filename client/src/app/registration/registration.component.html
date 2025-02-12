@@ -45,14 +45,16 @@
       <div class="role-selection">
         <label>Role:</label>
         <mat-radio-group formControlName="role">
-          <mat-radio-button value="Patient">Patient</mat-radio-button>
-          <mat-radio-button value="Doctor">Doctor</mat-radio-button>
-          <mat-radio-button value="Receptionist">Receptionist</mat-radio-button>
+          <mat-radio-button value="PATIENT">Patient</mat-radio-button>
+          <mat-radio-button value="DOCTOR">Doctor</mat-radio-button>
+          <mat-radio-button value="RECEPTIONIST">Receptionist</mat-radio-button>
         </mat-radio-group>
       </div>
 
       <div class="button-container">
-        <button mat-raised-button color="primary" type="submit">Register</button>
+        <button mat-raised-button color="primary" type="submit">
+          Register
+        </button>
         <a mat-button color="accent" routerLink="/login">Login</a>
       </div>
     </form>
