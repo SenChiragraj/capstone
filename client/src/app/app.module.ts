@@ -33,6 +33,8 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list'
 import { MatMenuModule } from '@angular/material/menu'
+import { DatePipe } from '@angular/common'
+import { MatSelectModule } from '@angular/material/select'
 
 @NgModule({
   declarations: [
@@ -68,9 +70,10 @@ import { MatMenuModule } from '@angular/material/menu'
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ],
-  providers: [HttpService, HttpClientModule],
+  providers: [HttpService, HttpClientModule, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

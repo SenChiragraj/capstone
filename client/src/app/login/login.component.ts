@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { AuthService } from '../../services/auth.service'
 import { Router } from '@angular/router'
 import { HttpService } from '../../services/http.service'
+import { ThisReceiver } from '@angular/compiler'
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,14 @@ import { HttpService } from '../../services/http.service'
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
+  errorMessage: string = ''
 
-  constructor (private fb: FormBuilder) {
+  constructor (
+    private fb: FormBuilder,
+    private httpService: HttpService,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.loginForm = this.fb.group({
       usernameOrEmail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
@@ -23,7 +30,20 @@ export class LoginComponent implements OnInit {
 
   onSubmit (): void {
     if (this.loginForm.valid) {
-      // Handle login logic here
+      this.httpService.post('/api/user/login', this.loginForm.value).subscribe({
+        next: response => {
+          console.log('Login Response', response)
+          if (response.token) {
+            this.authService.saveToken(response.token)
+            this.authService.saveUserId(response.id)
+            this.authService.SetRole(response.role)
+            this.router.navigate(['/dashbaord'])
+          }
+        },
+        error: error => {
+          this.errorMessage = error.error.message
+        }
+      })
       console.log('Form Submitted', this.loginForm.value)
     }
   }

@@ -7,7 +7,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./dashbaord.component.scss']
 })
 export class DashbaordComponent implements OnInit {
-  avator = "../../assets/avatar.png";
+  avator = '../../assets/avatar.png'
   doctors = [
     {
       name: 'Dr. Anil Kumar',
@@ -23,9 +23,29 @@ export class DashbaordComponent implements OnInit {
       name: 'Dr. Rajesh Mehta',
       specialty: 'Orthopedic',
       image: 'assets/doctor3.jpg'
+    },
+    {
+      name: 'Dr. Priya Sharma',
+      specialty: 'Dermatologist',
+      image: 'assets/doctor2.jpg'
+    },
+    {
+      name: 'Dr. Rajesh Mehta',
+      specialty: 'Orthopedic',
+      image: 'assets/doctor3.jpg'
     }
   ]
 
+  patients = [
+    { name: 'John Doe' },
+    { name: 'Jane Smith' },
+    { name: 'James Brown' },
+    { name: 'Emily Johnson' },
+    { name: 'Michael Clark' },
+    { name: 'Sarah Davis' },
+    { name: 'David Martinez' },
+    { name: 'Laura Garcia' }
+  ]
   constructor (private router: Router) {}
 
   ngOnInit (): void {}

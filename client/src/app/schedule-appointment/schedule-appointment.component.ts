@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { HttpService } from '../../services/http.service'
 import { AuthService } from '../../services/auth.service'
 import { DatePipe } from '@angular/common'
+import { Doctor } from '../models/appointment.model'
 
 @Component({
   selector: 'app-schedule-appointment',
@@ -10,7 +11,8 @@ import { DatePipe } from '@angular/common'
   styleUrls: ['./schedule-appointment.component.scss']
 })
 export class ScheduleAppointmentComponent implements OnInit {
-  itemForm!: FormGroup
+  scheduleAppointmentForm!: FormGroup
+  doctors: Doctor[] = []
 
   constructor (
     private fb: FormBuilder,
@@ -20,21 +22,23 @@ export class ScheduleAppointmentComponent implements OnInit {
   ) {}
 
   ngOnInit (): void {
-    this.itemForm = this.fb.group({
-      patientId: ['', Validators.required],
-      doctorId: ['', Validators.required],
-      time: ['', Validators.required]
+    this.scheduleAppointmentForm = this.fb.group({
+      doctorID: ['', Validators.required],
+      appointmentDate: ['', Validators.required]
     })
   }
 
   scheduleAppointment (): void {
-    if (this.itemForm.valid) {
+    if (this.scheduleAppointmentForm.valid) {
       const token = this.authService.getToken()
       const formattedTime = this.datePipe.transform(
-        this.itemForm.value.time,
+        this.scheduleAppointmentForm.value.time,
         'yyyy-MM-ddTHH:mm:ss'
       )
-      const appointmentData = { ...this.itemForm.value, time: formattedTime }
+      const appointmentData = {
+        ...this.scheduleAppointmentForm.value,
+        time: formattedTime
+      }
       this.httpService
         .scheduleAppointment(
           '/api/patient/appointment',
@@ -50,5 +54,13 @@ export class ScheduleAppointmentComponent implements OnInit {
           }
         )
     }
+  }
+
+  getErrorMessage (controlName: string): string {
+    const control = this.scheduleAppointmentForm.get(controlName)
+    if (control?.hasError('required')) {
+      return `${controlName} is required`
+    }
+    return ''
   }
 }

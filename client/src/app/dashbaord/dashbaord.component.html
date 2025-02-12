@@ -2,66 +2,141 @@
   <app-navbar></app-navbar>
 
   <!-- Patient -->
-  <div class="container">
-    <div class="heading text-center text-bold fs-1">
-      <h1>
-        Book an appointment with the best available Doctors around the Globe.
-      </h1>
+  <div class="">
+    <div class="container">
+      <div class="heading text-center text-bold fs-1">
+        <h1>
+          Book an appointment with the best available Doctors around the Globe.
+        </h1>
+      </div>
+      <div class="button-container text-center">
+        <button mat-raised-button color="primary" (click)="bookAppointment()">
+          Book an Appointment
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="showAllAppointments()"
+        >
+          Show All Appointments
+        </button>
+      </div>
     </div>
-    <div class="button-container text-center">
-      <button mat-raised-button color="primary" (click)="bookAppointment()">
-        Book an Appointment
-      </button>
-      <button mat-raised-button color="accent" (click)="showAllAppointments()">
-        Show All Appointments
-      </button>
-    </div>
-  </div>
 
-  <div class="banner">
-    <h1>Find the Best Doctors Near You</h1>
-    <p class="text-white">Book your appointment with top specialists today.</p>
-    <div class="search-container">
-      <input
-        type="text"
-        placeholder="Search by doctor name or specialty"
-        class="search-bar"
-      />
-      <button class="btn btn-primary">Search</button>
+    <div class="banner">
+      <div class="banner-inner">
+        <h1>Find the Best Doctors Near You</h1>
+        <p class="text-white">
+          Book your appointment with top specialists today.
+        </p>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Search by doctor name or specialty"
+            class="search-bar"
+          />
+          <button class="btn btn-primary">Search</button>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="doctor-cards-container">
-    <div class="doctor-card" *ngFor="let doctor of doctors">
-      <div class="image-container">
-        <img
-          *ngIf="doctor.image; else defaultAvatar"
-          [src]="doctor.image"
-          alt="Doctor Image"
-          class="doctor-image"
-        />
-        <ng-template #defaultAvatar>
+    <div class="doctor-cards-container">
+      <div class="doctor-card" *ngFor="let doctor of doctors">
+        <div class="image-container">
           <img
             src="../../assets/avatar.png"
             alt="Default Avatar"
             class="doctor-image"
           />
-        </ng-template>
-      </div>
+        </div>
 
-      <div class="doctor-info">
-        <h5>{{ doctor.name }}</h5>
-        <p>{{ doctor.specialty }}</p>
-        <button mat-raised-button color="primary">Book an Appointment</button>
+        <div class="doctor-info">
+          <h5>{{ doctor.name }}</h5>
+          <p>{{ doctor.specialty }}</p>
+          <p>Availability: Mon - Fri</p>
+          <button mat-raised-button color="primary" class="btn-sm">
+            Book an Appointment
+          </button>
+        </div>
       </div>
+    </div>
+
+    <div class="content-container">
+      <ng-template #noDoctors>
+        <p class="no-doctors">No doctors available</p>
+      </ng-template>
+      <router-outlet></router-outlet>
+      <app-patient-appointment></app-patient-appointment>
     </div>
   </div>
 
-  <div class="content-container">
-    <ng-template #noDoctors>
-      <p class="no-doctors">No doctors available</p>
-    </ng-template>
-    <router-outlet></router-outlet>
-    <app-patient-appointment></app-patient-appointment>
+  <!-- Doctor -->
+  <!-- doctor-component.component.html -->
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2 class="text-center">Dr. John Doe</h2>
+      <button class="btn btn-sm btn-danger">Edit Profile</button>
+    </div>
+    <div class="card-body text-center">
+      <p class="greeting">Good afternoon, Dr. Doe!</p>
+      <table class="table table-striped text-center">
+        <thead>
+          <tr>
+            <th>Patient Name</th>
+            <th>Number</th>
+            <th>Email</th>
+            <th>Medical Records</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jane Smith</td>
+            <td>555-1234</td>
+            <td>jane.smith&#64;example.com</td>
+            <td><button mat-button color="primary">Open</button></td>
+          </tr>
+          <tr>
+            <td>John Brown</td>
+            <td>555-5678</td>
+            <td>john.brown&#64;example.com</td>
+            <td><button mat-button color="primary">Open</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2 class="text-center">Miss. Jerssica Pearson</h2>
+      <button class="btn btn-sm btn-danger">Edit Profile</button>
+    </div>
+    <div class="card-body text-center">
+      <p class="greeting">Good afternoon, Jessica!</p>
+      <table class="table table-striped text-center">
+        <thead>
+          <tr>
+            <th>Appointment ID</th>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Medical Records</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jane Smith</td>
+            <td>555-1234</td>
+            <td>jane.smith&#64;example.com</td>
+            <td><button mat-button color="primary">Open</button></td>
+          </tr>
+          <tr>
+            <td>John Brown</td>
+            <td>555-5678</td>
+            <td>john.brown&#64;example.com</td>
+            <td><button mat-button color="primary">Open</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

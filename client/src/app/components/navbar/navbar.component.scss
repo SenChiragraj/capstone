@@ -41,7 +41,6 @@
   }
 
   .cta-button {
-    background-color: #1976d2; // Primary color
     color: #ffffff; // White text
     border-radius: 25px; // Rounded corners
     padding: 0.5rem 1.5rem;
@@ -49,6 +48,7 @@
     text-transform: uppercase;
     margin-right: 1rem;
 
+    background-color: #1976d2; // Primary color
     &:hover {
       background-color: #1565c0; // Darker shade on hover
     }

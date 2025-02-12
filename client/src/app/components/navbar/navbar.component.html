@@ -8,7 +8,13 @@
   <!-- Navigation Links -->
   <nav class="nav-links">
     <a mat-button routerLink="/" class="nav-link">Home</a>
-    <a mat-button routerLink="/doctors" class="nav-link">Doctors</a>
+    <a
+      mat-button
+      routerLink="/doctors"
+      class="nav-link"
+      ngIf="role === 'DOCTOR'"
+      >Doctors</a
+    >
     <a mat-button routerLink="/appointments" class="nav-link">Appointments</a>
     <a mat-button routerLink="/contact" class="nav-link">Contact</a>
   </nav>
@@ -18,7 +24,7 @@
     mat-raised-button
     color="accent"
     class="cta-button"
-    routerLink="/book-appointment"
+    routerLink="/schedule-appointment"
   >
     Book Appointment
   </button>
@@ -30,7 +36,7 @@
 
   <!-- Mobile Menu -->
   <button mat-icon-button [matMenuTriggerFor]="menu" class="icon-button">
-    <mat-icon>menu</mat-icon>
+    <mat-icon routerLink="/">menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/">Home</button>
