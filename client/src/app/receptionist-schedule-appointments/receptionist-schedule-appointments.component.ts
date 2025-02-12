@@ -6,7 +6,7 @@ import { DatePipe } from '@angular/common'
 @Component({
   selector: 'app-receptionist-schedule-appointments',
   templateUrl: './receptionist-schedule-appointments.component.html',
-  styleUrls: ['./receptionist-schedule-appointments.component.css']
+  styleUrls: ['./receptionist-schedule-appointments.component.scss']
 })
 export class ReceptionistScheduleAppointmentsComponent implements OnInit {
   itemForm!: FormGroup
