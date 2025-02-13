@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-info text-white">Feedback</div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="feedbackForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+            placeholder="Enter your name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="feedback">Feedback</label>
+          <textarea
+            id="feedback"
+            class="form-control"
+            formControlName="feedback"
+            rows="5"
+            placeholder="Enter your feedback"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <a class="btn btn-secondary mt-3 ml-3" routerLink="/">Go Back</a>
+      </form>
+    </div>
+  </div>
+</div>

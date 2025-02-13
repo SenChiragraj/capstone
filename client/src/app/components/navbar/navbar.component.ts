@@ -16,9 +16,6 @@ export class NavbarComponent {
 
   ngOnInit (): void {
     this.role = this.authService.getRole || ''
-    if (this.role === '') {
-      this.router.navigate(['/login'])
-    }
   }
 
   toggleSidenav (sidenav: any): void {
@@ -27,6 +24,6 @@ export class NavbarComponent {
 
   logout () {
     this.authService.logout()
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/dashboard')
   }
 }

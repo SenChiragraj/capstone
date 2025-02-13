@@ -18,47 +18,12 @@ export class DoctorAppointmentComponent implements OnInit {
   ngOnInit (): void {
     const userIdString = localStorage.getItem('userId')
     this.doctorId = userIdString ? parseInt(userIdString, 10) : 0
+    this.getAppointmentsByDocId()
   }
   getAppointmentsByDocId (): void {
-    this.httpService.getAppointmentByDoctor(this.doctorId).subscribe(
-      data => (this.appointments = data),
-      error => console.error('Error fetching appointments:', error)
-    )
+    this.httpService.getAppointmentByDoctor(this.doctorId).subscribe({
+      next: data => (this.appointments = data),
+      error: () => console.error('Error fetching appointments:')
+    })
   }
 }
-
-// appointmentList: Appointment[] = [];
-
-// constructor(private httpService: HttpService) { }
-
-// ngOnInit(): void {
-//   this.getAppointments();
-// }
-
-// getAppointments() {
-//   const userIdString = localStorage.getItem('userId');
-//   const userId = userIdString ? parseInt(userIdString, 10) : 0;
-//   this.httpService.getAppointmentByDoctor(userId).subscribe(data => {
-//     this.appointmentList = data;
-//     console.log(this.appointmentList);
-//   });
-// }
-
-//for testcase
-//   appointmentList: Appointment[] = [];
-
-//   constructor(private httpService: HttpService) { }
-
-//   ngOnInit(): void {
-//     this.getAppointments();
-//   }
-
-//   getAppointments() {
-//     const userIdString = localStorage.getItem('userId');
-//     const userId = userIdString ? parseInt(userIdString, 10) : 0;
-//     this.httpService.getAppointmentByDoctor(userId).subscribe(data => {
-//       this.appointmentList = data;
-//       console.log(this.appointmentList);
-//     });
-//   }
-// }

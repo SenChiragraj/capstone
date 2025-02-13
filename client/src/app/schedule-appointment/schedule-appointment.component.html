@@ -6,27 +6,30 @@
       [formGroup]="scheduleAppointmentForm"
       (ngSubmit)="scheduleAppointment()"
     >
-      <h2>Login</h2>
       <mat-form-field class="full-width">
         <mat-label>Select Doctor</mat-label>
-        <mat-select id="doctorID" formControlName="doctorID">
-          <mat-option value="" disabled selected>Select Doctor</mat-option>
-          <mat-option *ngFor="let item of doctors" [value]="item.id">
-            {{ item }}
-          </mat-option>
+        <mat-select id="doctorId" formControlName="doctorId">
+          <mat-option value="" disabled>Select Doctor</mat-option>
+          <mat-option *ngFor="let item of doctors" [value]="item.id">{{
+            item.name
+          }}</mat-option>
         </mat-select>
-        <mat-error *ngIf="scheduleAppointmentForm.get('doctorID')?.invalid">
-          {{ getErrorMessage('doctorID') }}
+        <mat-error *ngIf="scheduleAppointmentForm.get('doctorId')?.invalid">
+          {{ getErrorMessage('doctorId') }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <mat-label>Date</mat-label>
-        <input matInput type="date" formControlName="appointmentDate" />
+        <mat-label>Date and Time</mat-label>
+        <input
+          matInput
+          type="datetime-local"
+          formControlName="appointmentDateTime"
+        />
         <mat-error
-          *ngIf="scheduleAppointmentForm.get('appointmentDate')?.invalid"
+          *ngIf="scheduleAppointmentForm.get('appointmentDateTime')?.invalid"
         >
-          {{ getErrorMessage('appointmentDate') }}
+          {{ getErrorMessage('appointmentDateTime') }}
         </mat-error>
       </mat-form-field>
 

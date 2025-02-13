@@ -34,7 +34,11 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list'
 import { MatMenuModule } from '@angular/material/menu'
 import { DatePipe } from '@angular/common'
-import { MatSelectModule } from '@angular/material/select'
+import { MatSelectModule } from '@angular/material/select';
+import { ContactComponent } from './contact/contact.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component'
 
 @NgModule({
   declarations: [
@@ -50,7 +54,11 @@ import { MatSelectModule } from '@angular/material/select'
     ReceptionistScheduleAppointmentsComponent,
     NavbarComponent,
     FooterComponent,
-    SkeletonComponent
+    SkeletonComponent,
+    ContactComponent,
+    FeedbackComponent,
+    HomeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,22 +1,27 @@
-export class Appointment {
-  id!: number
-  patientId!: number
-  doctorId!: number
-  appointmentTime!: Date
-  status!: string
-  constructor (
-    id: number,
-    patientId: number,
-    doctorId: number,
-    appointmentTime: Date,
-    status: string
-  ) {
-    this.id = id
-    this.patientId = patientId
-    this.doctorId = doctorId
-    this.appointmentTime = appointmentTime
-    this.status = status
+import { PatientAppointmentComponent } from '../patient-appointment/patient-appointment.component'
+
+export interface Appointment {
+  id: number
+  patient: {
+    id: number
+    name: string
+    phone: number
+    username: string
+    email: string
+    role: string
   }
+  doctor: {
+    id: number
+    name: string
+    phone: number
+    username: string
+    email: string
+    role: string
+    specialty: string
+    availability: string
+  }
+  appointmentTime: string | null
+  status: string
 }
 
 export interface Doctor {
