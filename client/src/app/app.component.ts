@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core'
+import { AuthService } from '../services/auth.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -8,23 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  IsLoggin:any=false;
-  roleName: string | null;
-  constructor(private authService: AuthService, private router:Router)
-  {
-   
-    this.IsLoggin=authService.getLoginStatus;
-    this.roleName=authService.getRole;
-    if(this.IsLoggin==false)
-    {
-      this.router.navigateByUrl('/login'); 
-    
-    }
-  }
-  logout()
-{
-  this.authService.logout();
-  window.location.reload();
-}
+  IsLoggin: any = false
 
+  constructor (private authService: AuthService, private router: Router) {}
+  logout () {
+    this.authService.logout()
+    window.location.reload()
+  }
 }

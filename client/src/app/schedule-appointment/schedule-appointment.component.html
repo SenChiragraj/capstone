@@ -1,15 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpService } from '../../services/http.service';
-import { DatePipe } from '@angular/common';
+<app-navbar></app-navbar>
+<div class="center-container">
+  <mat-card class="login-card">
+    <h1>Schedule an Appointment</h1>
+    <form
+      [formGroup]="scheduleAppointmentForm"
+      (ngSubmit)="scheduleAppointment()"
+    >
+      <mat-form-field class="full-width">
+        <mat-label>Select Doctor</mat-label>
+        <mat-select id="doctorId" formControlName="doctorId">
+          <mat-option value="" disabled>Select Doctor</mat-option>
+          <mat-option *ngFor="let item of doctors" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="scheduleAppointmentForm.get('doctorId')?.invalid">
+          {{ getErrorMessage('doctorId') }}
+        </mat-error>
+      </mat-form-field>
 
-@Component({
-  selector: 'app-receptionist-schedule-appointments',
-  templateUrl: './receptionist-schedule-appointments.component.html',
-  styleUrls: ['./receptionist-schedule-appointments.component.scss'],
-  providers: [DatePipe] 
-  
-})
-export class ReceptionistScheduleAppointmentsComponent 
+      <mat-form-field class="full-width">
+        <mat-label>Date and Time</mat-label>
+        <input
+          matInput
+          type="datetime-local"
+          formControlName="appointmentDateTime"
+        />
+        <mat-error
+          *ngIf="scheduleAppointmentForm.get('appointmentDateTime')?.invalid"
+        >
+          {{ getErrorMessage('appointmentDateTime') }}
+        </mat-error>
+      </mat-form-field>
 
-//todo: complete missing code..
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit">Book</button>
+        <a mat-button color="accent" routerLink="/dashboard">Go Back</a>
+      </div>
+    </form>
+  </mat-card>
+</div>

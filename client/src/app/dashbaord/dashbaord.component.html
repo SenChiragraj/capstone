@@ -1,4 +1,237 @@
-<div class="row text-center">
-<h1 class="text-capitalize">Healthcare Appointment Management System
-</h1>
+<div class="main-container">
+  <app-navbar></app-navbar>
+
+  <div class="">
+    <div class="" *ngIf="currentUser">Welcome back, {{ currentUser.name }}</div>
+    <div class="container">
+      <div class="">
+        <h1 class="title">
+          Book an appointment<br />
+          with the best <br />
+          available <i class="pointer">doctors</i> <br />
+          around the globe.
+        </h1>
+        <div class="button-container">
+          <button
+            color="#673AB7"
+            class="rounded btn-1"
+            (click)="bookAppointment()"
+          >
+            Book an Appointment
+          </button>
+        </div>
+      </div>
+      <img
+        src="../../assets/Screenshot_2025-02-13_182850-removebg-preview.png"
+        alt=""
+      />
+    </div>
+
+    <div class="banner">
+      <div class="banner-inner">
+        <h1>Find the Best Doctors Near You</h1>
+        <p class="text-white">
+          Book your appointment with top specialists today.
+        </p>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Search by doctor name or specialty"
+            class="search-bar"
+          />
+          <button class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <<<<<<< HEAD
+    <div class="doctor-cards-container">
+      <div class="doctor-card" *ngFor="let doctor of doctors">
+        <div class="image-container">
+          <img
+            src="../../assets/avatar.png"
+            alt="Default Avatar"
+            class="doctor-image"
+          />
+        </div>
+
+        <div class="doctor-info">
+          <h5>{{ doctor.name }}</h5>
+          <p>{{ doctor.specialty }}</p>
+          <!-- <p>{{ doctor.availability }}</p> -->
+          <button mat-raised-button color="primary" class="btn-sm">
+            Book an Appointment
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-container">
+      <ng-template #noDoctors>
+        <p class="no-doctors">No doctors available</p>
+      </ng-template>
+    </div>
+  </div>
+
+  <!-- Doctor -->
+  <!-- doctor-component.component.html -->
+  <div class="card" *ngIf="role === 'DOCTOR'">
+    =======
+    <!-- Doctor List -->
+    <div
+      *ngFor="let doctor of doctors"
+      class="doctor-card d-flex justify-content-between align-items-center mb-3 p-3 border rounded"
+    >
+      <div class="doctor-avatar">
+        <span style="font-size: 2rem">👨‍⚕️</span>
+        <!-- Placeholder for the avatar -->
+      </div>
+      <div class="doctor-details flex-grow-1 ml-3">
+        <h5>{{ doctor.name }}</h5>
+        <p>
+          {{ doctor.specialty }}, {{ doctor.experience }} years of experience
+        </p>
+        <p>Languages: {{ doctor.languages.join(', ') }}</p>
+      </div>
+      <div class="doctor-actions text-right">
+        <button class="btn btn-primary">Book Appointment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="card-container flex flex-row">
+      <h1></h1>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Doctor -->
+  <!-- doctor-component.component.html -->
+  <!-- <div class="card" *ngIf="role === 'DOCTOR'">
+>>>>>>> friday2
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2 class="text-center">Dr. {{ currentUser.name }}</h2>
+      <button class="btn btn-sm btn-danger">Edit Profile</button>
+    </div>
+    <div class="card-body text-center">
+      <p class="greeting">Good afternoon, Dr. Doe!</p>
+      <table class="table table-striped text-center">
+        <thead>
+          <tr>
+            <th>Patient Name</th>
+            <th>Number</th>
+            <th>Email</th>
+            <th>Medical Records</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jane Smith</td>
+            <td>555-1234</td>
+            <td>jane.smith&#64;example.com</td>
+            <td><button mat-button color="primary">Open</button></td>
+          </tr>
+          <tr>
+            <td>John Brown</td>
+            <td>555-5678</td>
+            <td>john.brown&#64;example.com</td>
+            <td><button mat-button color="primary">Open</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+<<<<<<< HEAD
+  </div>
+
+  <div class="card" *ngIf="role === 'RECEPTIONIST'">
+=======
+  </div> -->
+
+  <!-- <div class="card" *ngIf="role === 'RECEPTIONIST'">
+>>>>>>> friday2
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2 class="text-center">Miss. Jerssica Pearson</h2>
+      <button class="btn btn-sm btn-danger">Edit Profile</button>
+    </div>
+    <div class="card-body text-center">
+      <p class="greeting">Good afternoon, Jessica!</p>
+      <table class="table table-striped text-center">
+        <thead>
+          <tr>
+            <th>Appointment ID</th>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Medical Records</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jane Smith</td>
+            <td>555-1234</td>
+            <td>jane.smith&#64;example.com</td>
+            <td><button mat-button color="primary">Open</button></td>
+          </tr>
+          <tr>
+            <td>John Brown</td>
+            <td>555-5678</td>
+            <td>john.brown&#64;example.com</td>
+            <td><button mat-button color="primary">Open</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+<<<<<<< HEAD
+  </div>
 </div>
+=======
+  </div> -->
+</div>
+<!-- </div> -->
+>>>>>>> friday2

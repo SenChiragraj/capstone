@@ -1,0 +1,596 @@
+2025-02-13 03:41:19.909  INFO 7654 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-30-117 with PID 7654 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 03:41:19.919  INFO 7654 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 03:41:20.567  INFO 7654 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 03:41:20.615  INFO 7654 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
+2025-02-13 03:41:21.009  INFO 7654 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 03:41:21.014  INFO 7654 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 03:41:21.014  INFO 7654 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 03:41:21.076  INFO 7654 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 03:41:21.076  INFO 7654 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1107 ms
+2025-02-13 03:41:21.188  INFO 7654 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 03:41:21.207  INFO 7654 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 03:41:21.269  INFO 7654 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 03:41:21.318  INFO 7654 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 03:41:21.575  INFO 7654 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 03:41:21.582  INFO 7654 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 03:41:22.287  INFO 7654 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 03:41:22.293  INFO 7654 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 03:41:22.630  WARN 7654 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 03:41:22.931  INFO 7654 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@138b9abe, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@279e8bc0, org.springframework.security.web.context.SecurityContextPersistenceFilter@a302f30, org.springframework.security.web.header.HeaderWriterFilter@2e2cd42c, org.springframework.web.filter.CorsFilter@23ffc910, org.springframework.security.web.authentication.logout.LogoutFilter@66d44581, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@1b10f60e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@744f0e0b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@19f99aaf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35277c6c, org.springframework.security.web.session.SessionManagementFilter@6fafbdac, org.springframework.security.web.access.ExceptionTranslationFilter@374ba492, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2f4fc18]
+2025-02-13 03:41:23.067  INFO 7654 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 03:41:23.075  INFO 7654 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.513 seconds (JVM running for 3.913)
+2025-02-13 03:52:48.506  INFO 7654 --- [http-nio-5000-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x020x01o0x010x000x01k0x030x02RH0xc50x1a#0xf7:N0xdf0xe20xb40x82/0xff0x09T0x9f0xa70xc4y0xb0h0xc60x130x8c0xa40x1c="0xe10x1a0x98 ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:407) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:263) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2025-02-13 03:53:32.559  INFO 7654 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 03:53:32.561  INFO 7654 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 03:53:32.577  INFO 7654 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-13 03:53:44.801  INFO 13589 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-30-117 with PID 13589 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 03:53:44.804  INFO 13589 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 03:53:45.346  INFO 13589 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 03:53:45.397  INFO 13589 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 6 JPA repository interfaces.
+2025-02-13 03:53:45.773  INFO 13589 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 03:53:45.778  INFO 13589 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 03:53:45.778  INFO 13589 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 03:53:45.837  INFO 13589 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 03:53:45.838  INFO 13589 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 977 ms
+2025-02-13 03:53:45.949  INFO 13589 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 03:53:45.968  INFO 13589 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 03:53:46.033  INFO 13589 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 03:53:46.096  INFO 13589 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 03:53:46.317  INFO 13589 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 03:53:46.325  INFO 13589 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 03:53:46.873  INFO 13589 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 03:53:46.879  INFO 13589 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 03:53:47.196  WARN 13589 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 03:53:47.490  INFO 13589 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@138b9abe, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@279e8bc0, org.springframework.security.web.context.SecurityContextPersistenceFilter@1b6683c4, org.springframework.security.web.header.HeaderWriterFilter@a302f30, org.springframework.web.filter.CorsFilter@23ffc910, org.springframework.security.web.authentication.logout.LogoutFilter@f575d2b, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@4b916cc2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7db2b614, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@544e6b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35277c6c, org.springframework.security.web.session.SessionManagementFilter@161c9468, org.springframework.security.web.access.ExceptionTranslationFilter@50caeb4b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2f4fc18]
+2025-02-13 03:53:47.678  INFO 13589 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 03:53:47.691  INFO 13589 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.257 seconds (JVM running for 3.547)
+2025-02-13 04:42:17.791  INFO 13589 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 04:42:17.792  INFO 13589 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 04:42:17.794  INFO 13589 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-02-13 04:44:20.841  WARN 13589 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58s751ms246µs491ns).
+2025-02-13 04:44:50.995  WARN 13589 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m4s277ms287µs760ns).
+2025-02-13 04:46:55.630  WARN 13589 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m2s369ms151µs580ns).
+2025-02-13 04:49:23.254  WARN 13589 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m29s136ms310µs655ns).
+2025-02-13 04:50:17.050  WARN 13589 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=48s209ms644µs909ns).
+2025-02-13 04:52:48.820  WARN 13589 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m38s115ms396µs867ns).
+2025-02-13 04:59:54.348  INFO 43891 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-30-117 with PID 43891 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 04:59:54.355  INFO 43891 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 04:59:55.040  INFO 43891 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 04:59:55.093  INFO 43891 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 6 JPA repository interfaces.
+2025-02-13 04:59:55.502  INFO 43891 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 04:59:55.508  INFO 43891 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 04:59:55.508  INFO 43891 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 04:59:55.572  INFO 43891 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 04:59:55.573  INFO 43891 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1100 ms
+2025-02-13 04:59:55.694  INFO 43891 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 04:59:55.714  INFO 43891 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 04:59:55.777  INFO 43891 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 04:59:55.822  INFO 43891 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 04:59:56.059  INFO 43891 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 04:59:56.066  INFO 43891 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 04:59:56.798  INFO 43891 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 04:59:56.805  INFO 43891 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 04:59:57.157  WARN 43891 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 04:59:57.499  INFO 43891 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1d38cdde, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3809f65d, org.springframework.security.web.context.SecurityContextPersistenceFilter@4af44f2a, org.springframework.security.web.header.HeaderWriterFilter@71cc0e35, org.springframework.web.filter.CorsFilter@717b0d81, org.springframework.security.web.authentication.logout.LogoutFilter@34d72f06, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@7affee54, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b324447, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@41463c56, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@16745abd, org.springframework.security.web.session.SessionManagementFilter@1860b107, org.springframework.security.web.access.ExceptionTranslationFilter@2e2cd42c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@51d9fd30]
+2025-02-13 04:59:57.651  INFO 43891 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 04:59:57.660  INFO 43891 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.758 seconds (JVM running for 4.059)
+2025-02-13 05:43:09.459  INFO 43891 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 05:43:09.462  INFO 43891 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 05:43:09.511  INFO 43891 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-13 17:36:50.892  INFO 44127 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-18-100 with PID 44127 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 17:36:50.894  INFO 44127 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 17:36:51.439  INFO 44127 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 17:36:51.485  INFO 44127 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 6 JPA repository interfaces.
+2025-02-13 17:36:51.877  INFO 44127 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 17:36:51.882  INFO 44127 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 17:36:51.883  INFO 44127 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 17:36:51.939  INFO 44127 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 17:36:51.940  INFO 44127 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1000 ms
+2025-02-13 17:36:52.051  INFO 44127 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 17:36:52.070  INFO 44127 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 17:36:52.129  INFO 44127 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 17:36:52.173  INFO 44127 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 17:36:52.387  INFO 44127 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 17:36:52.395  INFO 44127 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 17:36:52.951  INFO 44127 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 17:36:52.958  INFO 44127 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 17:36:53.301  WARN 44127 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 17:36:53.594  INFO 44127 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5598dff2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@92b1bda, org.springframework.security.web.context.SecurityContextPersistenceFilter@69abeb14, org.springframework.security.web.header.HeaderWriterFilter@1860b107, org.springframework.web.filter.CorsFilter@57bfca3a, org.springframework.security.web.authentication.logout.LogoutFilter@4d90d91f, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@6e355249, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34d5eac, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b430541, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@58690f5e, org.springframework.security.web.session.SessionManagementFilter@629de8, org.springframework.security.web.access.ExceptionTranslationFilter@6fafbdac, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@337fb1a5]
+2025-02-13 17:36:53.727  INFO 44127 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 17:36:53.735  INFO 44127 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.18 seconds (JVM running for 3.432)
+2025-02-13 17:37:14.951  INFO 44127 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 17:37:14.952  INFO 44127 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 17:37:14.953  INFO 44127 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-13 17:45:38.915  INFO 44127 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 17:45:38.916  INFO 44127 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 17:45:38.925  INFO 44127 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-13 17:45:46.104  INFO 48120 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-18-100 with PID 48120 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 17:45:46.107  INFO 48120 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 17:45:46.647  INFO 48120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 17:45:46.692  INFO 48120 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 6 JPA repository interfaces.
+2025-02-13 17:45:47.064  INFO 48120 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 17:45:47.069  INFO 48120 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 17:45:47.069  INFO 48120 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 17:45:47.126  INFO 48120 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 17:45:47.126  INFO 48120 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 980 ms
+2025-02-13 17:45:47.235  INFO 48120 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 17:45:47.255  INFO 48120 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 17:45:47.313  INFO 48120 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 17:45:47.355  INFO 48120 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 17:45:47.570  INFO 48120 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 17:45:47.577  INFO 48120 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 17:45:48.133  INFO 48120 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 17:45:48.142  INFO 48120 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 17:45:48.494  WARN 48120 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 17:45:48.776  INFO 48120 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7698a3d9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4b62f1ba, org.springframework.security.web.context.SecurityContextPersistenceFilter@570127fa, org.springframework.security.web.header.HeaderWriterFilter@3b6c740b, org.springframework.web.filter.CorsFilter@39dce2df, org.springframework.security.web.authentication.logout.LogoutFilter@7e43b342, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@4b916cc2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ffcdc9b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@161c9468, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@662d3e85, org.springframework.security.web.session.SessionManagementFilter@744f0e0b, org.springframework.security.web.access.ExceptionTranslationFilter@1cdad619, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@29a50a11]
+2025-02-13 17:45:48.929  INFO 48120 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 17:45:48.937  INFO 48120 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.189 seconds (JVM running for 3.469)
+2025-02-13 17:45:56.256  INFO 48120 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 17:45:56.258  INFO 48120 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 17:45:56.259  INFO 48120 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-13 17:46:31.809  INFO 48120 --- [SpringApplicationShutdownHook] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-02-13 17:46:31.827  INFO 48120 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 17:46:31.830  INFO 48120 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 17:46:31.843  INFO 48120 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-13 17:46:35.968  INFO 48780 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-18-100 with PID 48780 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 17:46:35.970  INFO 48780 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 17:46:36.544  INFO 48780 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 17:46:36.592  INFO 48780 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
+2025-02-13 17:46:36.962  INFO 48780 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 17:46:36.967  INFO 48780 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 17:46:36.967  INFO 48780 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 17:46:37.025  INFO 48780 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 17:46:37.025  INFO 48780 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1018 ms
+2025-02-13 17:46:37.140  INFO 48780 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 17:46:37.159  INFO 48780 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 17:46:37.220  INFO 48780 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 17:46:37.263  INFO 48780 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 17:46:37.476  INFO 48780 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 17:46:37.482  INFO 48780 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 17:46:38.066  INFO 48780 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 17:46:38.074  INFO 48780 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 17:46:38.393  WARN 48780 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 17:46:38.701  INFO 48780 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@236a3e4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2987b699, org.springframework.security.web.context.SecurityContextPersistenceFilter@6d0bcf8c, org.springframework.security.web.header.HeaderWriterFilter@629de8, org.springframework.web.filter.CorsFilter@2d36add1, org.springframework.security.web.authentication.logout.LogoutFilter@5274830e, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@11ee671f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@66d44581, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@dbcf7c3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@75ef1392, org.springframework.security.web.session.SessionManagementFilter@5a07ae2f, org.springframework.security.web.access.ExceptionTranslationFilter@19f1f330, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@237d0625]
+2025-02-13 17:46:38.840  INFO 48780 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 17:46:38.848  INFO 48780 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.209 seconds (JVM running for 3.498)
+2025-02-13 17:46:52.172  INFO 48780 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 17:46:52.173  INFO 48780 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 17:46:52.174  INFO 48780 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-13 17:52:57.528  INFO 48780 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 17:52:57.530  INFO 48780 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 17:52:57.543  INFO 48780 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-13 17:53:01.758  INFO 52017 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-18-100 with PID 52017 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 17:53:01.764  INFO 52017 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 17:53:02.327  INFO 52017 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 17:53:02.375  INFO 52017 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
+2025-02-13 17:53:02.740  INFO 52017 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 17:53:02.746  INFO 52017 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 17:53:02.746  INFO 52017 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 17:53:02.802  INFO 52017 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 17:53:02.803  INFO 52017 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 985 ms
+2025-02-13 17:53:02.913  INFO 52017 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 17:53:02.932  INFO 52017 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 17:53:02.992  INFO 52017 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 17:53:03.051  INFO 52017 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 17:53:03.266  INFO 52017 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 17:53:03.273  INFO 52017 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 17:53:03.885  INFO 52017 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 17:53:03.892  INFO 52017 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 17:53:04.232  WARN 52017 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 17:53:04.567  INFO 52017 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7698a3d9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4b62f1ba, org.springframework.security.web.context.SecurityContextPersistenceFilter@c7c07ff, org.springframework.security.web.header.HeaderWriterFilter@1f365a26, org.springframework.web.filter.CorsFilter@39dce2df, org.springframework.security.web.authentication.logout.LogoutFilter@6d0bcf8c, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@1344f7fe, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a302f30, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ffcdc9b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@662d3e85, org.springframework.security.web.session.SessionManagementFilter@90394d, org.springframework.security.web.access.ExceptionTranslationFilter@185bf6e0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@29a50a11]
+2025-02-13 17:53:04.723  INFO 52017 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 17:53:04.736  INFO 52017 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.318 seconds (JVM running for 3.604)
+2025-02-13 17:53:09.878  INFO 52017 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 17:53:09.879  INFO 52017 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 17:53:09.880  INFO 52017 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-13 17:59:42.741  INFO 52017 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 17:59:42.743  INFO 52017 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 17:59:42.761  INFO 52017 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-13 17:59:46.781  INFO 56870 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-18-100 with PID 56870 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 17:59:46.783  INFO 56870 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 17:59:47.334  INFO 56870 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 17:59:47.381  INFO 56870 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
+2025-02-13 17:59:47.752  INFO 56870 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 17:59:47.757  INFO 56870 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 17:59:47.757  INFO 56870 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 17:59:47.816  INFO 56870 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 17:59:47.816  INFO 56870 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 970 ms
+2025-02-13 17:59:47.926  INFO 56870 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 17:59:47.944  INFO 56870 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 17:59:48.002  INFO 56870 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 17:59:48.043  INFO 56870 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 17:59:48.255  INFO 56870 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 17:59:48.261  INFO 56870 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 17:59:48.820  INFO 56870 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 17:59:48.829  INFO 56870 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 17:59:49.168  WARN 56870 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 17:59:49.442  INFO 56870 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@233789d9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f31937b, org.springframework.security.web.context.SecurityContextPersistenceFilter@c7c07ff, org.springframework.security.web.header.HeaderWriterFilter@1f365a26, org.springframework.web.filter.CorsFilter@2f4fc18, org.springframework.security.web.authentication.logout.LogoutFilter@6d0bcf8c, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@4b916cc2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a302f30, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ffcdc9b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7187078a, org.springframework.security.web.session.SessionManagementFilter@90394d, org.springframework.security.web.access.ExceptionTranslationFilter@185bf6e0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@782143e8]
+2025-02-13 17:59:49.595  INFO 56870 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 17:59:49.603  INFO 56870 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.185 seconds (JVM running for 3.51)
+2025-02-13 18:01:27.504  INFO 56870 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 18:01:27.505  INFO 56870 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 18:01:27.506  INFO 56870 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-13 18:05:05.836  INFO 56870 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 18:05:05.838  INFO 56870 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 18:05:05.851  INFO 56870 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-13 18:05:09.993  INFO 59412 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-18-100 with PID 59412 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 18:05:09.999  INFO 59412 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 18:05:10.599  INFO 59412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 18:05:10.648  INFO 59412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 6 JPA repository interfaces.
+2025-02-13 18:05:11.030  INFO 59412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 18:05:11.035  INFO 59412 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 18:05:11.036  INFO 59412 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 18:05:11.092  INFO 59412 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 18:05:11.093  INFO 59412 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1048 ms
+2025-02-13 18:05:11.202  INFO 59412 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 18:05:11.221  INFO 59412 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 18:05:11.279  INFO 59412 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 18:05:11.320  INFO 59412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 18:05:11.537  INFO 59412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 18:05:11.546  INFO 59412 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 18:05:12.076  INFO 59412 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 18:05:12.083  INFO 59412 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 18:05:12.434  WARN 59412 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 18:05:12.724  INFO 59412 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@219dd935, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66859ea9, org.springframework.security.web.context.SecurityContextPersistenceFilter@1cdad619, org.springframework.security.web.header.HeaderWriterFilter@259c6ab8, org.springframework.web.filter.CorsFilter@4a9412c4, org.springframework.security.web.authentication.logout.LogoutFilter@69abeb14, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@6c8ad6d7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3909308c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7169d668, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d15c513, org.springframework.security.web.session.SessionManagementFilter@1f365a26, org.springframework.security.web.access.ExceptionTranslationFilter@49c4118b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d6a0962]
+2025-02-13 18:05:12.862  INFO 59412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 18:05:12.870  INFO 59412 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.337 seconds (JVM running for 3.608)
+2025-02-13 18:05:33.624  INFO 59412 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 18:05:33.625  INFO 59412 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 18:05:33.626  INFO 59412 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-13 18:08:22.640  INFO 59412 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 18:08:22.641  INFO 59412 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 18:08:22.653  INFO 59412 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-13 18:08:27.658  INFO 61190 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-18-100 with PID 61190 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 18:08:27.661  INFO 61190 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 18:08:28.209  INFO 61190 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 18:08:28.260  INFO 61190 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 6 JPA repository interfaces.
+2025-02-13 18:08:28.652  INFO 61190 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 18:08:28.657  INFO 61190 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 18:08:28.658  INFO 61190 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 18:08:28.714  INFO 61190 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 18:08:28.715  INFO 61190 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1015 ms
+2025-02-13 18:08:28.823  INFO 61190 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 18:08:28.842  INFO 61190 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 18:08:28.900  INFO 61190 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 18:08:28.940  INFO 61190 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 18:08:29.157  INFO 61190 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 18:08:29.165  INFO 61190 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 18:08:29.692  INFO 61190 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 18:08:29.699  INFO 61190 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 18:08:30.139  WARN 61190 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 18:08:30.418  INFO 61190 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@233789d9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f31937b, org.springframework.security.web.context.SecurityContextPersistenceFilter@4136b193, org.springframework.security.web.header.HeaderWriterFilter@3909308c, org.springframework.web.filter.CorsFilter@2f4fc18, org.springframework.security.web.authentication.logout.LogoutFilter@70eb94d7, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@6e355249, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@570127fa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@143fe09c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7187078a, org.springframework.security.web.session.SessionManagementFilter@a302f30, org.springframework.security.web.access.ExceptionTranslationFilter@44a9971f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@782143e8]
+2025-02-13 18:08:30.569  INFO 61190 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 18:08:30.577  INFO 61190 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.248 seconds (JVM running for 3.534)
+2025-02-13 18:08:34.285  INFO 61190 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 18:08:34.285  INFO 61190 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 18:08:34.287  INFO 61190 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-13 18:16:50.465  WARN 61190 --- [http-nio-5000-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler com.wecp.healthcare_appointment_management_system.exception.GlobalExceptionHandler#handleException(Exception)
+
+org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class java.lang.Throwable]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Direct self-reference leading to cycle (through reference chain: org.springframework.dao.EmptyResultDataAccessException["mostSpecificCause"])
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:462) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:219) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:428) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:75) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:142) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1332) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1143) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:931) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:561) ~[tomcat-embed-core-9.0.82.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.82.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:65) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Direct self-reference leading to cycle (through reference chain: org.springframework.dao.EmptyResultDataAccessException["mostSpecificCause"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1300) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter._handleSelfReference(BeanPropertyWriter.java:944) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:722) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1518) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1007) ~[jackson-databind-2.13.5.jar:2.13.5]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456) ~[spring-web-5.3.30.jar:5.3.30]
+	... 98 common frames omitted
+
+2025-02-13 18:16:50.481 ERROR 61190 --- [http-nio-5000-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.EmptyResultDataAccessException: No class com.wecp.healthcare_appointment_management_system.entity.Appointment entity with id 1 exists!] with root cause
+
+org.springframework.dao.EmptyResultDataAccessException: No class com.wecp.healthcare_appointment_management_system.entity.Appointment entity with id 1 exists!
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.lambda$deleteById$0(SimpleJpaRepository.java:173) ~[spring-data-jpa-2.7.17.jar:2.7.17]
+	at java.base/java.util.Optional.orElseThrow(Optional.java:408) ~[na:na]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.deleteById(SimpleJpaRepository.java:172) ~[spring-data-jpa-2.7.17.jar:2.7.17]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:289) ~[spring-data-commons-2.7.17.jar:2.7.17]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137) ~[spring-data-commons-2.7.17.jar:2.7.17]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121) ~[spring-data-commons-2.7.17.jar:2.7.17]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:530) ~[spring-data-commons-2.7.17.jar:2.7.17]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:286) ~[spring-data-commons-2.7.17.jar:2.7.17]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:640) ~[spring-data-commons-2.7.17.jar:2.7.17]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-2.7.17.jar:2.7.17]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139) ~[spring-data-commons-2.7.17.jar:2.7.17]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:76) ~[spring-data-commons-2.7.17.jar:2.7.17]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:174) ~[spring-data-jpa-2.7.17.jar:2.7.17]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.30.jar:5.3.30]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:241) ~[spring-aop-5.3.30.jar:5.3.30]
+	at com.sun.proxy.$Proxy123.deleteById(Unknown Source) ~[na:na]
+	at com.wecp.healthcare_appointment_management_system.service.AppointmentService.deleteByAppointmentId(AppointmentService.java:56) ~[classes/:na]
+	at com.wecp.healthcare_appointment_management_system.controller.EditDeleteController.deleteAppointment(EditDeleteController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:931) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:561) ~[tomcat-embed-core-9.0.82.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.30.jar:5.3.30]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623) ~[tomcat-embed-core-9.0.82.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:65) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186) ~[spring-security-web-5.7.11.jar:5.7.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.30.jar:5.3.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.82.jar:9.0.82]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2025-02-13 18:22:18.734  INFO 61190 --- [http-nio-5000-exec-5] c.w.h.service.UserService                : Login attempt for user: natasha
+2025-02-13 18:22:18.823  INFO 61190 --- [http-nio-5000-exec-5] c.w.h.service.UserService                : User logged in successfully: natasha
+2025-02-13 18:28:57.785  INFO 61190 --- [http-nio-5000-exec-2] c.w.h.service.UserService                : Login attempt for user: harish
+2025-02-13 18:28:57.864  INFO 61190 --- [http-nio-5000-exec-2] c.w.h.service.UserService                : User logged in successfully: harish
+2025-02-13 18:30:03.681  INFO 61190 --- [http-nio-5000-exec-2] c.w.h.service.UserService                : Login attempt for user: natasha
+2025-02-13 18:30:03.760  INFO 61190 --- [http-nio-5000-exec-2] c.w.h.service.UserService                : User logged in successfully: natasha
+2025-02-13 20:03:33.519  INFO 12650 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-25-98 with PID 12650 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 20:03:33.522  INFO 12650 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 20:03:34.065  INFO 12650 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 20:03:34.125  INFO 12650 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 6 JPA repository interfaces.
+2025-02-13 20:03:34.591  INFO 12650 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 20:03:34.596  INFO 12650 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 20:03:34.598  INFO 12650 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 20:03:34.655  INFO 12650 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 20:03:34.655  INFO 12650 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1094 ms
+2025-02-13 20:03:34.761  INFO 12650 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 20:03:34.779  INFO 12650 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 20:03:34.836  INFO 12650 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 20:03:34.875  INFO 12650 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 20:03:35.084  INFO 12650 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 20:03:35.091  INFO 12650 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 20:03:35.635  INFO 12650 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 20:03:35.642  INFO 12650 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 20:03:35.989  WARN 12650 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 20:03:36.276  INFO 12650 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4d793390, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3a359f7c, org.springframework.security.web.context.SecurityContextPersistenceFilter@570127fa, org.springframework.security.web.header.HeaderWriterFilter@3b6c740b, org.springframework.web.filter.CorsFilter@138b9abe, org.springframework.security.web.authentication.logout.LogoutFilter@7e43b342, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@75c15f76, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ffcdc9b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@161c9468, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@279e8bc0, org.springframework.security.web.session.SessionManagementFilter@744f0e0b, org.springframework.security.web.access.ExceptionTranslationFilter@1cdad619, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@233789d9]
+2025-02-13 20:03:36.400  INFO 12650 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 20:03:36.407  INFO 12650 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.221 seconds (JVM running for 3.494)
+2025-02-13 20:05:55.035  INFO 12650 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 20:05:55.036  INFO 12650 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 20:05:55.037  INFO 12650 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-13 20:06:03.535  INFO 12650 --- [http-nio-5000-exec-2] c.w.h.service.UserService                : Login attempt for user: patientTest
+2025-02-13 20:06:03.652  INFO 12650 --- [http-nio-5000-exec-2] c.w.h.service.UserService                : User logged in successfully: patientTest
+2025-02-13 20:13:21.712  INFO 12650 --- [http-nio-5000-exec-6] c.w.h.service.UserService                : Login attempt for user: patientTest
+2025-02-13 20:13:21.793  INFO 12650 --- [http-nio-5000-exec-6] c.w.h.service.UserService                : User logged in successfully: patientTest
+2025-02-13 20:23:06.679  INFO 12650 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 20:23:06.681  INFO 12650 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 20:23:06.690  INFO 12650 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-13 20:52:21.598  INFO 35663 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-25-98 with PID 35663 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-13 20:52:21.601  INFO 35663 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-13 20:52:22.142  INFO 35663 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-13 20:52:22.191  INFO 35663 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 6 JPA repository interfaces.
+2025-02-13 20:52:22.553  INFO 35663 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-13 20:52:22.558  INFO 35663 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-13 20:52:22.558  INFO 35663 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-13 20:52:22.612  INFO 35663 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-13 20:52:22.612  INFO 35663 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 968 ms
+2025-02-13 20:52:22.719  INFO 35663 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-13 20:52:22.737  INFO 35663 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-13 20:52:22.793  INFO 35663 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-13 20:52:22.834  INFO 35663 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-13 20:52:23.034  INFO 35663 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-13 20:52:23.048  INFO 35663 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-13 20:52:23.731  INFO 35663 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-13 20:52:23.738  INFO 35663 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 20:52:24.068  WARN 35663 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-13 20:52:24.356  INFO 35663 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3809f65d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@717b0d81, org.springframework.security.web.context.SecurityContextPersistenceFilter@4af44f2a, org.springframework.security.web.header.HeaderWriterFilter@71cc0e35, org.springframework.web.filter.CorsFilter@16745abd, org.springframework.security.web.authentication.logout.LogoutFilter@34d72f06, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@75c15f76, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b324447, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@41463c56, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d793390, org.springframework.security.web.session.SessionManagementFilter@1860b107, org.springframework.security.web.access.ExceptionTranslationFilter@2e2cd42c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2e7e4480]
+2025-02-13 20:52:24.593  INFO 35663 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-13 20:52:24.605  INFO 35663 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.365 seconds (JVM running for 3.675)
+2025-02-13 20:52:41.543  INFO 35663 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-13 20:52:41.544  INFO 35663 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-13 20:52:41.545  INFO 35663 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-13 20:53:27.558  INFO 35663 --- [http-nio-5000-exec-3] c.w.h.service.UserService                : Login attempt for user: receptionistTest
+2025-02-13 20:53:27.668  INFO 35663 --- [http-nio-5000-exec-3] c.w.h.service.UserService                : User logged in successfully: receptionistTest
+2025-02-13 20:55:16.596  INFO 35663 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-13 20:55:16.598  INFO 35663 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-13 20:55:16.608  INFO 35663 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
