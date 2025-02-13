@@ -1,4 +1,4 @@
-<!-- <!-- <div *ngIf="responseMessage" class="alert alert-success mt-4" role="alert">
+ <!-- <div *ngIf="responseMessage" class="alert alert-success mt-4" role="alert">
   {{ responseMessage }}
 </div>
 <div class="card">
@@ -78,3 +78,31 @@
     </form>
   </div>
 </div> -->
+
+
+<div class="container mt-4">
+  <h2>Schedule Appointment</h2>
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="patientId" class="form-label">Patient Id</label>
+      <select class="form-select" id="patientId" formControlName="patientId" required>
+        <option *ngFor="let patient of registeredPatients" [value]="patient.id">
+          {{ patient.username }} (ID: {{ patient.id }})
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="doctorId" class="form-label">Doctor Id</label>
+      <select class="form-select" id="doctorId" formControlName="doctorId" required>
+        <option *ngFor="let doctor of registeredDoctors" [value]="doctor.id">
+          {{ doctor.username }} (ID: {{ doctor.id }})
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="appointmentTime" class="form-label">Date & Time</label>
+      <input type="datetime-local" class="form-control" id="appointmentTime" formControlName="appointmentTime" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
