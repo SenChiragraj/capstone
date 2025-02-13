@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { Router } from '@angular/router';
-import { HttpService } from '../../services/http.service';
+import { Component, OnInit } from '@angular/core'
+import { DatePipe } from '@angular/common'
+import { Router } from '@angular/router'
+import { HttpService } from '../../services/http.service'
 
 @Component({
   selector: 'app-receptionist-appointments',
@@ -10,17 +10,16 @@ import { HttpService } from '../../services/http.service';
   providers: [DatePipe]
 })
 export class ReceptionistAppointmentsComponent implements OnInit {
+  appointments: any[] = []
 
-  appointments: any[] = [];
-
-  constructor(
+  constructor (
     private httpService: HttpService,
     public datePipe: DatePipe,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-    this.fetchAppointments();
+  ngOnInit (): void {
+    this.fetchAppointments()
   }
 
   // fetchAppointments(): void {
@@ -32,7 +31,7 @@ export class ReceptionistAppointmentsComponent implements OnInit {
   //   });
   // }
 
-  fetchAppointments(): void {
+  fetchAppointments (): void {
     // Dummy data for testing
     this.appointments = [
       {
@@ -49,13 +48,13 @@ export class ReceptionistAppointmentsComponent implements OnInit {
         doctor: { username: 'doc2', email: 'doc2@example.com' },
         patient: { username: 'patient2', email: 'patient2@example.com' }
       }
-    ];
-    console.log(this.appointments);
+    ]
+    console.log(this.appointments)
   }
 
-
-  rescheduleAppointment(appointmentId: number): void {
-    this.router.navigate(['/receptionist-schedule-appointments'], { queryParams: { appointmentId } });
-  }
+  rescheduleAppointment (appointmentId: number): void {
+    this.router.navigate(['/receptionist-schedule-appointments'], {
+      queryParams: { appointmentId }
+    })
   }
 }

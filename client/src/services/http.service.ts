@@ -10,16 +10,15 @@ import { Appointment } from '../app/models/appointment.model'
 export class HttpService {
   // public serverName = 'http://your-server-url' // Replace with your server URL
 
- serverName =
-    'https://ec2-13-200-15-230.projects.wecreateproblems.com/proxy/5000';
-  
-  cancelAppointment(appointmentId: number): Observable<any> {
-    return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, { headers: this.getHeaders() });
+  serverName =
+    'https://ec2-13-200-15-230.projects.wecreateproblems.com/proxy/5000'
+
+  cancelAppointment (appointmentId: number): Observable<any> {
+    return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, {
+      headers: this.getHeaders()
+    })
   }
   // }
-
-
- 
 
   constructor (private http: HttpClient, private authService: AuthService) {}
 
@@ -107,9 +106,9 @@ export class HttpService {
     )
   }
 
-  getAllAppointments (): Observable<any> {
+  getAllAppointments (doctorId: number): Observable<any> {
     return this.http.get<any>(
-      `${this.serverName}/api/receptionist/appointments`,
+      `${this.serverName}/api/doctor/appointments/doctorId=${doctorId}`,
       {
         headers: this.getHeaders()
       }
@@ -150,39 +149,55 @@ export class HttpService {
   Login (loginDetails: any): Observable<any> {
     return this.http.post<any>(
       `${this.serverName}/api/user/login`,
-      loginDetails,
+      loginDetails
+    )
+  }
+
+  getRegisteredPatients (token: string): Observable<any[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+    return this.http.get<any[]>(`${this.serverName}/patients`, { headers })
+  }
+
+  getRegisteredDoctors (token: string): Observable<any[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+    return this.http.get<any[]>(`${this.serverName}/doctors`, { headers })
+  }
+
+  // For testing the component only -- later to be removed
+  saveDummyData (): void {
+    const dummyPatients = [
+      { id: 1, username: 'patient1', email: 'patient1@example.com' },
+      { id: 2, username: 'patient2', email: 'patient2@example.com' }
+    ]
+    const dummyDoctors = [
+      { id: 1, username: 'doctor1', email: 'doctor1@example.com' },
+      { id: 2, username: 'doctor2', email: 'doctor2@example.com' }
+    ]
+    localStorage.setItem('patients', JSON.stringify(dummyPatients))
+    localStorage.setItem('doctors', JSON.stringify(dummyDoctors))
+  }
+
+  getAppointmentById (appointmentId: number): Observable<Appointment> {
+    return this.http.get<Appointment>(
+      `${this.serverName}/api/receptionist/appointments/${appointmentId}`,
       {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+        headers: this.getHeaders()
       }
     )
   }
 
-  getRegisteredPatients(token: string): Observable<any[]> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<any[]>(`${this.serverName}/patients`, { headers });
+  rescheduleAppointment (
+    appointmentId: number,
+    appointment: Appointment
+  ): Observable<any> {
+    return this.http.put(
+      `${this.serverName}/api/receptionist/appointment-reschedule/${appointmentId}`,
+      appointment,
+      {
+        headers: this.getHeaders()
+      }
+    )
   }
-
-  getRegisteredDoctors(token: string): Observable<any[]> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<any[]>(`${this.serverName}/doctors`, { headers });
-  }
-
-
-  // For testing the component only -- later to be removed
-  saveDummyData(): void {
-    const dummyPatients = [
-      { id: 1, username: 'patient1', email: 'patient1@example.com' },
-      { id: 2, username: 'patient2', email: 'patient2@example.com' }
-    ];
-    const dummyDoctors = [
-      { id: 1, username: 'doctor1', email: 'doctor1@example.com' },
-      { id: 2, username: 'doctor2', email: 'doctor2@example.com' }
-    ];
-    localStorage.setItem('patients', JSON.stringify(dummyPatients));
-    localStorage.setItem('doctors', JSON.stringify(dummyDoctors));
-  }
-
-  
 
   //for testcase
 
@@ -326,5 +341,3 @@ export class HttpService {
   //     )
   //   }
 }
-
-

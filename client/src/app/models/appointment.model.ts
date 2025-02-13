@@ -1,11 +1,9 @@
-import { Patient } from "./patient";
-
 export class Appointment {
-  id!: number;
-  patientId!: number;
-  doctorId!: number;
-  appointmentTime!: Date;
-  status!: string;
+  id!: number
+  patientId!: number
+  doctorId!: number
+  appointmentTime!: Date
+  status!: string
   constructor (
     id: number,
     patientId: number,

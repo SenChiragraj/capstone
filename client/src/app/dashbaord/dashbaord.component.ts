@@ -41,11 +41,11 @@ export class DashbaordComponent implements OnInit {
   }
 
   bookAppointment (): void {
-    this.router.navigate(['/book-appointment']) // Adjust the route as needed
+    this.router.navigate(['/schedule-appointment']) // Adjust the route as needed
   }
 
   showAllAppointments (): void {
-    this.router.navigate(['/all-appointments']) // Adjust the route as needed
+    this.router.navigate(['/patient-appointment']) // Adjust the route as needed
   }
 
   toLoadPatientDashboard () {
@@ -85,9 +85,9 @@ export class DashbaordComponent implements OnInit {
   }
 
   toLoadAppointment () {
-    this.httpServie.getAllAppointments().subscribe({
+    this.httpServie.getAllAppointments(this.currentUser.id).subscribe({
       next: () => {
-        this.httpServie.getAllAppointments().subscribe({
+        this.httpServie.getAllAppointments(this.currentUser.id).subscribe({
           next: data => (this.appointments = data),
           error: error => (this.errorMessage = error)
         })
