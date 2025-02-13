@@ -24,4 +24,9 @@ export class NavbarComponent {
   toggleSidenav (sidenav: any): void {
     sidenav.toggle()
   }
+
+  logout () {
+    this.authService.logout()
+    this.router.navigateByUrl('/login')
+  }
 }

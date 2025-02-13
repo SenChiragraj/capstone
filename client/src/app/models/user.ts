@@ -1,7 +1,10 @@
-export class User {
-    id!: number;
-    username!: string;
-    password!: string;
-    email!: string;
-    role!: 'PATIENT' | 'DOCTOR' | 'RECEPTIONIST';
+
+export interface User {
+  id: number
+  name: string
+  phone: number
+  username: string
+  password: string
+  email: string
+  role: string
 }

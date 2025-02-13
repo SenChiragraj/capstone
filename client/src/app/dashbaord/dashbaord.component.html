@@ -2,7 +2,7 @@
   <app-navbar></app-navbar>
 
   <!-- Patient -->
-  <div class="">
+  <div class="" *ngIf="role === 'PATIENT'">
     <div class="container">
       <div class="heading text-center text-bold fs-1">
         <h1>
@@ -52,8 +52,8 @@
 
         <div class="doctor-info">
           <h5>{{ doctor.name }}</h5>
-          <p>{{ doctor.specialty }}</p>
-          <p>Availability: Mon - Fri</p>
+          <p>{{ doctor.speciality }}</p>
+          <p>{{ doctor.availabilty }}</p>
           <button mat-raised-button color="primary" class="btn-sm">
             Book an Appointment
           </button>
@@ -65,16 +65,14 @@
       <ng-template #noDoctors>
         <p class="no-doctors">No doctors available</p>
       </ng-template>
-      <router-outlet></router-outlet>
-      <app-patient-appointment></app-patient-appointment>
     </div>
   </div>
 
   <!-- Doctor -->
   <!-- doctor-component.component.html -->
-  <div class="card">
+  <div class="card" *ngIf="role === 'DOCTOR'">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h2 class="text-center">Dr. John Doe</h2>
+      <h2 class="text-center">Dr. {{ currentUser.name }}</h2>
       <button class="btn btn-sm btn-danger">Edit Profile</button>
     </div>
     <div class="card-body text-center">
@@ -106,7 +104,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" *ngIf="role === 'RECEPTIONIST'">
     <div class="card-header d-flex justify-content-between align-items-center">
       <h2 class="text-center">Miss. Jerssica Pearson</h2>
       <button class="btn btn-sm btn-danger">Edit Profile</button>

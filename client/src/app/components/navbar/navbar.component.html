@@ -11,12 +11,18 @@
 
     <a
       mat-button
-      routerLink="/doctors"
+      routerLink="/schedule-appointment"
       class="nav-link"
       *ngIf="role === 'DOCTOR'"
       >Doctors</a
     >
-    <a mat-button routerLink="/appointments" class="nav-link">Appointments</a>
+    <a
+      mat-button
+      routerLink="/patient-appointment"
+      class="nav-link"
+      *ngIf="role === 'PATIENT'"
+      >Appointments</a
+    >
     <a mat-button routerLink="/contact" class="nav-link">Contact</a>
   </nav>
  
@@ -42,11 +48,8 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/">Home</button>
-    <button mat-menu-item routerLink="/doctors">Doctors</button>
-    <button mat-menu-item routerLink="/appointments">Appointments</button>
-    <button mat-menu-item routerLink="/contact">Contact</button>
-    <button mat-menu-item routerLink="/login">Login/SignUp</button>
+    <button mat-menu-item routerLink="/contact">Feedback</button>
+    <button mat-menu-item (click)="logout()">Logout</button>
   </mat-menu>
 </mat-toolbar>
  

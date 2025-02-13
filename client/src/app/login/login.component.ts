@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
           console.log('Login Response', response)
           if (response.token) {
             this.authService.saveToken(response.token)
-            this.authService.saveUserId(response.id)
+            this.authService.saveUserId(response.userId)
             this.authService.SetRole(response.role)
             this.router.navigate(['/dashbaord'])
           }
