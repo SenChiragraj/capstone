@@ -138,11 +138,17 @@ export class HttpService {
   //       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   //     }
   //   )
+  //by lakshmi
+  
+  cancelAppointment(appointmentId: number): Observable<any> {
+    return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, { headers: this.getHeaders() });
+  }
   // }
 
   //for testcase
   serverName =
-    'https://ec2-3-7-251-38.projects.wecreateproblems.com/proxy/5000'
+    //'https://ec2-3-7-251-38.projects.wecreateproblems.com/proxy/5000'
+    'https://ec2-13-203-17-244.projects.wecreateproblems.com/proxy/5000'
 
   constructor (private http: HttpClient, private authService: AuthService) {}
 
@@ -309,7 +315,7 @@ export class HttpService {
     localStorage.setItem('doctors', JSON.stringify(dummyDoctors));
   }
 
-
+  
 }
 
 

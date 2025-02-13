@@ -1,42 +1,29 @@
 <mat-toolbar color="primary" class="sticky-navbar">
   <!-- Logo -->
-  <a routerLink="/" class="logo-link"> MediCap </a>
-
+  <a routerLink="/" class="logo-link">MediCap</a>
+ 
   <!-- Spacer to push navigation and buttons to the right -->
   <span class="spacer"></span>
-
+ 
   <!-- Navigation Links -->
   <nav class="nav-links">
     <a mat-button routerLink="/" class="nav-link">Home</a>
-    <a
-      mat-button
-      routerLink="/doctors"
-      class="nav-link"
-      ngIf="role === 'DOCTOR'"
-      >Doctors</a
-    >
+    <a mat-button routerLink="/doctors" class="nav-link" *ngIf="role === 'DOCTOR'">Doctors</a>
     <a mat-button routerLink="/appointments" class="nav-link">Appointments</a>
     <a mat-button routerLink="/contact" class="nav-link">Contact</a>
   </nav>
-
+ 
   <!-- Call-to-Action Button -->
-  <button
-    mat-raised-button
-    color="accent"
-    class="cta-button"
-    routerLink="/schedule-appointment"
-  >
-    Book Appointment
-  </button>
-
+  <button mat-raised-button color="accent" class="cta-button" routerLink="/schedule-appointment" *ngIf="role === 'PATIENT'">Book Appointment</button>
+ 
   <!-- Search Button -->
   <button mat-icon-button class="icon-button">
     <mat-icon>search</mat-icon>
   </button>
-
+ 
   <!-- Mobile Menu -->
   <button mat-icon-button [matMenuTriggerFor]="menu" class="icon-button">
-    <mat-icon routerLink="/">menu</mat-icon>
+    <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/">Home</button>
@@ -46,3 +33,4 @@
     <button mat-menu-item routerLink="/login">Login/SignUp</button>
   </mat-menu>
 </mat-toolbar>
+ 

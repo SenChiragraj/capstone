@@ -1,10 +1,7 @@
-import { Appointment } from "./appointment.model";
-import { MedicalRecord } from "./medical-record";
 import { User } from "./user";
 
 export class Doctor extends User {
-    appointments!: Set<Appointment>;
-    medicalRecords!: Set<MedicalRecord>;
+    override id!:number
     specialty!: string;
     availability!: string;
   }
