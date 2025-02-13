@@ -57,4 +57,5 @@ export class ReceptionistAppointmentsComponent implements OnInit {
   rescheduleAppointment(appointmentId: number): void {
     this.router.navigate(['/receptionist-schedule-appointments'], { queryParams: { appointmentId } });
   }
+  }
 }

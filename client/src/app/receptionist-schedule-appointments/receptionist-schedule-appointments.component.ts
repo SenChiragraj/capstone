@@ -81,24 +81,7 @@ export class ReceptionistScheduleAppointmentsComponent implements OnInit {
     this.loadRegisteredUsers();
   }
 
-  loadRegisteredUsers(): void {
-    const token = this.authService.getToken();
-    if (token) {
-      this.httpService.getRegisteredPatients(token).subscribe(data => {
-        this.registeredPatients = data;
-      }, error => {
-        console.error('Error fetching patients', error);
-      });
 
-      this.httpService.getRegisteredDoctors(token).subscribe(data => {
-        this.registeredDoctors = data;
-      }, error => {
-        console.error('Error fetching doctors', error);
-      });
-    } else {
-      console.error('No auth token found');
-    }
-  }
 
   onSubmit(): void {
     if (this.appointmentForm.valid) {
@@ -121,6 +104,7 @@ export class ReceptionistScheduleAppointmentsComponent implements OnInit {
       } else {
         console.error('No auth token found');
       }
+
     }
   }
 }

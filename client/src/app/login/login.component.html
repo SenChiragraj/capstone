@@ -4,10 +4,10 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2>Login</h2>
       <mat-form-field class="full-width">
-        <mat-label>Username or Email</mat-label>
-        <input matInput formControlName="usernameOrEmail" />
-        <mat-error *ngIf="loginForm.get('usernameOrEmail')?.invalid">
-          {{ getErrorMessage('usernameOrEmail') }}
+        <mat-label>Username</mat-label>
+        <input type="text" matInput formControlName="username" />
+        <mat-error *ngIf="loginForm.get('username')?.invalid">
+          {{ getErrorMessage('username') }}
         </mat-error>
       </mat-form-field>
 
@@ -20,7 +20,14 @@
       </mat-form-field>
 
       <div class="button-container">
-        <button mat-raised-button color="primary" type="submit">Login</button>
+        <button
+          mat-raised-button
+          color="primary"
+          id="liveToastBtn"
+          type="submit"
+        >
+          Login
+        </button>
         <a mat-button color="accent" routerLink="/registration">Register</a>
       </div>
     </form>
@@ -28,4 +35,26 @@
       {{ errorMessage }}
     </mat-error>
   </mat-card>
+
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div
+      id="liveToast"
+      class="toast hide"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="toast-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body">
+        {{ toastMessage }}
+      </div>
+    </div>
+  </div>
 </div>

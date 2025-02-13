@@ -23,6 +23,7 @@ export class ScheduleAppointmentComponent implements OnInit {
 
   ngOnInit (): void {
     this.scheduleAppointmentForm = this.fb.group({
+      // Pending: Add form controls
       doctorID: ['', Validators.required],
       appointmentDate: ['', Validators.required]
     })
@@ -39,20 +40,14 @@ export class ScheduleAppointmentComponent implements OnInit {
         ...this.scheduleAppointmentForm.value,
         time: formattedTime
       }
-      this.httpService
-        .scheduleAppointment(
-          '/api/patient/appointment',
-          appointmentData,
-          'token'
-        )
-        .subscribe(
-          response => {
-            console.log('Appointment scheduled successfully', response)
-          },
-          error => {
-            console.error('Error scheduling appointment', error)
-          }
-        )
+      this.httpService.ScheduleAppointment(appointmentData).subscribe(
+        response => {
+          console.log('Appointment scheduled successfully', response)
+        },
+        error => {
+          console.error('Error scheduling appointment', error)
+        }
+      )
     }
   }
 
