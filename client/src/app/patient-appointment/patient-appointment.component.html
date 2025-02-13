@@ -1,34 +1,26 @@
-
-
-
-<div class="card mt-4">
-    <div class="card-header">
-        <h4>Appointments</h4>
+<app-navbar></app-navbar>
+<div class="main-container">
+  <div class="banner">
+    <h1>Your Appointments</h1>
+    <p>View and manage your upcoming consultations.</p>
+  </div>
+  <div class="content-container">
+    <h2 class="section-title">Upcoming Appointments</h2>
+    <div
+      class="appointment-list"
+      *ngIf="appointments.length > 0; else noAppointments"
+    >
+      <div class="appointment-card" *ngFor="let appointment of appointments">
+        <h5>Dr. {{ appointment.doctor }}</h5>
+        <p><strong>Specialty:</strong> {{ appointment.specialty }}</p>
+        <p><strong>Date:</strong> {{ appointment.date }}</p>
+        <p><strong>Time:</strong> {{ appointment.time }}</p>
+        <p><strong>Location:</strong> {{ appointment.location }}</p>
+        <button class="btn btn-danger">Cancel Appointment</button>
+      </div>
     </div>
-    <div class="card-body">
-        <table class="table table-boarderd">
-            <thead>
-                <th>Appointment Id</th>
-                <th>Appointment Time</th>
-                <th>Status</th>
-                <th>Doctor</th>
-                <th>Patient</th>
-               
-            </thead>
-            <tbody *ngFor="let val of appointmentList">
-                <tr >
-                    <td>{{val.id}}</td>
-                    <td>{{val.appointmentTime | date:'dd-MMM-yyyy hh:mm:a'}}</td>
-                    <td>{{val.status}}</td>
-                    <td><strong>{{val.doctor.username}}</strong><br>
-                        <small>{{val.doctor.email}}</small>
-                    </td>
-                    <td><strong>{{val.patient.username}}</strong><br>
-                        <small>{{val.patient.email}}</small>
-                    </td>
-                  
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <ng-template #noAppointments>
+      <p class="no-appointments">No appointments available</p>
+    </ng-template>
+  </div>
 </div>
