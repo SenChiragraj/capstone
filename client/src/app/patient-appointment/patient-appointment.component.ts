@@ -15,22 +15,7 @@ export class PatientAppointmentComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  appointments: any[] = [
-    {
-      doctor: 'Dr. Anil Kumar',
-      specialty: 'Cardiologist',
-      date: '2025-02-15',
-      time: '10:00 AM',
-      location: 'Apollo Mumbai'
-    },
-    {
-      doctor: 'Dr. Priya Sharma',
-      specialty: 'Dermatologist',
-      date: '2025-02-18',
-      time: '2:00 PM',
-      location: 'Apollo Delhi'
-    }
-  ]
+  appointments: any[] = []
 
   ngOnInit (): void {
     this.appointmentForm = this.formBuilder.group({
@@ -52,6 +37,16 @@ export class PatientAppointmentComponent implements OnInit {
         console.error('Error fetching appointments', error)
       }
     )
+  }
+
+  cancelAppointment (id: number) {
+    this.httpService.deleteByAppointmentId(id).subscribe({
+      next: () => {
+        console.log('Deleted Appointment')
+      },
+      error: () => {}
+    })
+    this.fetchAppointments()
   }
 
   rescheduleAppointment (appointmentId: number): void {

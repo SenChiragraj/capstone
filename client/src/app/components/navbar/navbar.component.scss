@@ -12,7 +12,13 @@
   .logo-link {
     display: flex;
     align-items: center;
-
+    color: #023e8a;
+    text-decoration: none;
+    font-size: 25px;
+    font-style: italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
     .logo {
       height: 50px; // Adjust based on your logo size
       width: auto;
@@ -35,7 +41,7 @@
       font-size: 0.9rem;
 
       &:hover {
-        color: #1976d2; // Primary color on hover
+        color: #673ab7; // Primary color on hover
       }
     }
   }

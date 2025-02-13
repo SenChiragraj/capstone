@@ -11,7 +11,11 @@ export class HttpService {
   // public serverName = 'http://your-server-url' // Replace with your server URL
 
   serverName =
+<<<<<<< HEAD
     'https://ec2-13-200-15-230.projects.wecreateproblems.com/proxy/5000'
+=======
+    'https://ec2-52-66-227-134.projects.wecreateproblems.com/proxy/5000'
+>>>>>>> friday2
 
   cancelAppointment (appointmentId: number): Observable<any> {
     return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, {
@@ -71,11 +75,14 @@ export class HttpService {
     })
   }
 
-  ScheduleAppointment (details: any): Observable<any> {
-    const { patientId, doctorId } = details
+  ScheduleAppointment (
+    patientId: number,
+    doctorId: number,
+    timeDto: Date
+  ): Observable<any> {
     return this.http.post<any>(
       `${this.serverName}/api/patient/appointment?patientId=${patientId}&doctorId=${doctorId}`,
-      details,
+      timeDto,
       {
         headers: this.getHeaders()
       }
@@ -116,6 +123,8 @@ export class HttpService {
   }
 
   getAppointmentByDoctor (doctorId: number): Observable<any> {
+    console.log(doctorId)
+
     return this.http.get<any>(
       `${this.serverName}/api/doctor/appointments?doctorId=${doctorId}`,
       {
@@ -126,7 +135,16 @@ export class HttpService {
 
   getAppointmentByPatient (patientId: number): Observable<any> {
     return this.http.get<any>(
-      `${this.serverName}/api/patient/appointments?patientId=${patientId}`,
+      `${this.serverName}/api/patient/appointments/?patientId=${patientId}`,
+      {
+        headers: this.getHeaders()
+      }
+    )
+  }
+
+  deleteByAppointmentId (id: number): Observable<any> {
+    return this.http.delete<any>(
+      `${this.serverName}/api/delete/appointment/${id}`,
       {
         headers: this.getHeaders()
       }

@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="">
+  <div class="" *ngIf="currentUser">Welcome back, {{ currentUser.name }}</div>
+  <div class="container">
+    <div class="">
+      <h1 class="title">
+        Book an appointment<br />
+        with the best <br />
+        available <i class="pointer">doctors</i> <br />
+        around the globe.
+      </h1>
+      <div class="button-container">
+        <button
+          color="#673AB7"
+          class="rounded btn-1"
+          (click)="bookAppointment()"
+          *ngIf="role === 'PATIENT'"
+        >
+          Book an Appointment
+        </button>
+        <button color="accent" class="rounded" (click)="showAllAppointments()">
+          Show All Appointments
+        </button>
+      </div>
+    </div>
+    <img
+      src="../../assets/Screenshot_2025-02-13_182850-removebg-preview.png"
+      alt=""
+    />
+  </div>
+
+  <div class="banner">
+    <div class="banner-inner">
+      <h1>Find the Best Doctors Near You</h1>
+      <p class="text-white">
+        Book your appointment with top specialists today.
+      </p>
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Search by doctor name or specialty"
+          class="search-bar"
+        />
+        <button class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+</div>

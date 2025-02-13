@@ -1,10 +1,43 @@
-<mat-toolbar color="primary" class="sticky-navbar">
+<mat-toolbar color="primary" class="sticky-navbar" *ngIf="role === ''">
   <!-- Logo -->
   <a routerLink="/" class="logo-link">MediCap</a>
 
   <!-- Spacer to push navigation and buttons to the right -->
   <span class="spacer"></span>
- 
+  <<<<<<< HEAD =======
+
+  <!-- Navigation Links -->
+  <nav class="nav-links">
+    <a mat-button routerLink="/" class="nav-link">Home</a>
+    <a mat-button routerLink="/contact" class="nav-link">Contact</a>
+    <a mat-button routerLink="/feedback" class="nav-link">Feedback</a>
+  </nav>
+
+  <!-- Call-to-Action Button -->
+
+  <button
+    mat-raised-button
+    color="accent"
+    class="cta-button"
+    routerLink="/login"
+  >
+    Login-SignUp
+  </button>
+
+  <!-- Search Button -->
+  <button mat-icon-button class="icon-button">
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-toolbar color="primary" class="sticky-navbar" *ngIf="role !== ''">
+  <!-- Logo -->
+  <a routerLink="/" class="logo-link">MediCap</a>
+
+  <!-- Spacer to push navigation and buttons to the right -->
+  <span class="spacer"></span>
+
+  >>>>>>> friday2
   <!-- Navigation Links -->
   <nav class="nav-links">
     <a mat-button routerLink="/" class="nav-link">Home</a>
@@ -25,7 +58,6 @@
     >
     <a mat-button routerLink="/contact" class="nav-link">Contact</a>
   </nav>
- 
   <!-- Call-to-Action Button -->
 
   <button
@@ -42,7 +74,6 @@
   <button mat-icon-button class="icon-button">
     <mat-icon>search</mat-icon>
   </button>
- 
   <!-- Mobile Menu -->
   <button mat-icon-button [matMenuTriggerFor]="menu" class="icon-button">
     <mat-icon>menu</mat-icon>
@@ -52,4 +83,3 @@
     <button mat-menu-item (click)="logout()">Logout</button>
   </mat-menu>
 </mat-toolbar>
- 

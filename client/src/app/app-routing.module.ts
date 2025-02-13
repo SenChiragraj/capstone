@@ -10,14 +10,18 @@ import { DoctorAppointmentComponent } from './doctor-appointment/doctor-appointm
 import { DoctorAvailabilityComponent } from './doctor-availability/doctor-availability.component'
 import { ReceptionistAppointmentsComponent } from './receptionist-appointments/receptionist-appointments.component'
 import { ReceptionistScheduleAppointmentsComponent } from './receptionist-schedule-appointments/receptionist-schedule-appointments.component'
+import { HomeComponent } from './home/home.component'
+import { FeedbackComponent } from './feedback/feedback.component'
+import { ContactComponent } from './contact/contact.component'
+import { ErrorComponent } from './error/error.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashbaordComponent },
   { path: 'patient-appointment', component: PatientAppointmentComponent },
-  { path: 'schedule-appointment', component: ScheduleAppointmentComponent },
   { path: 'doctor-appointment', component: DoctorAppointmentComponent },
   { path: 'doctor-availability', component: DoctorAvailabilityComponent },
   {
@@ -29,7 +33,7 @@ const routes: Routes = [
     component: ReceptionistScheduleAppointmentsComponent
   },
 
-  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' }
+  { path: '**', component: ErrorComponent }
 ]
 
 @NgModule({
