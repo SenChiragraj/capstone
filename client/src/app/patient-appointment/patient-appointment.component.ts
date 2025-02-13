@@ -43,7 +43,7 @@ export class PatientAppointmentComponent implements OnInit {
     const userIdString = localStorage.getItem('userId')
     const userId = userIdString ? parseInt(userIdString, 10) : 0
 
-    this.httpService.getAppointmentsByPatient(userId).subscribe(
+    this.httpService.getAppointmentByPatient(userId).subscribe(
       data => {
         this.appointments = data
         console.log(this.appointments)

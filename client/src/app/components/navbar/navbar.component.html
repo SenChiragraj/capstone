@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="sticky-navbar">
   <!-- Logo -->
-  <a routerLink="/" class="logo-link"> MediCap </a>
+  <a routerLink="/" class="logo-link">MediCap</a>
 
   <!-- Spacer to push navigation and buttons to the right -->
   <span class="spacer"></span>
@@ -12,7 +12,7 @@
       mat-button
       routerLink="/doctors"
       class="nav-link"
-      ngIf="role === 'DOCTOR'"
+      *ngIf="role === 'DOCTOR'"
       >Doctors</a
     >
     <a mat-button routerLink="/appointments" class="nav-link">Appointments</a>
@@ -25,6 +25,7 @@
     color="accent"
     class="cta-button"
     routerLink="/schedule-appointment"
+    *ngIf="role === 'PATIENT'"
   >
     Book Appointment
   </button>
@@ -36,7 +37,7 @@
 
   <!-- Mobile Menu -->
   <button mat-icon-button [matMenuTriggerFor]="menu" class="icon-button">
-    <mat-icon routerLink="/">menu</mat-icon>
+    <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/">Home</button>

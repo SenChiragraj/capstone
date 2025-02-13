@@ -13,6 +13,7 @@ import { ThisReceiver } from '@angular/compiler'
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
   errorMessage: string = ''
+  toastMessage: string = ''
 
   constructor (
     private fb: FormBuilder,
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService
   ) {
     this.loginForm = this.fb.group({
-      usernameOrEmail: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit (): void {
     if (this.loginForm.valid) {
-      this.httpService.post('/api/user/login', this.loginForm.value).subscribe({
+      this.httpService.Login(this.loginForm.value).subscribe({
         next: response => {
           console.log('Login Response', response)
           if (response.token) {
@@ -44,6 +45,14 @@ export class LoginComponent implements OnInit {
           this.errorMessage = error.error.message
         }
       })
+      this.toastMessage = this.errorMessage
+        ? 'Registration Failed '
+        : 'Registration Successful'
+      const toastHTMLElement = document.getElementById('liveToast')
+      // if (toastHTMLElement) {
+      //   const toastBootstrap = new bootstrap.Toast(toastHTMLElement);
+      //   toastBootstrap.show();
+      // }
       console.log('Form Submitted', this.loginForm.value)
     }
   }
@@ -52,8 +61,6 @@ export class LoginComponent implements OnInit {
     const control = this.loginForm.get(controlName)
     if (control?.hasError('required')) {
       return `${controlName} is required`
-    } else if (control?.hasError('email')) {
-      return 'Not a valid email'
     } else if (control?.hasError('minlength')) {
       return 'Password must be at least 8 characters long'
     }

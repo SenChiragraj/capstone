@@ -34,7 +34,7 @@ export class ReceptionistScheduleAppointmentsComponent implements OnInit {
       )
       const appointmentData = { ...this.itemForm.value, time: formattedTime }
       this.httpService
-        .post('/api/receptionist/appointment', appointmentData)
+        .ScheduleAppointmentByReceptionist(appointmentData)
         .subscribe(
           response => {
             console.log('Appointment scheduled successfully', response)
