@@ -24,4 +24,6 @@ export interface Doctor {
   id: number
   name: string
   email: string
+  speciality: string
+  availabilty: string
 }

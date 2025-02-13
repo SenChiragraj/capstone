@@ -52,6 +52,12 @@ export class HttpService {
     )
   }
 
+  getUserById (id: number) {
+    return this.http.get<any>(`${this.serverName}/api/user/${id}`, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    })
+  }
+
   getDoctors (): Observable<any> {
     return this.http.get<any>(`${this.serverName}/api/patient/doctors`, {
       headers: this.getHeaders()

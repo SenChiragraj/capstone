@@ -22,8 +22,8 @@ export class AuthService {
   SetRole (role: any) {
     localStorage.setItem('role', role)
   }
-  get getRole (): string | null {
-    return localStorage.getItem('role')
+  get getRole (): string {
+    return localStorage.getItem('role') || ''
   }
   // Method to retrieve login status
   get getLoginStatus (): boolean {
@@ -42,5 +42,9 @@ export class AuthService {
   }
   saveUserId (userid: string) {
     localStorage.setItem('userId', userid)
+  }
+  get userId (): number {
+    const userIdString = localStorage.getItem('userId')
+    return userIdString ? Number(userIdString) : 0
   }
 }
