@@ -11,7 +11,7 @@ export class HttpService {
   // public serverName = 'http://your-server-url' // Replace with your server URL
 
   serverName =
-    'https://ec2-13-203-23-18.projects.wecreateproblems.com/proxy/5000'
+    'https://ec2-3-110-202-5.projects.wecreateproblems.com/proxy/5000'
 
   cancelAppointment (appointmentId: number): Observable<any> {
     return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, {
@@ -74,11 +74,11 @@ export class HttpService {
   ScheduleAppointment (
     patientId: number,
     doctorId: number,
-    timeDto: Date
+    appointmentTime: string
   ): Observable<void> {
     return this.http.post<void>(
       `${this.serverName}/api/patient/appointment?patientId=${patientId}&doctorId=${doctorId}`,
-      timeDto,
+      appointmentTime,
       {
         headers: this.getHeaders()
       }

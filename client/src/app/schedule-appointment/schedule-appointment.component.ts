@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { HttpService } from '../../services/http.service'
-import { AuthService } from '../../services/auth.service'
-import { DatePipe } from '@angular/common'
-import { Doctor } from '../models/appointment.model'
-import { Router } from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpService } from '../../services/http.service';
+import { AuthService } from '../../services/auth.service';
+import { DatePipe } from '@angular/common';
+import { Doctor } from '../models/appointment.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-schedule-appointment',
@@ -12,12 +12,12 @@ import { Router } from '@angular/router'
   styleUrls: ['./schedule-appointment.component.scss']
 })
 export class ScheduleAppointmentComponent implements OnInit {
-  scheduleAppointmentForm!: FormGroup
-  doctors: Doctor[] = []
-  appointmentTime: any
+  scheduleAppointmentForm!: FormGroup;
+  doctors: Doctor[] = [];
+  appointmentTime: any;
 
-  errorMessage: string = ''
-  constructor (
+  errorMessage: string = '';
+  constructor(
     private httpService: HttpService,
     private authService: AuthService,
     private datePipe: DatePipe,
@@ -25,26 +25,26 @@ export class ScheduleAppointmentComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.scheduleAppointmentForm = this.fb.group({
       doctorId: ['', Validators.required],
       appointmentDate: ['', Validators.required]
-    })
+    });
 
-    this.loadAllDoctors()
+    this.loadAllDoctors();
   }
 
-  scheduleAppointment (): void {
+  scheduleAppointment(): void {
     if (this.scheduleAppointmentForm.valid) {
-      const token = this.authService.getToken()
+      const token = this.authService.getToken();
       const formattedDate = this.datePipe.transform(
         this.scheduleAppointmentForm.value.appointmentDate,
         'yyyy-MM-ddTHH:mm:ss'
-      )
+      );
       const appointmentData = {
         ...this.scheduleAppointmentForm.value,
         appointmentDate: formattedDate
-      }
+      };
 
       this.httpService
         .ScheduleAppointment(
@@ -54,33 +54,32 @@ export class ScheduleAppointmentComponent implements OnInit {
         )
         .subscribe({
           next: () => {
-            console.log('Raw response:')
-            // Check if response is JSON
-            this.scheduleAppointmentForm.reset()
-            this.router.navigateByUrl('/home')
+            
+            this.scheduleAppointmentForm.reset();
+            this.router.navigateByUrl('/appointments'); // Navigate to the appointments page
           },
           error: error => {
-            console.log('Error:', error)
-            this.errorMessage = 'Error scheduling appointment'
+            console.log('Error scheduling appointment:', error);
+            this.errorMessage = 'Error scheduling appointment';
           }
-        })
+        });
     }
   }
 
-  loadAllDoctors (): void {
+  loadAllDoctors(): void {
     this.httpService.getDoctors().subscribe({
       next: data => (this.doctors = data),
       error: error => {
-        this.errorMessage = 'Error in fetching all doctors'
+        this.errorMessage = 'Error in fetching all doctors';
       }
-    })
+    });
   }
 
-  getErrorMessage (controlName: string): string {
-    const control = this.scheduleAppointmentForm.get(controlName)
+  getErrorMessage(controlName: string): string {
+    const control = this.scheduleAppointmentForm.get(controlName);
     if (control?.hasError('required')) {
-      return `${controlName} is required`
+      return `${controlName} is required`;
     }
-    return ''
+    return '';
   }
 }

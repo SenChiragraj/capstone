@@ -38,7 +38,11 @@ import { MatSelectModule } from '@angular/material/select'
 import { ContactComponent } from './contact/contact.component'
 import { FeedbackComponent } from './feedback/feedback.component'
 import { HomeComponent } from './home/home.component'
-import { ErrorComponent } from './error/error.component'
+import { ErrorComponent } from './error/error.component';
+import { AboutComponent } from './components/about/about.component';
+import { ServicesComponent } from './components/services/services.component';
+import { SearchComponent } from './components/search/search.component';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component'
 
 @NgModule({
   declarations: [
@@ -58,7 +62,11 @@ import { ErrorComponent } from './error/error.component'
     ContactComponent,
     FeedbackComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    AboutComponent,
+    ServicesComponent,
+    SearchComponent,
+    TestimonialsComponent
   ],
   imports: [
     BrowserModule,

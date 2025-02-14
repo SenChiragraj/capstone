@@ -1,0 +1,94 @@
+// Define color variables
+$primary-color: #007bff; // Use a specific hash color value
+$light-color: #f8f9fa;
+
+.container {
+  padding: 50px; // Reduced padding
+}
+
+.container-fluid {
+  padding: 1.5rem 0; // Further reduced padding
+
+  .container {
+    .row {
+      .col-lg-5 {
+        margin-bottom: 1.5rem; // Further reduced margin
+
+        @media (min-width: 992px) {
+          margin-bottom: 0;
+        }
+
+        min-height: 350px; // Further reduced height
+        .position-relative {
+          height: 100%;
+          
+          img {
+            position: absolute;
+            width: 85%; // Further reduced width
+            height: 85%; // Further reduced height
+            border-radius: 0.25rem;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .col-lg-7 {
+        padding-left: 1rem; // Further reduced padding
+        padding-right: 1rem; // Further reduced padding
+
+        h5 {
+          display: inline-block;
+          color: $primary-color; // Changed to hash value
+          text-transform: uppercase;
+          border-bottom: 5px solid $primary-color; // Changed to hash value
+          font-size: 1rem; // Set consistent font size
+          margin-bottom: 0.5rem;
+        }
+
+        h1 {
+          font-size: 2.3rem; // Slightly reduced font size
+          
+          @media (min-width: 992px) {
+            font-size: 2.8rem;
+          }
+        }
+
+        p {
+          margin-bottom: 1rem; // Further reduced spacing
+          font-size: 1rem; // Slightly reduced text size
+          line-height: 1.4; // Reduced line height for compactness
+        }
+
+        .row {
+          padding-top: 1rem; // Further reduced space above icons
+
+          .col-sm-3, .col-6 {
+            padding: 0.5rem; // Further reduced padding
+
+            .bg-light {
+              background-color: $light-color; // Use defined light color
+              text-align: center;
+              border-radius: 50%;
+              padding: 1.25rem; // Further reduced padding for circular look
+              
+              i {
+                font-size: 2.3rem; // Further reduced font size
+                color: $primary-color; // Changed to hash value
+                margin-bottom: 1rem;
+              }
+
+              h6 {
+                margin-bottom: 0;
+
+                small {
+                  display: block;
+                  color: $primary-color; // Changed to hash value
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
