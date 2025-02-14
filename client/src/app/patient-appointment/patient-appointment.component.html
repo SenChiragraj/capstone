@@ -3,6 +3,14 @@
   <div class="banner">
     <h1>Your Appointments</h1>
     <p>View and manage your upcoming consultations.</p>
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder="Search by doctor name or specialty"
+        class="search-bar"
+      />
+      <button class="btn btn-primary">Search</button>
+    </div>
   </div>
   <div class="content-container">
     <h2 class="section-title" *ngIf="appointments.length > 0">
@@ -13,13 +21,10 @@
       *ngIf="appointments.length > 0; else noAppointments"
     >
       <div class="appointment-card" *ngFor="let appointment of appointments">
-        <h5>Dr. {{ appointment.doctor.name }}</h5>
+        <h1>Dr. {{ appointment.doctor.name }}</h1>
         <p><strong>Specialty:</strong> {{ appointment.doctor.specialty }}</p>
-        <p><strong>Date:</strong> {{ appointment.date }}</p>
-        <p><strong>Time:</strong> {{ appointment.time }}</p>
-        <p>
-          <strong>Availability:</strong> {{ appointment.doctor.availability }}
-        </p>
+        <p><strong>Appointment Time:</strong>{{ appointment.appointmentTime }} </p>         
+          <p><strong>Availability:</strong> {{ appointment.doctor.availability }}</p>        
         <button
           class="btn btn-danger"
           (click)="cancelAppointment(appointment.id)"

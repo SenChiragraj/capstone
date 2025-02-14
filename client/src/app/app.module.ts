@@ -24,7 +24,7 @@ import { MatCardModule } from '@angular/material/card'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatRadioModule } from '@angular/material/radio'
 import { RouterModule } from '@angular/router'
-import { MatOptionModule } from '@angular/material/core'
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core'
 import { NavbarComponent } from './components/navbar/navbar.component'
 import { FooterComponent } from './components/footer/footer.component'
 import { SkeletonComponent } from './components/skeleton/skeleton.component'
@@ -38,7 +38,12 @@ import { MatSelectModule } from '@angular/material/select'
 import { ContactComponent } from './contact/contact.component'
 import { FeedbackComponent } from './feedback/feedback.component'
 import { HomeComponent } from './home/home.component'
-import { ErrorComponent } from './error/error.component'
+import { ErrorComponent } from './error/error.component';
+import { DoctorManageMedicalRecordsComponent } from './doctor-manage-medical-records/doctor-manage-medical-records.component';
+import { MedicalRecordDialogComponent } from './medical-record-dialog/medical-record-dialog.component'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,9 @@ import { ErrorComponent } from './error/error.component'
     ContactComponent,
     FeedbackComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    DoctorManageMedicalRecordsComponent,
+    MedicalRecordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +86,13 @@ import { ErrorComponent } from './error/error.component'
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
   providers: [HttpService, HttpClientModule, DatePipe],
   bootstrap: [AppComponent]

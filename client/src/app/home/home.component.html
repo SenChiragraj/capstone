@@ -1,14 +1,12 @@
 <app-navbar></app-navbar>
 <div class="">
-  <div class="" *ngIf="currentUser">Welcome back, {{ currentUser.name }}</div>
-  <div class="container">
-    <div class="">
-      <h1 class="title">
-        Book an appointment<br />
-        with the best <br />
-        available <i class="pointer">doctors</i> <br />
-        around the globe.
+  <div class="container flex flex-row align-items-center">
+    <div class="text-container">
+      <ng-container class="salutation"> Welcome back! <br /> </ng-container>
+      <h1 class="title" *ngIf="currentUser">
+        {{ currentUser.name }}
       </h1>
+
       <div class="button-container">
         <button
           color="#673AB7"
@@ -24,12 +22,14 @@
       </div>
     </div>
     <img
-      src="../../assets/Screenshot_2025-02-13_182850-removebg-preview.png"
-      alt=""
+      src="assets/Screenshot_2025-02-13_182850-removebg-preview.png"
+      alt="Doctor Illustration"
+      class="illustration ml-20"
     />
   </div>
+  >
 
-  <div class="banner">
+  <div class="banner" *ngIf="role === 'PAITENT'">
     <div class="banner-inner">
       <h1>Find the Best Doctors Near You</h1>
       <p class="text-white">

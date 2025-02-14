@@ -22,13 +22,16 @@ export class ReceptionistAppointmentsComponent implements OnInit {
     this.fetchAppointments()
   }
 
-  fetchAppointments(): void {
-    this.httpService.getAllAppointmentsForAppointments().subscribe(data => {
-      this.appointments = data;
-      console.log(this.appointments);
-    }, error => {
-      console.error('Error fetching appointments', error);
-    });
+  fetchAppointments (): void {
+    this.httpService.getAllAppointmentsForAppointments().subscribe(
+      data => {
+        this.appointments = data
+        console.log(this.appointments)
+      },
+      error => {
+        console.error('Error fetching appointments', error)
+      }
+    )
   }
 
   // fetchAppointments (): void {
@@ -58,8 +61,7 @@ export class ReceptionistAppointmentsComponent implements OnInit {
   //   })
   // }
 
-   rescheduleAppointment(appointmentId: number): void {
-      this.router.navigate(['/receptionist-schedule-appointments', appointmentId]);
-    }
-
+  rescheduleAppointment (appointmentId: number): void {
+    this.router.navigate(['/receptionist-schedule-appointments', appointmentId])
+  }
 }

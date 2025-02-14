@@ -11,7 +11,7 @@ export class HttpService {
   // public serverName = 'http://your-server-url' // Replace with your server URL
 
   serverName =
-    'https://ec2-3-110-150-24.projects.wecreateproblems.com/proxy/5000'
+    'https://ec2-3-108-5-183.projects.wecreateproblems.com/proxy/5000';
 
   cancelAppointment (appointmentId: number): Observable<any> {
     return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, {
@@ -75,8 +75,8 @@ export class HttpService {
     patientId: number,
     doctorId: number,
     timeDto: Date
-  ): Observable<any> {
-    return this.http.post<any>(
+  ): Observable<void> {
+    return this.http.post<void>(
       `${this.serverName}/api/patient/appointment?patientId=${patientId}&doctorId=${doctorId}`,
       timeDto,
       {
@@ -84,6 +84,8 @@ export class HttpService {
       }
     )
   }
+
+  
 
   ScheduleAppointmentByReceptionist (details: any): Observable<any> {
     const { patientId, doctorId } = details
@@ -192,9 +194,11 @@ export class HttpService {
     localStorage.setItem('doctors', JSON.stringify(dummyDoctors))
   }
 
-   getAllAppointmentsForAppointments(): Observable<Appointment[]> {
-      return this.http.get<Appointment[]>(`${this.serverName}/api/receptionist/appointments`);
-    }
+  getAllAppointmentsForAppointments (): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(
+      `https://ec2-13-203-23-18.projects.wecreateproblems.com/proxy/5000/api/receptionist/appointments`
+    )
+  }
 
   getAppointmentById (appointmentId: number): Observable<Appointment> {
     return this.http.get<Appointment>(
@@ -218,10 +222,30 @@ export class HttpService {
     )
   }
 
-  updateAppointment(appointment: Appointment): Observable<any> {
-    return this.http.put(`${this.serverName}/api/receptionist/appointment/${appointment.id}`, appointment);
+  updateAppointment (appointment: Appointment): Observable<any> {
+    return this.http.put(
+      `${this.serverName}/api/receptionist/appointment/${appointment.id}`,
+      appointment
+    )
   }
 
+// for medical records
+
+get(url: string): Observable<any> {
+    return this.http.get(`${this.serverName}${url}`);
+  }
+
+  post(url: string, body: any): Observable<any> {
+    return this.http.post(`${this.serverName}${url}`, body);
+  }
+
+  put(url: string, body: any): Observable<any> {
+    return this.http.put(`${this.serverName}${url}`, body);
+  }
+
+  delete(url: string): Observable<any> {
+    return this.http.delete(`${this.serverName}${url}`);
+  }
 
 
   //for testcase
@@ -365,8 +389,6 @@ export class HttpService {
   //       }
   //     )
   //   }
-
-
 
 
 

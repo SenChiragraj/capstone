@@ -14,7 +14,7 @@ export class DashbaordComponent implements OnInit {
   avator = '../../assets/avatar.png'
   role: string = ''
   errorMessage: string = ''
-  // doctors: Doctor[] = []
+  doctors: Doctor[] = []
   appointments: Appointment[] = []
   currentUser!: User
 
@@ -23,27 +23,6 @@ export class DashbaordComponent implements OnInit {
     private authService: AuthService,
     private httpServie: HttpService
   ) {}
-
-  doctors = [
-    {
-      name: 'Dr. John Doe',
-      specialty: 'Cardiologist',
-      experience: '10 years experience',
-      languages: ['English', 'Spanish']
-    },
-    {
-      name: 'Dr. Jane Smith',
-      specialty: 'Dermatologist',
-      experience: '8 years experience',
-      languages: ['English', 'French']
-    },
-    {
-      name: 'Dr. Michael Brown',
-      specialty: 'Pediatrician',
-      experience: '5 years experience',
-      languages: ['English', 'Italian']
-    }
-  ]
 
   // Filter variables can be added later for implementation
   selectedSpecialty: string = ''
@@ -56,6 +35,7 @@ export class DashbaordComponent implements OnInit {
     if (this.authService.getLoginStatus) {
       this.router.navigateByUrl('/home')
     }
+    this.toLoadDoctors()
   }
 
   bookAppointment (): void {
@@ -89,16 +69,16 @@ export class DashbaordComponent implements OnInit {
   //   console.log(this.currentUser)
   // }
 
-  // toLoadDoctors () {
-  //   this.httpServie.getDoctors().subscribe({
-  //     next: data => {
-  //       this.doctors = data
-  //     },
-  //     error: () => {
-  //       this.errorMessage = 'Error in getting doctors'
-  //     }
-  //   })
-  // }
+  toLoadDoctors () {
+    this.httpServie.getDoctors().subscribe({
+      next: data => {
+        this.doctors = data
+      },
+      error: () => {
+        this.errorMessage = 'Error in getting doctors'
+      }
+    })
+  }
 
   // toLoadAppointment () {
   //   this.httpServie.getAllAppointments(this.currentUser.id).subscribe({

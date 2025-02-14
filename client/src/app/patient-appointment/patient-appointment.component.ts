@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core'
 import { HttpService } from '../../services/http.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-patient-appointment',
   templateUrl: './patient-appointment.component.html',
-  styleUrls: ['./patient-appointment.component.scss']
+  styleUrls: ['./patient-appointment.component.scss'],
+  providers: [DatePipe]
 })
 export class PatientAppointmentComponent implements OnInit {
   appointmentForm!: FormGroup
 
   constructor (
     private httpService: HttpService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public datePipe: DatePipe
   ) {}
 
   appointments: any[] = []
@@ -43,10 +46,10 @@ export class PatientAppointmentComponent implements OnInit {
     this.httpService.deleteByAppointmentId(id).subscribe({
       next: () => {
         console.log('Deleted Appointment')
+        this.fetchAppointments()
       },
       error: () => {}
     })
-    this.fetchAppointments()
   }
 
   rescheduleAppointment (appointmentId: number): void {
