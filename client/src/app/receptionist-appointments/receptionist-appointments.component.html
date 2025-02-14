@@ -1,28 +1,41 @@
+<app-navbar></app-navbar>
 <div class="container">
-    <h2>Appointments</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Appointment Id</th>
-          <th>Appointment Time</th>
-          <th>Status</th>
-          <th>Doctor</th>
-          <th>Patient</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let appointment of appointments">
-          <td>{{ appointment.id }}</td>
-          <td>{{ datePipe.transform(appointment.appointmentTime, 'yyyy-MM-dd HH:mm') }}</td>
-          <td>{{ appointment.status }}</td>
-          <td>{{ appointment.doctor.username }} ({{ appointment.doctor.email }})</td>
-          <td>{{ appointment.patient.username }} ({{ appointment.patient.email }})</td>
-          <td>
-            <button (click)="rescheduleAppointment(appointment.id)" class="btn btn-primary">Reschedule</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+  <h2>Appointments</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Appointment Id</th>
+        <th>Appointment Time</th>
+        <th>Status</th>
+        <th>Doctor</th>
+        <th>Patient</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of appointments">
+        <td>{{ appointment.id }}</td>
+        <td>
+          {{
+            datePipe.transform(appointment.appointmentTime, 'yyyy-MM-dd HH:mm')
+          }}
+        </td>
+        <td>{{ appointment.status }}</td>
+        <td>
+          {{ appointment.doctor.username }} ({{ appointment.doctor.email }})
+        </td>
+        <td>
+          {{ appointment.patient.username }} ({{ appointment.patient.email }})
+        </td>
+        <td>
+          <button
+            (click)="rescheduleAppointment(appointment.id)"
+            class="btn btn-primary"
+          >
+            Reschedule
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

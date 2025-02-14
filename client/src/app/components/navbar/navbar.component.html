@@ -4,7 +4,6 @@
 
   <!-- Spacer to push navigation and buttons to the right -->
   <span class="spacer"></span>
-  
 
   <!-- Navigation Links -->
   <nav class="nav-links">
@@ -37,18 +36,17 @@
   <!-- Spacer to push navigation and buttons to the right -->
   <span class="spacer"></span>
 
-  >>>>>>> friday2
   <!-- Navigation Links -->
   <nav class="nav-links">
     <a mat-button routerLink="/" class="nav-link">Home</a>
 
-    <a
+    <!-- <a
       mat-button
       routerLink="/schedule-appointment"
       class="nav-link"
-      *ngIf="role === 'DOCTOR'"
+      *ngIf="role !== 'DOCTOR'"
       >Doctors</a
-    >
+    > -->
     <a
       mat-button
       routerLink="/patient-appointment"
@@ -79,7 +77,7 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/contact">Feedback</button>
+    <button mat-menu-item routerLink="/feedback">Feedback</button>
     <button mat-menu-item (click)="logout()">Logout</button>
   </mat-menu>
 </mat-toolbar>

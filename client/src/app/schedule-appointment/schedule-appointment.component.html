@@ -24,12 +24,12 @@
         <input
           matInput
           type="datetime-local"
-          formControlName="appointmentDateTime"
+          formControlName="appointmentDate"
         />
         <mat-error
-          *ngIf="scheduleAppointmentForm.get('appointmentDateTime')?.invalid"
+          *ngIf="scheduleAppointmentForm.get('appointmentDate')?.invalid"
         >
-          {{ getErrorMessage('appointmentDateTime') }}
+          {{ getErrorMessage('appointmentDate') }}
         </mat-error>
       </mat-form-field>
 

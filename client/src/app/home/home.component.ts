@@ -42,6 +42,8 @@ export class HomeComponent implements OnInit {
   showAllAppointments (): void {
     if (this.role === 'DOCTOR') {
       this.router.navigateByUrl('/doctor-appointment')
+    } else if (this.role === 'RECEPTIONIST') {
+      this.router.navigateByUrl('/receptionist-appointments')
     } else {
       this.router.navigate(['/patient-appointment']) // Adjust the route as needed
     }

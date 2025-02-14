@@ -14,6 +14,7 @@ import { Router } from '@angular/router'
 export class ScheduleAppointmentComponent implements OnInit {
   scheduleAppointmentForm!: FormGroup
   doctors: Doctor[] = []
+  appointmentTime: any
 
   errorMessage: string = ''
   constructor (
@@ -21,7 +22,7 @@ export class ScheduleAppointmentComponent implements OnInit {
     private authService: AuthService,
     private datePipe: DatePipe,
     private router: Router,
-    private fb:FormBuilder
+    private fb: FormBuilder
   ) {}
 
   ngOnInit (): void {
@@ -44,6 +45,7 @@ export class ScheduleAppointmentComponent implements OnInit {
         ...this.scheduleAppointmentForm.value,
         appointmentDate: formattedDate
       }
+
       this.httpService
         .ScheduleAppointment(
           this.authService.userId,
@@ -51,18 +53,14 @@ export class ScheduleAppointmentComponent implements OnInit {
           appointmentData
         )
         .subscribe({
-          next: response => {
-            // Check if response is not JSON, handle accordingly
-            try {
-              const jsonResponse = JSON.parse(response)
-              console.log('Appointment scheduled successfully', jsonResponse)
-              this.scheduleAppointmentForm.reset
-              this.router.navigateByUrl('/home')
-            } catch (e) {
-              console.log('Appointment scheduled successfully', response)
-            }
+          next: () => {
+            console.log('Raw response:')
+            // Check if response is JSON
+            this.scheduleAppointmentForm.reset()
+            this.router.navigateByUrl('/home')
           },
-          error: () => {
+          error: error => {
+            console.log('Error:', error)
             this.errorMessage = 'Error scheduling appointment'
           }
         })

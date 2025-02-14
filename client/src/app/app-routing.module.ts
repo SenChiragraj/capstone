@@ -22,14 +22,18 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashbaordComponent },
   { path: 'patient-appointment', component: PatientAppointmentComponent },
+  { path: 'schedule-appointment', component: ScheduleAppointmentComponent },
   { path: 'doctor-appointment', component: DoctorAppointmentComponent },
   { path: 'doctor-availability', component: DoctorAvailabilityComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'feedback', component: FeedbackComponent },
+
   {
     path: 'receptionist-appointments',
     component: ReceptionistAppointmentsComponent
   },
   {
-    path: 'receptionist-schedule-appointments',
+    path: 'receptionist-schedule-appointments/:appointmentId',
     component: ReceptionistScheduleAppointmentsComponent
   },
 

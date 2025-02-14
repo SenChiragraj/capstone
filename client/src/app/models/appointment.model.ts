@@ -30,4 +30,8 @@ export interface Doctor {
   email: string
   speciality: string
   availabilty: string
+  role: string
+  medicalRecords: []
+  specialty: string
+  availability: 'Mon-Wed'
 }

@@ -7,6 +7,13 @@
   flex-direction: row;
 }
 
+.salutation {
+  font-size: 40px; /* Adjust the font size for better appearance */
+  font-weight: bold;
+  line-height: 1.2;
+  color: #2c3e50;
+}
+
 .container > img {
   margin-left: 120px;
   object-fit: cover;
@@ -82,6 +89,9 @@ h1 > i {
   margin-top: 30px;
 }
 
+.illustration {
+  margin-left: 300px;
+}
 .search-container {
   display: flex;
   justify-content: center;

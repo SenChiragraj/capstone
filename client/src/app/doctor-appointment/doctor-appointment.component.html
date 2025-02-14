@@ -10,9 +10,7 @@
           <th scope="col">Patient ID</th>
           <th scope="col">Phone</th>
           <th scope="col">Email</th>
-          <th scope="col">Date</th>
-          <th scope="col">Time</th>
-          <th scope="col">Status</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -21,17 +19,9 @@
           <td>{{ appointment.patient.id }}</td>
           <td>{{ appointment.patient.phone }}</td>
           <td>{{ appointment.patient.email }}</td>
-          <td>{{ appointment.appointmentTime | date : 'shortDate' }}</td>
-          <td>{{ appointment.appointmentTime | date : 'shortTime' }}</td>
-          <td>
-            <select
-              [(ngModel)]="appointment.status"
-              class="form-control form-control-sm"
-            >
-              <option value="completed">Completed</option>
-              <option value="not_completed">Not Completed</option>
-            </select>
-          </td>
+          <button mat-button color="primary" color="primary">
+            View Medical Records
+          </button>
         </tr>
       </tbody>
     </table>
