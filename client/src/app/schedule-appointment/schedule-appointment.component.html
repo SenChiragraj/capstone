@@ -24,8 +24,11 @@
         <input
           matInput
           type="datetime-local"
-          formControlName="appointmentDate"
+          formControlName="appointmentTime"
+          name="appointmentTime"
         />
+        <!-- <input type="datetime-local" id="appointmentTime" [(ngModel)]="appointment.appointmentTime" name="appointmentTime" required> -->
+
         <mat-error
           *ngIf="scheduleAppointmentForm.get('appointmentDate')?.invalid"
         >

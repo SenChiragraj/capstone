@@ -28,35 +28,26 @@ export class ScheduleAppointmentComponent implements OnInit {
   ngOnInit(): void {
     this.scheduleAppointmentForm = this.fb.group({
       doctorId: ['', Validators.required],
-      appointmentDate: ['', Validators.required]
+      appointmentTime: ['', Validators.required]
     });
 
     this.loadAllDoctors();
   }
 
   scheduleAppointment(): void {
+    console.log(this.scheduleAppointmentForm.value);
+    
     if (this.scheduleAppointmentForm.valid) {
-      const token = this.authService.getToken();
-      const formattedDate = this.datePipe.transform(
-        this.scheduleAppointmentForm.value.appointmentDate,
-        'yyyy-MM-ddTHH:mm:ss'
-      );
-      const appointmentData = {
-        ...this.scheduleAppointmentForm.value,
-        appointmentDate: formattedDate
-      };
-
       this.httpService
         .ScheduleAppointment(
           this.authService.userId,
-          appointmentData.doctorId,
-          appointmentData
+          this.scheduleAppointmentForm.value.doctorId,
+          this.scheduleAppointmentForm.value.appointmentTime,
         )
         .subscribe({
           next: () => {
-            
             this.scheduleAppointmentForm.reset();
-            this.router.navigateByUrl('/appointments'); // Navigate to the appointments page
+            this.router.navigateByUrl('/patient-appointment'); // Navigate to the appointments page
           },
           error: error => {
             console.log('Error scheduling appointment:', error);

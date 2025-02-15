@@ -17,6 +17,7 @@
             <th scope="col">Doctor Name</th>
             <th scope="col">Specialty</th>
             <th scope="col">Availability</th>
+            <th scope="col">Date</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -25,6 +26,7 @@
             <td>Dr. {{ appointment.doctor.name }}</td>
             <td>{{ appointment.doctor.specialty }}</td>
             <td>{{ appointment.doctor.availability }}</td>
+            <td>{{  appointment.appointmentTime}} </td>
             <td>
               <button class="btn btn-danger btn-sm" (click)="cancelAppointment(appointment.id)">Cancel</button>
             </td>
