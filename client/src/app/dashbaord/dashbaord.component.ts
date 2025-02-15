@@ -14,7 +14,6 @@ export class DashbaordComponent implements OnInit {
   avator = '../../assets/avatar.png'
   role: string = ''
   errorMessage: string = ''
-  doctors: Doctor[] = []
   appointments: Appointment[] = []
   currentUser!: User
 
@@ -35,7 +34,6 @@ export class DashbaordComponent implements OnInit {
     if (this.authService.getLoginStatus) {
       this.router.navigateByUrl('/home')
     }
-    this.toLoadDoctors()
   }
 
   bookAppointment (): void {
@@ -69,16 +67,7 @@ export class DashbaordComponent implements OnInit {
   //   console.log(this.currentUser)
   // }
 
-  toLoadDoctors () {
-    this.httpServie.getDoctors().subscribe({
-      next: data => {
-        this.doctors = data
-      },
-      error: () => {
-        this.errorMessage = 'Error in getting doctors'
-      }
-    })
-  }
+
 
   // toLoadAppointment () {
   //   this.httpServie.getAllAppointments(this.currentUser.id).subscribe({

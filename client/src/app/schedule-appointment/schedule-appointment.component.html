@@ -6,6 +6,20 @@
       [formGroup]="scheduleAppointmentForm"
       (ngSubmit)="scheduleAppointment()"
     >
+
+      <mat-form-field class="full-width">
+        <mat-label>Select Patient</mat-label>
+        <mat-select id="patientId" formControlName="patientId">
+          <mat-option value="" disabled>Select Patient</mat-option>
+          <mat-option *ngFor="let item of doctors" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="scheduleAppointmentForm.get('doctorId')?.invalid">
+          {{ getErrorMessage('doctorId') }}
+        </mat-error>
+      </mat-form-field>
+
       <mat-form-field class="full-width">
         <mat-label>Select Doctor</mat-label>
         <mat-select id="doctorId" formControlName="doctorId">

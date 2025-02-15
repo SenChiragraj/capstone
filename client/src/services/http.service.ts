@@ -11,7 +11,7 @@ export class HttpService {
   // public serverName = 'http://your-server-url' // Replace with your server URL
 
   serverName =
-    'https://ec2-13-200-231-94.projects.wecreateproblems.com/proxy/5000'
+    'https://ec2-35-154-46-83.projects.wecreateproblems.com/proxy/5000'
 
   cancelAppointment (appointmentId: number): Observable<any> {
     return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, {
