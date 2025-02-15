@@ -10,6 +10,7 @@ import { MedicalRecord } from '../models/medical-record'
 })
 export class DoctorAppointmentComponent implements OnInit {
   appointments: Appointment[] = []
+  filteredData: any[] = []
   errorMessage: string = ''
   doctorId!: number
 
@@ -20,10 +21,27 @@ export class DoctorAppointmentComponent implements OnInit {
     this.doctorId = userIdString ? parseInt(userIdString, 10) : 0
     this.getAppointmentsByDocId()
   }
-  getAppointmentsByDocId (): void {
+  
+  getAppointmentsByDocId(): void {
     this.httpService.getAppointmentByDoctor(this.doctorId).subscribe({
-      next: data => (this.appointments = data),
+      next: data => {
+        this.appointments = data.sort((a:any, b:any) => {
+          // Convert appointment times to Date objects for comparison
+          const dateA = new Date(a.appointmentTime).getTime();
+          const dateB = new Date(b.appointmentTime).getTime();
+          return dateA - dateB; // Sort in ascending order (earliest first)
+        })
+        this.filteredData = this.appointments
+      },
       error: () => console.error('Error fetching appointments:')
-    })
+    });
+  }
+
+  searchPatient(event: Event): void {
+    const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
+    this.filteredData = this.appointments.filter(appointment =>
+      appointment.patient.name.toLowerCase().includes(searchTerm) ||
+      appointment.patient.id.toString().includes(searchTerm)
+    );
   }
 }

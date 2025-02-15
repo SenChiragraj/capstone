@@ -16,9 +16,10 @@
           <input
             type="text"
             class="form-control border-primary w-50"
-            placeholder="Keyword"
+            placeholder="Search using Doctor Name or Speciality"
+            (input) = searchDoc($event)
           />
-          <button class="btn btn-dark border-0 w-25">Search</button>
+          <button class="btn btn-dark border-0 w-25" >Search</button>
         </div>
       </div>
     </div>
@@ -35,7 +36,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of doctors" >
+      <tr *ngFor="let item of filteredDoctors" ><!--changed to let item of filteredDoctors -->
         <td>{{item.name}}</td>
         <td>{{item.email}}</td>
         <td>{{item.specialty}}</td>

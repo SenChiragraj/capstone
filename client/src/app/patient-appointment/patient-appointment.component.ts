@@ -31,9 +31,15 @@ export class PatientAppointmentComponent implements OnInit {
     const userIdString = localStorage.getItem('userId')
     const userId = userIdString ? parseInt(userIdString, 10) : 0
 
+    //modified to sort the earlist appointment first
     this.httpService.getAppointmentByPatient(userId).subscribe(
       data => {
-        this.appointments = data
+        this.appointments = data.sort((a: any, b: any) => {
+          // Convert appointment times to Date objects for comparison
+          const dateA = new Date(a.appointmentTime).getTime();
+          const dateB = new Date(b.appointmentTime).getTime();
+          return dateA - dateB; // Sort in ascending order (earliest first)
+        })
         console.log(this.appointments)
       },
       error => {

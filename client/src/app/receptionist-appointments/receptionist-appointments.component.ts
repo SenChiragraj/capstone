@@ -11,6 +11,7 @@ import { HttpService } from '../../services/http.service'
 })
 export class ReceptionistAppointmentsComponent implements OnInit {
   appointments: any[] = []
+  filteredAppointments: any[] = []
 
   constructor (
     private httpService: HttpService,
@@ -25,13 +26,29 @@ export class ReceptionistAppointmentsComponent implements OnInit {
   fetchAppointments (): void {
     this.httpService.getAllAppointmentsForAppointments().subscribe(
       data => {
-        this.appointments = data
+        this.appointments = data.sort((a: any, b: any) => {     //modified to sort the appointments in earlist order
+          // Convert appointment times to Date objects for comparison
+          const dateA = new Date(a.appointmentTime).getTime();
+          const dateB = new Date(b.appointmentTime).getTime();
+          return dateA - dateB; // Sort in ascending order (earliest first)
+        })
+        this.filteredAppointments = this.appointments
         console.log(this.appointments)
       },
       error => {
         console.error('Error fetching appointments', error)
       }
     )
+  }
+
+
+  //modified to filter the appointments
+  searchAppointment(event: Event): void {
+    const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
+    this.filteredAppointments = this.appointments.filter(appointment =>
+      appointment.doctor.name.toLowerCase().includes(searchTerm) ||
+      appointment.patient.name.toLowerCase().includes(searchTerm)
+    );
   }
 
   // fetchAppointments (): void {

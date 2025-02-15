@@ -1,5 +1,13 @@
 <app-navbar></app-navbar>
 <div class="container">
+  <div class="banner">
+    <h1>ALl Appointments</h1>
+    <p>View and manage the upcoming consultations.</p>
+    <div class="search-container">
+      <input type="text" placeholder="Search by doctor name or patient name" class="search-bar" (input)="searchAppointment($event)"/>
+      <!-- <button class="btn btn-primary">Search</button> -->
+    </div>
+  </div>
   <h2>Appointments</h2>
   <table class="table">
     <thead>
@@ -13,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let appointment of appointments">
+      <tr *ngFor="let appointment of filteredAppointments"><!--modified to let appointment of filteredAppointments-->
         <td>{{ appointment.id }}</td>
         <td>
           {{
