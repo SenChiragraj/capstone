@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('^[6-9]\\d{9}$') ]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       role: ['', Validators.required]
@@ -72,7 +72,7 @@ export class RegistrationComponent implements OnInit {
             this.router.navigate(['/login'])
           },
           error: error => {
-            this.errorMessage = error.error.message
+            this.errorMessage = error.error
           }
         })
       } else {
@@ -94,15 +94,22 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-  getErrorMessage (controlName: string): string {
-    const control = this.registerForm.get(controlName)
+  getErrorMessage(controlName: string): string {
+    const control = this.registerForm.get(controlName);
+  
     if (control?.hasError('required')) {
-      return `${controlName} is required`
+      return `${controlName} is required`;
     } else if (control?.hasError('email')) {
-      return 'Not a valid email'
+      return 'Not a valid email';
     } else if (control?.hasError('minlength')) {
-      return 'Password must be at least 8 characters long'
+      return `${controlName} must be at least ${control.errors?.['minlength'].requiredLength} characters long`;
+    } else if (control?.hasError('pattern')) {
+      if (controlName === 'phoneNumber') {
+        return 'Phone number must start with 6-9 and be 10 digits long';
+      }
+      return 'Invalid format';
     }
-    return ''
+    return '';
   }
+  
 }

@@ -45,6 +45,13 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
+import { ErrorComponent } from './error/error.component';
+import { AboutComponent } from './components/about/about.component';
+import { ServicesComponent } from './components/services/services.component';
+import { SearchComponent } from './components/search/search.component';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component'
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,8 +71,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     FeedbackComponent,
     HomeComponent,
     ErrorComponent,
+
     DoctorManageMedicalRecordsComponent,
     MedicalRecordDialogComponent
+    AboutComponent,
+    ServicesComponent,
+    SearchComponent,
+    TestimonialsComponent
   ],
   imports: [
     BrowserModule,
