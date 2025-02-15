@@ -33,28 +33,50 @@ public class RegisterAndLoginController {
     private UserService userService;
 
     @PostMapping("/api/patient/register")
-    public ResponseEntity<Patient> registerPatient(@RequestBody Patient patient) {
+    public ResponseEntity<?> registerPatient(@RequestBody Patient patient) {
         // register patient
-        return new ResponseEntity<Patient>(userService.registerPatient(patient), HttpStatus.CREATED);
+        try {
+              return new ResponseEntity<>(userService.registerPatient(patient), HttpStatus.CREATED);
+            } catch (RuntimeException e) {
+              return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+            }        
     }
 
     @PostMapping("/api/doctors/register")
-    public ResponseEntity<Doctor> registerDoctor(@RequestBody Doctor doctor) {
+    public ResponseEntity<?> registerDoctor(@RequestBody Doctor doctor) {
         // register doctor
-        return new ResponseEntity<Doctor>(userService.registerDoctor(doctor), HttpStatus.CREATED);
+
+        try {
+              return new ResponseEntity<>(userService.registerDoctor(doctor), HttpStatus.CREATED);
+            } catch (RuntimeException e) {
+              return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+            }
     }
 
     @PostMapping("/api/receptionist/register")
-    public ResponseEntity<Receptionist> registerReceptionist(@RequestBody Receptionist receptionist) {
+    public ResponseEntity<?> registerReceptionist(@RequestBody Receptionist receptionist) {
        // register receptionist
-       return new ResponseEntity<>(userService.registerReceptionist(receptionist), HttpStatus.CREATED);
+    try {
+            return new ResponseEntity<>(userService.registerReceptionist(receptionist), HttpStatus.CREATED);
+        } catch (RuntimeException e) {
+         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+     }
+       
     }
 
     @PostMapping("/api/user/login")
-    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
       // login user and return jwt in LoginResponse object
         // return 401 unauthorized if authentication fail
-        return new ResponseEntity<>(userService.loginUser(loginRequest), HttpStatus.OK);
+        // return new ResponseEntity<>(userService.loginUser(loginRequest), HttpStatus.OK);
+
+try {
+      return new ResponseEntity<>(userService.loginUser(loginRequest), HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>("Unauthorized", HttpStatus.UNAUTHORIZED);
+    }
+
+
     }
 
     @GetMapping("/api/user/{id}")

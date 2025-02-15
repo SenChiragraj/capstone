@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Enter Medical Record Details</h2>
+<mat-dialog-content>
+  <form #recordForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Details" name="details" [(ngModel)]="data.details" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Date" name="date" [(ngModel)]="data.date" [matDatepicker]="picker" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="!recordForm.valid">Save</button>
+</mat-dialog-actions>

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./schedule-appointment.component.scss']
 })
 export class ScheduleAppointmentComponent implements OnInit {
+
   scheduleAppointmentForm!: FormGroup;
   doctors: Doctor[] = [];
   appointmentTime: any;
@@ -23,7 +24,8 @@ export class ScheduleAppointmentComponent implements OnInit {
     private datePipe: DatePipe,
     private router: Router,
     private fb: FormBuilder
-  ) {}
+  ) { }
+
 
   ngOnInit(): void {
     this.scheduleAppointmentForm = this.fb.group({
@@ -35,9 +37,6 @@ export class ScheduleAppointmentComponent implements OnInit {
   }
 
   scheduleAppointment(): void {
-    console.log(this.scheduleAppointmentForm.value);
-    
-    if (this.scheduleAppointmentForm.valid) {
       this.httpService
         .ScheduleAppointment(
           this.authService.userId,
@@ -67,6 +66,7 @@ export class ScheduleAppointmentComponent implements OnInit {
   }
 
   getErrorMessage(controlName: string): string {
+
     const control = this.scheduleAppointmentForm.get(controlName);
     if (control?.hasError('required')) {
       return `${controlName} is required`;
@@ -74,3 +74,4 @@ export class ScheduleAppointmentComponent implements OnInit {
     return '';
   }
 }
+

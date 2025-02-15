@@ -24,7 +24,7 @@ import { MatCardModule } from '@angular/material/card'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatRadioModule } from '@angular/material/radio'
 import { RouterModule } from '@angular/router'
-import { MatOptionModule } from '@angular/material/core'
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core'
 import { NavbarComponent } from './components/navbar/navbar.component'
 import { FooterComponent } from './components/footer/footer.component'
 import { SkeletonComponent } from './components/skeleton/skeleton.component'
@@ -39,10 +39,18 @@ import { ContactComponent } from './contact/contact.component'
 import { FeedbackComponent } from './feedback/feedback.component'
 import { HomeComponent } from './home/home.component'
 import { ErrorComponent } from './error/error.component';
+import { DoctorManageMedicalRecordsComponent } from './doctor-manage-medical-records/doctor-manage-medical-records.component';
+import { MedicalRecordDialogComponent } from './medical-record-dialog/medical-record-dialog.component'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
+import { ErrorComponent } from './error/error.component';
 import { AboutComponent } from './components/about/about.component';
 import { ServicesComponent } from './components/services/services.component';
 import { SearchComponent } from './components/search/search.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component'
+
 
 @NgModule({
   declarations: [
@@ -63,6 +71,9 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     FeedbackComponent,
     HomeComponent,
     ErrorComponent,
+
+    DoctorManageMedicalRecordsComponent,
+    MedicalRecordDialogComponent
     AboutComponent,
     ServicesComponent,
     SearchComponent,
@@ -87,7 +98,13 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
   providers: [HttpService, HttpClientModule, DatePipe],
   bootstrap: [AppComponent]

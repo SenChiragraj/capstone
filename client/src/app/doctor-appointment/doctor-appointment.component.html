@@ -19,7 +19,9 @@
           <td>{{ appointment.patient.id }}</td>
           <td>{{ appointment.patient.phone }}</td>
           <td>{{ appointment.patient.email }}</td>
-          <button mat-button color="primary" color="primary">
+
+          <button mat-button color="primary" color="primary" [routerLink]="['/doctor-manage-medical-records']">
+
             View Medical Records
           </button>
         </tr>

@@ -1,0 +1,79 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  color: #444;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.refresh-button {
+  display: block;
+  margin: 0 auto 20px auto;
+  background-color: #00796b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.refresh-button:hover {
+  background-color: #005f56;
+}
+
+.patient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.patient-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.patient-name {
+  font-size: 1.4em;
+  color: #00796b;
+  margin-bottom: 10px;
+}
+
+.medical-record-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.medical-record {
+  background-color: #e0f2f1;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-button, .update-button, .delete-button {
+  background-color: #00796b;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-button:hover, .update-button:hover, .delete-button:hover {
+  background-color: #005f56;
+}

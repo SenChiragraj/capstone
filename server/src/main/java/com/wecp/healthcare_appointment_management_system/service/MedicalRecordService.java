@@ -31,6 +31,10 @@ public class MedicalRecordService {
       medicalRecordRepository.deleteById(medicalRecordId);
     }
 
+    public MedicalRecord updateMedicalRecord(MedicalRecord medicalRecord) {
+        return medicalRecordRepository.save(medicalRecord);
+    }
+
     public List<MedicalRecord> findMedicalRecordsByPatientId (Long patientId) {
         return medicalRecordRepository.findByPatientId(patientId);
     }

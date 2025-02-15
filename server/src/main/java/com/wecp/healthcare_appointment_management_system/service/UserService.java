@@ -48,17 +48,24 @@ public class UserService implements UserDetailsService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
+    public boolean isUsernameTaken(String username){
+        return userRepository.findByUsername(username)!=null;
+    }
+
     public Patient registerPatient(Patient patient) {
+        if(isUsernameTaken(patient.getUsername())) throw new RuntimeException("Username already taken");
         patient.setPassword(passwordEncoder.encode(patient.getPassword())); // Encode password
         return patientRepository.save(patient);
     }
 
     public Doctor registerDoctor(Doctor doctor) {
+        if(isUsernameTaken(doctor.getUsername())) throw new RuntimeException("Username already taken");
         doctor.setPassword(passwordEncoder.encode(doctor.getPassword())); // Encode password
         return doctorRepository.save(doctor);
     }
 
     public Receptionist registerReceptionist(Receptionist receptionist) {
+        if(isUsernameTaken(receptionist.getUsername())) throw new RuntimeException("USername already taken");
         receptionist.setPassword(passwordEncoder.encode(receptionist.getPassword())); // Encode password
         return receptionistRepository.save(receptionist);
     }

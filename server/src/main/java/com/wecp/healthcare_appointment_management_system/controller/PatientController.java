@@ -54,6 +54,7 @@ public class PatientController {
         appointment.setPatient(patient);
         appointment.setDoctor(doctor);
         appointment.setAppointmentTime(timeDto.getTime());
+        System.out.println(timeDto.getTime());
         appointment.setStatus("Scheduled");
 
         appointmentService.saveAppointment(appointment);

@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h2 class="title">Manage Medical Records</h2>
+  <button mat-button color="primary" class="refresh-button" (click)="fetchPatients()">Refresh List</button>
+  <div class="patient-list">
+    <div *ngFor="let patient of patients" class="patient-card">
+      <h3 class="patient-name">{{ patient.username }} (ID: {{ patient.id }})</h3>
+      <ul class="medical-record-list">
+        <li *ngFor="let record of patient.medicalRecords" class="medical-record">
+          <p>{{ record.details }} (Date: {{ record.date | date: 'short' }})</p>
+        </li>
+      </ul>
+      <button mat-button color="accent" class="create-button" (click)="createMedicalRecord(patient.id)">Create Record</button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <h2 class="title">Manage Medical Records</h2>
+  <button class="refresh-button" (click)="fetchPatients()">Refresh List</button>
+  <div class="patient-list">
+    <div *ngFor="let patient of patients" class="patient-card">
+      <h3 class="patient-name">{{ patient.username }} (ID: {{ patient.id }})</h3>
+      <ul class="medical-record-list">
+        <li *ngFor="let record of patient.medicalRecords" class="medical-record">
+          <p>{{ record.details }} (Date: {{ record.date | date: 'short' }})</p>
+          <button class="update-button" (click)="openUpdateMedicalRecordDialog(record)">Update</button>
+          <button class="delete-button" (click)="deleteMedicalRecord(record.id)">Delete</button>
+        </li>
+      </ul>
+      <button class="create-button" (click)="openCreateMedicalRecordDialog(patient.id)">Create Record</button>
+    </div>
+  </div>
+  <app-medical-record-dialog
+    *ngIf="isDialogOpen"
+    [data]="dialogData"
+    (close)="closeDialog()"
+    (save)="onSaveMedicalRecord()">
+  </app-medical-record-dialog>
+</div> -->

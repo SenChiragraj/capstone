@@ -20,7 +20,7 @@ export interface Appointment {
     specialty: string
     availability: string
   }
-  appointmentTime: string | null
+  appointmentTime: Date
   status: string
 }
 
@@ -34,4 +34,10 @@ export interface Doctor {
   medicalRecords: []
   specialty: string
   availability: 'Mon-Wed'
+}
+
+
+export interface AppointmentData {
+  doctorId: any;
+  time: string | null;
 }

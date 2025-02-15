@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component'
 import { FeedbackComponent } from './feedback/feedback.component'
 import { ContactComponent } from './contact/contact.component'
 import { ErrorComponent } from './error/error.component'
+import { DoctorManageMedicalRecordsComponent } from './doctor-manage-medical-records/doctor-manage-medical-records.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -36,6 +37,7 @@ const routes: Routes = [
     path: 'receptionist-schedule-appointments/:appointmentId',
     component: ReceptionistScheduleAppointmentsComponent
   },
+  {path:'doctor-manage-medical-records',component:DoctorManageMedicalRecordsComponent},
 
   { path: '**', component: ErrorComponent }
 ]
