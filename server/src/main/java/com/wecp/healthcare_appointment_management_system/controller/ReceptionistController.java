@@ -57,6 +57,7 @@ public class ReceptionistController {
     @PutMapping("/api/receptionist/appointment-reschedule/{appointmentId}")
     public ResponseEntity<Appointment> rescheduleAppointment(@PathVariable Long appointmentId,
                                                              @RequestBody TimeDto timeDto) {
+        
         // Find the existing appointment
         Appointment appointment = appointmentService.findAppointmentById(appointmentId);
 

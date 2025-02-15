@@ -11,7 +11,7 @@ export class HttpService {
   // public serverName = 'http://your-server-url' // Replace with your server URL
 
   serverName =
-    'https://ec2-35-154-46-83.projects.wecreateproblems.com/proxy/5000'
+    'https://ec2-13-203-24-166.projects.wecreateproblems.com/proxy/5000'
 
   cancelAppointment (appointmentId: number): Observable<any> {
     return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, {
@@ -194,7 +194,7 @@ export class HttpService {
 
   getAllAppointmentsForAppointments (): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(
-      `https://ec2-13-203-23-18.projects.wecreateproblems.com/proxy/5000/api/receptionist/appointments`
+      `${this.serverName}/api/receptionist/appointments`
     )
   }
 
@@ -221,6 +221,7 @@ export class HttpService {
   }
 
   updateAppointment (appointment: Appointment): Observable<any> {
+    console.log("date: "+appointment)
     return this.http.put(
       `${this.serverName}/api/receptionist/appointment/${appointment.id}`,
       appointment
