@@ -33,7 +33,7 @@ export class MedicalRecordsComponent implements OnInit {
     
 
   ) {
-    this.role = authService.getRole  
+    this.role = authService.getRole
   }
 
   ngOnInit (): void {
