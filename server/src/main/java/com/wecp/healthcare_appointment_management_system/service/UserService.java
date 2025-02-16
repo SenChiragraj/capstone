@@ -8,6 +8,7 @@ import com.wecp.healthcare_appointment_management_system.entity.Receptionist;
 import com.wecp.healthcare_appointment_management_system.entity.User;
 import com.wecp.healthcare_appointment_management_system.exception.UsernameNotFoundException;
 import com.wecp.healthcare_appointment_management_system.exception.InvalidCredentialsException;
+import com.wecp.healthcare_appointment_management_system.exception.UsernameAlreadyExists;
 import com.wecp.healthcare_appointment_management_system.jwt.JwtUtil;
 import com.wecp.healthcare_appointment_management_system.repository.DoctorRepository;
 import com.wecp.healthcare_appointment_management_system.repository.PatientRepository;
@@ -49,19 +50,28 @@ public class UserService implements UserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     public Patient registerPatient(Patient patient) {
-        patient.setPassword(passwordEncoder.encode(patient.getPassword())); // Encode password
-        return patientRepository.save(patient);
-    }
-
-    public Doctor registerDoctor(Doctor doctor) {
-        doctor.setPassword(passwordEncoder.encode(doctor.getPassword())); // Encode password
-        return doctorRepository.save(doctor);
-    }
-
-    public Receptionist registerReceptionist(Receptionist receptionist) {
-        receptionist.setPassword(passwordEncoder.encode(receptionist.getPassword())); // Encode password
-        return receptionistRepository.save(receptionist);
-    }
+            if (userRepository.findByUsername(patient.getUsername()) != null) {
+                throw new UsernameAlreadyExists("Username " + patient.getUsername() + " already exists");
+            }
+            patient.setPassword(passwordEncoder.encode(patient.getPassword())); // Encode password
+            return patientRepository.save(patient);
+        }
+    
+        public Doctor registerDoctor(Doctor doctor) {
+            if (userRepository.findByUsername(doctor.getUsername()) != null) {
+                throw new UsernameAlreadyExists("Username " + doctor.getUsername() + " already exists");
+            }
+            doctor.setPassword(passwordEncoder.encode(doctor.getPassword())); // Encode password
+            return doctorRepository.save(doctor);
+        }
+    
+        public Receptionist registerReceptionist(Receptionist receptionist) {
+            if (userRepository.findByUsername(receptionist.getUsername()) != null) {
+                throw new UsernameAlreadyExists("Username " + receptionist.getUsername() + " already exists");
+            }
+            receptionist.setPassword(passwordEncoder.encode(receptionist.getPassword())); // Encode password
+            return receptionistRepository.save(receptionist);
+        }
 
     public LoginResponse loginUser(LoginRequest loginRequest) {
         logger.info("Login attempt for user: {}", loginRequest.getUsername());

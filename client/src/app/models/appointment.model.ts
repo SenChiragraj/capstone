@@ -21,6 +21,7 @@ export interface Appointment {
     availability: string
   }
   appointmentTime: string | null
+  formattedTime? : string
   status: string
 }
 
@@ -34,4 +35,28 @@ export interface Doctor {
   medicalRecords: []
   specialty: string
   availability: 'Mon-Wed'
+}
+
+export interface MedicalRecord {
+  id: number
+  patient: {
+    id: number
+    name: string
+    phone: number
+    username: string
+    email: string
+    role: string
+  }
+  doctor: {
+    id: number
+    name: string
+    phone: number
+    username: string
+    email: string
+    role: string
+    specialty: string
+    availability: string
+  }
+  date: string | null
+  details: string
 }

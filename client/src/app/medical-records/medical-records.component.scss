@@ -1,0 +1,24 @@
+/* medical-record.component.scss */
+.mat-table-full-width {
+  width: 100%;
+}
+
+mat-card {
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  margin-left: 10px;
+}

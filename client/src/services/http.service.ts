@@ -11,7 +11,7 @@ export class HttpService {
   // public serverName = 'http://your-server-url' // Replace with your server URL
 
   serverName =
-    'https://ec2-13-203-24-166.projects.wecreateproblems.com/proxy/5000'
+    'https://ec2-3-7-59-64.projects.wecreateproblems.com/proxy/5000'
 
   cancelAppointment (appointmentId: number): Observable<any> {
     return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, {
@@ -74,7 +74,7 @@ export class HttpService {
   ScheduleAppointment (
     patientId: number,
     doctorId: number,
-    appointmentTime: string
+    appointmentTime: any
   ): Observable<void> {
     return this.http.post<void>(
       `${this.serverName}/api/patient/appointment?patientId=${patientId}&doctorId=${doctorId}`,
@@ -225,6 +225,30 @@ export class HttpService {
     return this.http.put(
       `${this.serverName}/api/receptionist/appointment/${appointment.id}`,
       appointment
+    )
+  }
+
+  getMedicalRecords (patientId : number) : Observable<any>  {
+    return this.http.get<any>(
+      `${this.serverName}/api/patient/medicalrecords?patientId=${patientId}`
+    )
+  }
+
+  createMedicalRecords (patientId : number, doctorId : number, medicalRecord : any) : Observable<any>  {
+    return this.http.post<any>(
+      `${this.serverName}/api/patient/medicalrecord?patientId=${patientId}&doctorId=${doctorId}`, medicalRecord
+    )
+  }
+
+  editMedicalRecords (medicalRecordId : number, medicalRecord : any) : Observable<any>  {
+    return this.http.put<any>(
+      `${this.serverName}/api/patient/medicalrecord?medicalRecordId=${medicalRecordId}`, medicalRecord
+    )
+  }
+
+  deleteMedicalRecords (patientId : number) : Observable<any>  {
+    return this.http.delete<any>(
+      `${this.serverName}/api/patient/medicalrecord?patientId=${patientId}`
     )
   }
 

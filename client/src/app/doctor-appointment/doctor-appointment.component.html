@@ -27,8 +27,8 @@
           <td>{{ appointment.patient.id }}</td>
           <td>{{ appointment.patient.phone }}</td>
           <td>{{ appointment.patient.email }}</td>
-          <button mat-button color="primary" color="primary">
-            View Medical Records
+          <button mat-button color="primary" color="primary" (click) = "viewMedicalRecord(appointment.patient.id)">
+            Medical Records
           </button>
         </tr>
       </tbody>

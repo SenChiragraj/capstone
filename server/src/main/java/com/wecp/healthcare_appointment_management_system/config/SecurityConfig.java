@@ -44,13 +44,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/user/**", "/api/all/**" , "/api/doctors/register", "/api/patient/register", "/api/receptionist/register", "/api/user/login", "/health", "/api/receptionist/appointments", "/api/receptionist/appointment/**", "/api/patient/doctors").permitAll()
+                .antMatchers("/api/user/**", "/api/all/**" , "/api/doctors/register", "/api/patient/register", "/api/receptionist/register", "/api/user/login", "/health", "/api/receptionist/appointments", "/api/receptionist/appointment/**", "/api/patient/doctors", "/api/patient/medicalrecords", "/api/patient/medicalrecord").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/patient/doctors", "/api/patient/appointments").hasAnyAuthority("PATIENT", "RECEPTIONIST")
                 .antMatchers(HttpMethod.GET, "/api/patient/medicalrecords").hasAnyAuthority("PATIENT", "RECEPTIONIST", "DOCTOR")
                 .antMatchers(HttpMethod.POST, "/api/patient/appointment", "/api/patient/medicalrecord").hasAnyAuthority("PATIENT", "RECEPTIONIST")
                 .antMatchers(HttpMethod.PUT, "/api/patient/medicalrecord").hasAnyAuthority("PATIENT", "RECEPTIONIST")
                 .antMatchers(HttpMethod.DELETE, "/api/patient/medicalrecord").hasAnyAuthority("PATIENT", "RECEPTIONIST")
-
+                // .antMatchers(HttpMethod.GET, "/api/patient/medicalrecords").hasAnyAuthority("DOCTOR", "PATIENT")
+                // .antMatchers(HttpMethod.DELETE, "/api/patient/medicalrecords/**").hasAnyAuthority("DOCTOR")
+                // .antMatchers(HttpMethod.POST, "/api/patient/medicalrecords/**").hasAnyAuthority("DOCTOR")
+                // .antMatchers(HttpMethod.PUT, "/api/patient/medicalrecords/**").hasAnyAuthority("DOCTOR")
                 .antMatchers(HttpMethod.POST, "/api/doctor/appointments").hasAnyAuthority("RECEPTIONIST", "DOCTOR")
                 .antMatchers(HttpMethod.GET, "/api/doctor/appointments").hasAnyAuthority("DOCTOR", "RECEPTIONIST")
                 .antMatchers(HttpMethod.GET, "/receptionist/**", "/api/receptionist/**").hasAnyAuthority("RECEPTIONIST")

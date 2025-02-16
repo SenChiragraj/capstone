@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 public class Doctor extends User {
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<MedicalRecord> medicalRecords;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)

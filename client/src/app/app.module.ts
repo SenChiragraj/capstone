@@ -42,7 +42,11 @@ import { ErrorComponent } from './error/error.component';
 import { AboutComponent } from './components/about/about.component';
 import { ServicesComponent } from './components/services/services.component';
 import { SearchComponent } from './components/search/search.component';
-import { TestimonialsComponent } from './components/testimonials/testimonials.component'
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { MedicalRecordsComponent } from './medical-records/medical-records.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MedicalRecordFormComponent } from './medical-record-form/medical-record-form.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,9 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     AboutComponent,
     ServicesComponent,
     SearchComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    MedicalRecordsComponent,
+    MedicalRecordFormComponent
   ],
   imports: [
     BrowserModule,
@@ -87,9 +93,12 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatTableModule,
   ],
   providers: [HttpService, HttpClientModule, DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MedicalRecordFormComponent]
 })
 export class AppModule {}

@@ -15,7 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class PatientController {
@@ -38,28 +40,47 @@ public class PatientController {
         return new ResponseEntity<>(doctorService.getAllDoctor(), HttpStatus.OK);
     }
 
+    // @PostMapping("/api/patient/appointment")
+    // public ResponseEntity<?> scheduleAppointment(@RequestParam Long patientId,
+    //                                              @RequestParam Long doctorId,
+    //                                              @RequestBody TimeDto timeDto) {
+    //     // Schedule appointment
+    
+    
+    //     appointmentService.saveAppointment(appointment);
+    
+    //     return new ResponseEntity<>("Appointment scheduled successfully", HttpStatus.OK);
+    // }
+    
+    
     @PostMapping("/api/patient/appointment")
-    public ResponseEntity<?> scheduleAppointment(@RequestParam Long patientId,
-                                                 @RequestParam Long doctorId,
-                                                 @RequestBody TimeDto timeDto) {
-        // Schedule appointment
-        Patient patient = userService.findPatientById(patientId);
-        Doctor doctor = doctorService.findDoctorById(doctorId);
-
-        if (patient == null || doctor == null) {
-            return new ResponseEntity<>("Invalid patient or doctor ID", HttpStatus.BAD_REQUEST);
+    // @PreAuthorize("hasAuthority('PATIENT')")
+    public ResponseEntity<?> scheduleAppointment(
+        @RequestParam Long patientId,
+        @RequestParam Long doctorId,
+        @RequestBody TimeDto timeDto) {
+            try {
+                Patient patient = userService.findPatientById(patientId);
+                Doctor doctor = doctorService.findDoctorById(doctorId);
+            
+                if (patient == null || doctor == null) {
+                    return new ResponseEntity<>("Invalid patient or doctor ID", HttpStatus.BAD_REQUEST);
+                }
+                Appointment appointment = new Appointment();
+                appointment.setPatient(patient);
+                appointment.setDoctor(doctor);
+                appointment.setAppointmentTime(timeDto.getTime());
+                appointment.setStatus("Scheduled");
+                appointmentService.scheduleAppointment(appointment);
+                Map<String, String> response = new HashMap<>();
+                response.put("message", "Appointment scheduled successfully");
+                return ResponseEntity.ok(response);
+            } catch (Exception e) {
+                Map<String, String> response = new HashMap<>();
+                response.put("error", "Error scheduling appointment");
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            }
         }
-
-        Appointment appointment = new Appointment();
-        appointment.setPatient(patient);
-        appointment.setDoctor(doctor);
-        appointment.setAppointmentTime(timeDto.getTime());
-        appointment.setStatus("Scheduled");
-
-        appointmentService.saveAppointment(appointment);
-
-        return new ResponseEntity<>("Appointment scheduled successfully", HttpStatus.OK);
-    }
 
     @GetMapping("/api/patient/appointments")
     public ResponseEntity<List<Appointment>> getAppointmentsByPatientId(@RequestParam Long patientId) {
@@ -82,14 +103,16 @@ public class PatientController {
     }
 
     @PostMapping("/api/patient/medicalrecord")
-    public ResponseEntity<?> addMedicalRecord(@RequestParam Long patientId,
-            @RequestBody MedicalRecord medicalRecord) {
+    public ResponseEntity<?> addMedicalRecord(@RequestParam Long patientId, @RequestParam Long doctorId, @RequestBody MedicalRecord medicalRecord) {
         // Add medical record
         Patient patient = userService.findPatientById(patientId);
-        if (patient == null) {
-            return new ResponseEntity<>("Invalid patient ID", HttpStatus.BAD_REQUEST);
+        Doctor doctor = doctorService.findDoctorById(doctorId);
+
+        if (patient == null || doctor == null) {
+            return new ResponseEntity<>("Invalid patient or doctor ID", HttpStatus.BAD_REQUEST);
         }
         medicalRecord.setPatient(patient);
+        medicalRecord.setDoctor(doctor);
         medicalRecordService.saveMedicalRecord(medicalRecord);
         return new ResponseEntity<>("Medical record added successfully", HttpStatus.OK);
     }

@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { HttpService } from '../../services/http.service'
-import { AuthService } from '../../services/auth.service'
-import { DatePipe } from '@angular/common'
-import { Doctor } from '../models/appointment.model'
-import { Router } from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpService } from '../../services/http.service';
+import { AuthService } from '../../services/auth.service';
  
 @Component({
   selector: 'app-schedule-appointment',
@@ -12,78 +10,74 @@ import { Router } from '@angular/router'
   styleUrls: ['./schedule-appointment.component.scss']
 })
 export class ScheduleAppointmentComponent implements OnInit {
-  scheduleAppointmentForm!: FormGroup
-  doctors: Doctor[] = []
-  appointmentTime: any
+  appointmentForm!: FormGroup;
+  doctors: any[] = [];
+  errorMessage: string | null = null;
+  minDateTime!:string;
+  appointmentDateTime!:string;
  
-  errorMessage: string = ''
-  constructor (
-    private httpService: HttpService,
-    private authService: AuthService,
-    private datePipe: DatePipe,
+  constructor(
+    private fb: FormBuilder,
     private router: Router,
-    private fb: FormBuilder
-  ) {}
+    private httpService: HttpService,
+    private authService: AuthService
+  ) { }
  
-  ngOnInit (): void {
-    this.scheduleAppointmentForm = this.fb.group({
-      doctorId: ['', Validators.required],
-      appointmentDate: ['', Validators.required]
-    })
+  ngOnInit(): void {
+    this.appointmentForm = this.fb.group({
+      doctorId: ['', Validators.required],  
+      time: ['', Validators.required]  
+    });
  
-    this.loadAllDoctors()
+    this.loadDoctors();
+    this.setMinDateTime();
+  }
+  
+  setMinDateTime(): void {
+    const now = new Date();
+    this.minDateTime = now.toISOString().slice(0, 16);
   }
  
-  scheduleAppointment (): void {
-    if (this.scheduleAppointmentForm.valid) {
-      const token = this.authService.getToken()
- 
-      //modified from 42 to 50
-      const selectedDate: Date = new Date(this.scheduleAppointmentForm.value.appointmentDate);
-      const formattedDate: string = selectedDate.toISOString();  // Correct ISO format
- 
-      const appointmentData = {
-        ...this.scheduleAppointmentForm.value,
-        appointmentTime: formattedDate  // Ensure correct key is used
-      };
- 
-      console.log("Sending appointment data:", appointmentData); // Debugging
  
  
-      this.httpService.ScheduleAppointment(
-          this.authService.userId,
-          appointmentData.doctorId,
-          appointmentData
-        )
-        .subscribe({
-          next: () => {
-            console.log('Raw response:')
-            // Check if response is JSON
-            this.scheduleAppointmentForm.reset()
-            this.router.navigateByUrl('/home')
-          },
-          error: error => {
-            console.log('Error:', error)
-            this.errorMessage = 'Error scheduling appointment'
-          }
-        })
-    }
-  }
- 
-  loadAllDoctors (): void {
+  loadDoctors(): void {
     this.httpService.getDoctors().subscribe({
-      next: data => (this.doctors = data),
-      error: error => {
-        this.errorMessage = 'Error in fetching all doctors'
-      }
-    })
+      next: doctors => this.doctors = doctors,
+      error: error => this.errorMessage = 'Error loading doctors'
+    });
   }
  
-  getErrorMessage (controlName: string): string {
-    const control = this.scheduleAppointmentForm.get(controlName)
-    if (control?.hasError('required')) {
-      return `${controlName} is required`
+  scheduleAppointment(): void {
+    if (this.appointmentForm.invalid) {
+      return;
     }
-    return ''
+ 
+    const appointmentData = this.appointmentForm.value;
+    const timeDto = {
+      time: new Date(appointmentData.time).toISOString().replace('T', ' ').substring(0, 19) // Formatting the date
+    };
+ 
+    this.httpService.ScheduleAppointment(
+      this.authService.userId,
+      appointmentData.doctorId,
+      timeDto
+    ).subscribe({
+      next: () => {
+        this.appointmentForm.reset();
+        this.router.navigate(['/patient-appointment']);
+      },
+      error: error => {
+        console.log('Error:', error);
+        this.errorMessage = 'Error scheduling appointment';
+      }
+    });
+  }
+ 
+  getErrorMessage(controlName: string): string {
+    const control = this.appointmentForm.get(controlName);
+    if (control?.hasError('required')) {
+      return 'This field is required';
+    }
+    return '';
   }
 }

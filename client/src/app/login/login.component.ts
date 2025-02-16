@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         error: error => {
           console.log(error.error);
           
-          this.errorMessage = error.error; // Set the error message
+          this.errorMessage = error.error.message || error.error; // Set the error message
         }
       });
       console.log('Form Submitted', this.loginForm.value);

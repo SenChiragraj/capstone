@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { HttpService } from '../../services/http.service'
 import { Appointment } from '../models/appointment.model'
 import { MedicalRecord } from '../models/medical-record'
+import { MedicalRecordsComponent } from '../medical-records/medical-records.component'
+import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-doctor-appointment',
@@ -14,7 +16,7 @@ export class DoctorAppointmentComponent implements OnInit {
   errorMessage: string = ''
   doctorId!: number
 
-  constructor (private httpService: HttpService) {}
+  constructor (private httpService: HttpService, public dialog: MatDialog) {}
 
   ngOnInit (): void {
     const userIdString = localStorage.getItem('userId')
@@ -33,7 +35,7 @@ export class DoctorAppointmentComponent implements OnInit {
         })
         this.filteredData = this.appointments
       },
-      error: () => console.error('Error fetching appointments:')
+      error: (error) => console.error('Error fetching appointments:', error)
     });
   }
 
@@ -44,4 +46,11 @@ export class DoctorAppointmentComponent implements OnInit {
       appointment.patient.id.toString().includes(searchTerm)
     );
   }
+
+    viewMedicalRecord (patientId: number) {
+      this.dialog.open(MedicalRecordsComponent, {
+        width: '600px',
+        data: { patientId: patientId }
+      });
+    }
 }
