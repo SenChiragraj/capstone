@@ -60,3 +60,12 @@ export interface MedicalRecord {
   date: string | null
   details: string
 }
+
+export interface Patient{
+  id: number
+  name: string
+  phone: number
+  username: string
+  email: string
+  role: string
+}

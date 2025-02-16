@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -32,7 +34,7 @@ export class ScheduleAppointmentComponent implements OnInit {
     this.loadDoctors();
     this.setMinDateTime();
   }
-  
+ 
   setMinDateTime(): void {
     const now = new Date();
     this.minDateTime = now.toISOString().slice(0, 16);
