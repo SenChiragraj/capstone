@@ -1,0 +1,36 @@
+.container-fluid {
+    background-color: #1565c0;
+    color: white;
+  }
+
+.text-center h1 {
+    font-weight: bold;
+    line-height: 1;
+    font-size: 2.5rem; /* Increase the size as needed */
+}
+
+.text-center h5.fw-normal {
+    font-size: 1.2rem; /* Increase the size as needed */
+}
+
+.input-group input[type="text"],
+.input-group .form-select {
+    font-size: 1rem; /* Increase the size as needed */
+}
+
+.input-group .btn {
+    font-size: 1rem; /* Increase the size as needed */
+}
+
+.custom-table {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.custom-header {
+    margin-left: 285px;
+    opacity: 70%;
+    font-weight :700;
+    padding: 20px;
+}

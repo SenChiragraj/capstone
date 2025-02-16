@@ -1,0 +1,134 @@
+.container-fluid {
+    background-color: #f8f9fa; // Light background for contrast
+    padding: 2rem 0; // Add vertical padding for spacing
+  }
+  
+  .testimonial-title {
+    font-size: 1.1rem; // Slightly increase font size for better visibility
+    margin-bottom: 0.5rem;
+  }
+  
+  .testimonial-heading {
+    font-size: 1.75rem; // Larger font for the main heading
+    margin-bottom: 1rem; // Larger margin for spacing
+    font-weight: bold; // Make the heading stand out
+  }
+  
+  .testimonial-item {
+    margin: 2rem 0; // Proper spacing between items
+    padding: 1.5rem; // Padding for content separation
+    border: 1px solid #ddd; // Subtle border for emphasis
+    border-radius: 0.5rem; // Rounded corners for a softer look
+    background-color: #fff; // White background to separate from body color
+  }
+  
+  .quote-icon {
+    width: 35px; // Reduced size for a minimalist look
+    height: 35px;
+    border: none; // Remove border for cleaner appearance
+    color: #007bff; // Primary color for icon
+  }
+  
+  .testimonial-text {
+    font-size: 1rem; // Standard font size for readability
+    line-height: 1.6; // Comfortable line height for readability
+    color: #333; // Dark text for contrast
+  }
+  
+  .patient-name {
+    font-size: 1.1rem; // Slightly bigger for emphasis
+    margin-top: 0.5rem; // Spacing above for separation
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 3%; // Smaller controls
+    opacity: 0.7; // Transparent controls for minimalism
+    transition: opacity 0.3s ease; // Smooth transition effect
+  }
+  
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    opacity: 1; // Fully visible on hover
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 2rem; // Smaller icon size
+    height: 2rem;
+    background-size: 100%; // Cover entire icon space
+    border-radius: none; //Here’s an updated SCSS style that focuses on a minimalist design, removing unnecessary borders and backgrounds, and adjusting the font sizes for a cleaner look.
+  }
+  .container-fluid {
+    background-color: #f8f9fa; // Light background for contrast
+    padding: 2rem 0; // Add vertical padding for spacing
+  }
+  
+  .testimonial-title {
+    font-size: 1.1rem; // Slightly increased font size for better visibility
+    margin-bottom: 0.5rem;
+  }
+  
+  .testimonial-heading {
+    font-size: 1.75rem; // Larger font for the main heading
+    margin-bottom: 1rem; // Larger margin for spacing
+    font-weight: bold; // Make the heading stand out
+  }
+  
+  .testimonial-item {
+    margin: 2rem 0; // Proper spacing between items
+    padding: 1.5rem; // Padding for content separation
+    border: 1px solid #ddd; // Subtle border for emphasis
+    border-radius: 0.5rem; // Rounded corners for a softer look
+    background-color: #fff; // White background to separate from body color
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Light shadow for depth
+  }
+  
+  .quote-icon {
+    width: 35px; // Reduced size for a minimalist look
+    height: 35px;
+    color: #007bff; // Primary color for icon
+  }
+  
+  .testimonial-text {
+    font-size: 1rem; // Standard font size for readability
+    line-height: 1.6; // Comfortable line height for readability
+    color: #333; // Dark text for contrast
+  }
+  
+  .patient-name {
+    font-size: 1.1rem; // Standard size for patient name
+    margin-top: 0.5rem; // Spacing above for separation
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 3%; // Smaller controls
+    opacity: 0.7; // Transparent controls for minimalism
+    transition: opacity 0.3s ease; // Smooth transition effect
+    border: none; // Remove border for minimalist look
+    background: none; // Remove background for a cleaner appearance
+  }
+  
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    opacity: 1; // Fully visible on hover
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-size: 100%; // Cover entire icon space
+    width: 2rem; // Smaller icon size
+    height: 2rem;
+    color: #007bff; // Primary color for the icons
+  }
+  
+  @media (max-width: 768px) {
+    .testimonial-heading {
+      font-size: 1.5rem; // Adjust font size for smaller devices
+    }
+    .testimonial-text {
+      font-size: 0.9rem; // Adjust testimonial text size for responsiveness
+    }
+  }
+  

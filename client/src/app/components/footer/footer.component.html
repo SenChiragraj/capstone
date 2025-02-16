@@ -1,0 +1,26 @@
+<mat-toolbar class="footer">
+  <div class="footer-container">
+    <div class="column" *ngFor="let section of footerSections">
+      <h4>{{ section.title }}</h4>
+      <hr />
+      <ul>
+        <li *ngFor="let item of section.items">{{ item }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <span>&copy; 2025. Apollo Hospitals Group. All Rights Reserved.</span>
+    <span class="social-icons">
+      <a href="#" aria-label="Facebook" target="_blank">
+        <mat-icon>facebook</mat-icon>
+      </a>
+      <a href="#" aria-label="Twitter" target="_blank">
+        <mat-icon>twitter</mat-icon>
+      </a>
+      <a href="#" aria-label="LinkedIn" target="_blank">
+        <mat-icon>linkedin</mat-icon>
+      </a>
+    </span>
+  </div>
+</mat-toolbar>

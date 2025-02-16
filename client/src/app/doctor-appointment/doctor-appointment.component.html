@@ -1,1 +1,35 @@
-//todo: complete missing code..
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Appointments for Doctor {{ doctorId }}</h2>
+
+  <div *ngIf="appointments.length > 0; else noAppointments">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Patient ID</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of appointments">
+          <td>{{ appointment.patient.name }}</td>
+          <td>{{ appointment.patient.id }}</td>
+          <td>{{ appointment.patient.phone }}</td>
+          <td>{{ appointment.patient.email }}</td>
+          <button mat-button color="primary" color="primary">
+            View Medical Records
+          </button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noAppointments>
+    <div class="alert alert-warning text-center" role="alert">
+      No appointments found for this doctor.
+    </div>
+  </ng-template>
+</div>

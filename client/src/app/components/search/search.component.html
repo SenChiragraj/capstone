@@ -1,0 +1,45 @@
+<div class="container-fluid  my-5 py-5">
+    <div class="container py-5">
+      <div class="text-center mx-auto mb-5" style="max-width: 500px">
+        <h5
+          class="d-inline-block text-white text-uppercase border-bottom border-5"
+        >
+          Find A Doctor
+        </h5>
+        <h1 class="display-4 mb-4">Find A Healthcare Professionals</h1>
+        <p class="text-white fw-normal ">
+            Discover the importance of choosing the right healthcare professional for your needs. Whether you are seeking general advice, specialized treatment, or a routine check-up, it's essential to find a doctor who understands your unique health concerns
+        </p>
+      </div>
+      <div class="mx-auto" style="width: 100%; max-width: 600px">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control border-primary w-50"
+            placeholder="Keyword"
+          />
+          <button class="btn btn-dark border-0 w-25">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="custom-header">Available Doctors</h1>
+  <table class="table table-hover table-striped custom-table mb-5">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Speciality</th>
+        <th scope="col">Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of doctors" >
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.specialty}}</td>
+        <td>{{item.availability}}</td>
+      </tr>
+    </tbody>
+  </table>

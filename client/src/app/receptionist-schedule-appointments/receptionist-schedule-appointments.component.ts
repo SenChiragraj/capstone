@@ -1,49 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Appointment } from '../models/appointment.model';
 import { HttpService } from '../../services/http.service';
-import { DatePipe } from '@angular/common';
-
 @Component({
   selector: 'app-receptionist-schedule-appointments',
   templateUrl: './receptionist-schedule-appointments.component.html',
-  styleUrls: ['./receptionist-schedule-appointments.component.scss'],
-  providers: [DatePipe] 
-  
+  styleUrls: ['./receptionist-schedule-appointments.component.scss']
 })
+
 export class ReceptionistScheduleAppointmentsComponent implements OnInit {
-  
-  itemForm: FormGroup;
-  formModel:any={};
-  responseMessage:any;
-  isAdded: boolean=false;
-  constructor(public httpService:HttpService,private formBuilder: FormBuilder,private datePipe: DatePipe) {
-    this.itemForm = this.formBuilder.group({
-      patientId: [this.formModel.patientId,[ Validators.required]],
-      doctorId: [this.formModel.doctorId,[ Validators.required]],
-      time: [this.formModel.time,[ Validators.required]],
-  });
-   }
+  appointment!: Appointment;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private httpService: HttpService
+  ) {}
 
   ngOnInit(): void {
-  
+    const appointmentId = +this.route.snapshot.paramMap.get('appointmentId')!;
+    this.getAppointmentById(appointmentId);
   }
 
-  onSubmit()
-  {
-   
-    debugger;
-    const formattedTime = this.datePipe.transform(this.itemForm.controls['time'].value, 'yyyy-MM-dd HH:mm:ss');
-
-    // Update the form value with the formatted date
-    this.itemForm.controls['time'].setValue(formattedTime);
-    debugger;
-    this.httpService.ScheduleAppointmentByReceptionist( this.itemForm.value).subscribe((data)=>{
-   
-      this.itemForm.reset();
-      this.responseMessage="Appointment Save Successfully";
-      this.isAdded=false;
-    })
-    
+  getAppointmentById(appointmentId: number): void {
+    this.httpService.getAppointmentById(appointmentId).subscribe(
+      (data: Appointment) => {
+        this.appointment = data;
+      },
+      (error) => {
+        console.error('Error fetching appointment details', error);
+      }
+    );
   }
 
+  onSubmit(): void {
+    this.httpService.updateAppointment(this.appointment).subscribe(
+      () => {
+        console.log('Appointment rescheduled successfully');
+        this.router.navigate(['/receptionist-appointments']);
+      },
+      (error: any) => {
+        console.error('Error rescheduling appointment', error);
+      }
+    );
+  }
 }
+

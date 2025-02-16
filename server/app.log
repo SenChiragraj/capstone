@@ -1,0 +1,94 @@
+2025-02-16 06:24:55.343  INFO 4866 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-17-254 with PID 4866 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-16 06:24:55.354  INFO 4866 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-16 06:24:55.957  INFO 4866 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-16 06:24:56.007  INFO 4866 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 6 JPA repository interfaces.
+2025-02-16 06:24:56.389  INFO 4866 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-16 06:24:56.393  INFO 4866 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-16 06:24:56.393  INFO 4866 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-16 06:24:56.449  INFO 4866 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-16 06:24:56.449  INFO 4866 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 997 ms
+2025-02-16 06:24:56.559  INFO 4866 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-16 06:24:56.578  INFO 4866 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-16 06:24:56.638  INFO 4866 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-16 06:24:56.679  INFO 4866 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-16 06:24:56.912  INFO 4866 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-16 06:24:56.918  INFO 4866 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-16 06:24:57.637  INFO 4866 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-16 06:24:57.644  INFO 4866 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-16 06:24:57.957  WARN 4866 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-16 06:24:58.235  INFO 4866 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@17e8caf2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@104cf647, org.springframework.security.web.context.SecurityContextPersistenceFilter@70eb94d7, org.springframework.security.web.header.HeaderWriterFilter@34d5eac, org.springframework.web.filter.CorsFilter@7488c183, org.springframework.security.web.authentication.logout.LogoutFilter@520ec7a7, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@7bd694a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7e43b342, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@36931450, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66779435, org.springframework.security.web.session.SessionManagementFilter@66d44581, org.springframework.security.web.access.ExceptionTranslationFilter@6b32b678, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@79c2bc34]
+2025-02-16 06:24:58.363  INFO 4866 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-16 06:24:58.370  INFO 4866 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.388 seconds (JVM running for 3.668)
+2025-02-16 06:25:23.082  INFO 4866 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-16 06:25:23.083  INFO 4866 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-16 06:25:23.084  INFO 4866 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-16 06:25:36.737  INFO 4866 --- [http-nio-5000-exec-2] c.w.h.service.UserService                : Login attempt for user: patientTest
+2025-02-16 06:25:36.837  INFO 4866 --- [http-nio-5000-exec-2] c.w.h.service.UserService                : User logged in successfully: patientTest
+2025-02-16 06:43:44.452  INFO 22113 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-17-254 with PID 22113 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-16 06:43:44.455  INFO 22113 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-16 06:43:45.047  INFO 22113 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-16 06:43:45.093  INFO 22113 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 6 JPA repository interfaces.
+2025-02-16 06:43:45.489  INFO 22113 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-16 06:43:45.495  INFO 22113 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-16 06:43:45.495  INFO 22113 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-16 06:43:45.555  INFO 22113 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-16 06:43:45.556  INFO 22113 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1058 ms
+2025-02-16 06:43:45.675  INFO 22113 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-16 06:43:45.695  INFO 22113 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-16 06:43:45.759  INFO 22113 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-16 06:43:45.800  INFO 22113 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-16 06:43:46.035  INFO 22113 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-16 06:43:46.055  INFO 22113 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-16 06:43:46.713  INFO 22113 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-16 06:43:46.721  INFO 22113 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-16 06:43:47.061  WARN 22113 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-16 06:43:47.361  INFO 22113 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@174f0d06, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5cc87de4, org.springframework.security.web.context.SecurityContextPersistenceFilter@63243c8f, org.springframework.security.web.header.HeaderWriterFilter@544e6b, org.springframework.web.filter.CorsFilter@706690e1, org.springframework.security.web.authentication.logout.LogoutFilter@38874eb5, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@5296f00c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@444c0f9a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d90d91f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3663af34, org.springframework.security.web.session.SessionManagementFilter@21dd9203, org.springframework.security.web.access.ExceptionTranslationFilter@1adf387e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@92b1bda]
+2025-02-16 06:43:47.493  WARN 22113 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 5000 is already in use
+2025-02-16 06:43:47.496  INFO 22113 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-16 06:43:47.497  INFO 22113 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-16 06:43:47.513  INFO 22113 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-02-16 06:43:47.515  INFO 22113 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-02-16 06:43:47.526  INFO 22113 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-02-16 06:43:47.539 ERROR 22113 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 5000 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 5000 or configure this application to listen on another port.
+
+2025-02-16 06:44:13.048  INFO 22647 --- [main] reAppointmentManagementSystemApplication : Starting HealthcareAppointmentManagementSystemApplication using Java 11.0.26 on ip-172-31-17-254 with PID 22647 (/home/ubuntu/root/server/target/classes started by ubuntu in /home/ubuntu/root/server)
+2025-02-16 06:44:13.050  INFO 22647 --- [main] reAppointmentManagementSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-02-16 06:44:13.742  INFO 22647 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-16 06:44:13.817  INFO 22647 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 6 JPA repository interfaces.
+2025-02-16 06:44:14.193  INFO 22647 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2025-02-16 06:44:14.198  INFO 22647 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-16 06:44:14.198  INFO 22647 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.82]
+2025-02-16 06:44:14.252  INFO 22647 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-16 06:44:14.253  INFO 22647 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1124 ms
+2025-02-16 06:44:14.358  INFO 22647 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-16 06:44:14.377  INFO 22647 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-02-16 06:44:14.433  INFO 22647 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-02-16 06:44:14.488  INFO 22647 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-16 06:44:14.728  INFO 22647 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-16 06:44:14.735  INFO 22647 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2025-02-16 06:44:15.369  INFO 22647 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-02-16 06:44:15.377  INFO 22647 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-16 06:44:15.670  WARN 22647 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-16 06:44:15.951  INFO 22647 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@39dce2df, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@662d3e85, org.springframework.security.web.context.SecurityContextPersistenceFilter@2c1a95a2, org.springframework.security.web.header.HeaderWriterFilter@50caeb4b, org.springframework.web.filter.CorsFilter@5598dff2, org.springframework.security.web.authentication.logout.LogoutFilter@2ba08f26, com.wecp.healthcare_appointment_management_system.jwt.JwtRequestFilter@7f5e9949, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72b53f27, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@78829412, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@92b1bda, org.springframework.security.web.session.SessionManagementFilter@5020e5ab, org.springframework.security.web.access.ExceptionTranslationFilter@314c28dc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7a053795]
+2025-02-16 06:44:16.081  INFO 22647 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2025-02-16 06:44:16.089  INFO 22647 --- [main] reAppointmentManagementSystemApplication : Started HealthcareAppointmentManagementSystemApplication in 3.368 seconds (JVM running for 3.671)
+2025-02-16 06:44:34.753  INFO 22647 --- [http-nio-5000-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-16 06:44:34.754  INFO 22647 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-16 06:44:34.755  INFO 22647 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-16 07:10:02.015  INFO 22647 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-16 07:10:02.017  INFO 22647 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-16 07:10:02.025  INFO 22647 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

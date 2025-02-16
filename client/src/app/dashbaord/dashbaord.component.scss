@@ -1,0 +1,45 @@
+/* Add this to your component's CSS file */
+.container {
+  // margin: 20px;
+  margin-top: 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+
+.container > img {
+  margin-left: 120px;
+  object-fit: cover;
+  // height: 400px;
+  width: 450px;
+}
+
+.title {
+  font-size: 70px; /* Adjust the font size for better appearance */
+  font-weight: bold;
+  line-height: 1.2;
+  color: #2c3e50; /* Adjust line-height for better spacing */
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+}
+.button-container {
+  margin-top: 20px;
+}
+
+.button-container button {
+  margin-right: 10px; /* Space between buttons */
+}
+
+h1 > i {
+  cursor: pointer;
+}
+
+.btn-1 {
+  background-color: #023e8a;
+  color: white;
+}
+
