@@ -1,3 +1,6 @@
+
+
+
 <app-navbar></app-navbar>
 <div class="center-container">
   <mat-card class="login-card">
@@ -15,20 +18,34 @@
           {{ getErrorMessage('doctorId') }}
         </mat-error>
       </mat-form-field>
- 
+
+      <mat-form-field class="full-width" *ngIf="role === 'RECEPTIONIST'">
+        <mat-label>Select Patient</mat-label>
+        <mat-select id="patient" formControlName="patientId">
+          <mat-option value="" disabled>Select Patient</mat-option>
+          <mat-option *ngFor="let patient of patients" [value]="patient.id">
+            {{ patient.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="appointmentForm.get('patientId')?.invalid">
+          {{ getErrorMessage('patientId') }}
+        </mat-error>
+      </mat-form-field>
+
       <mat-form-field class="full-width">
         <mat-label>Date and Time</mat-label>
-        <input matInput type="datetime-local"  [min]="minDateTime" [(ngModel)]="appointmentDateTime" formControlName="time" required />
+        <input matInput type="datetime-local" [min]="minDateTime" formControlName="time" required />
         <mat-error *ngIf="appointmentForm.get('time')?.invalid">
           {{ getErrorMessage('time') }}
         </mat-error>
       </mat-form-field>
- 
+
       <div class="button-container">
         <button mat-raised-button color="primary" type="submit">Book</button>
         <a mat-button routerLink="/dashboard">Go Back</a>
       </div>
+
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </form>
   </mat-card>
-  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 </div>

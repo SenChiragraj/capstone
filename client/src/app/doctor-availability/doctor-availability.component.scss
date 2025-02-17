@@ -1,48 +1,22 @@
+.availability-card {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
- 
-.section {
-  background-color: #f8f9fa;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.main-container  {
+  height:  100%;
 }
- 
+
 .container-fluid {
-  max-width: 600px;
-  margin-top: 5rem;
+  margin-top: -200px;
 }
- 
-h1 {
-  margin-bottom: 2rem;
-}
- 
-.form-control {
+
+.full-width {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 1rem;
 }
- 
-.error-message {
-  color: red;
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-}
- 
-.btn-primary {
-  width: 100%;
-  padding: 10px;
-}
- 
+
 .alert {
-  margin-top: 1.5rem;
-}
- 
-.alert-success {
-  color: green;
-}
- 
-.alert-danger {
-  color: red;
+  margin-top: 15px;
 }
 

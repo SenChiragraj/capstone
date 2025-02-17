@@ -10,12 +10,21 @@ import { Router } from '@angular/router'
 })
 export class NavbarComponent {
   role!: string
+  isLoginOrRegistrationRoute : boolean = false;
   // Optional: Toggle sidenav (if needed)
 
   constructor (private authService: AuthService, private router: Router) {}
 
   ngOnInit (): void {
-    this.role = this.authService.getRole || ''
+    this.role = this.authService.getRole || '';
+
+    this.router.events.subscribe((event) => {      
+          if (this.router.url === '/login' || this.router.url === '/registration') {
+            this.isLoginOrRegistrationRoute = true;
+          } else {
+            this.isLoginOrRegistrationRoute = false;
+          }
+        });
   }
 
   toggleSidenav (sidenav: any): void {

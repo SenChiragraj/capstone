@@ -170,7 +170,7 @@ export class HttpService {
   }
 
   getRegisteredPatients (): Observable<any[]> {
-    return this.http.get<any[]>(`${this.serverName}/api/all/patients`, { headers : this.getHeaders() })
+    return this.http.get<any[]>(`${this.serverName}/api/all/patient`, { headers : this.getHeaders() })
   }
 
   getRegisteredDoctors (): Observable<any[]> {
