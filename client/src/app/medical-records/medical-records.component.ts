@@ -76,6 +76,7 @@ export class MedicalRecordsComponent implements OnInit {
         console.log('Medical record saved:', result);
         this.medicalRecords.push(result);
         this.medicalRecords = [...this.medicalRecords]; // Trigger change detection
+        this.loadMedicalRecords();
       } 
     });
   }
@@ -105,6 +106,12 @@ export class MedicalRecordsComponent implements OnInit {
 
   deleteMedicalRecord(recordId: number): void {
     // Logic to delete medical record
+    this.httpService.deleteMedicalRecords(recordId).subscribe({
+      next : () => {
+        this.loadMedicalRecords();
+      },
+      error : () => this.errorMessage = "Unable to delete message"
+    })
     console.log('Delete medical record ID:', recordId);
   }
 

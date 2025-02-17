@@ -60,6 +60,7 @@ export class MedicalRecordFormComponent {
       this.httpService.createMedicalRecords(this.data.patientId, this.data.doctorId, medicalRecord).subscribe({
         next: data => {
           this.successMesssage = 'Medical Record added';
+          this.dialogRef.close(this.medicalRecordForm.value);
         },
         error: error => {
           this.errorMesssage = 'There was an error!';
@@ -67,7 +68,6 @@ export class MedicalRecordFormComponent {
       })
 
       console.log('Medical record data:', this.medicalRecordForm.value);
-      this.dialogRef.close(this.medicalRecordForm.value);
     }
   }
 

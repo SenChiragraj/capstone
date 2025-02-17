@@ -30,7 +30,7 @@ export class RegistrationComponent implements OnInit {
       username: ['', [Validators.required, Validators.pattern('^(?![0-9]*$)[a-zA-Z0-9]{3,}$')]],
       phone: ['', [Validators.required, Validators.pattern('^[6-9]\\d{9}$')]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^[a-zA-Z0-9]{8,}$')]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
       role: ['', Validators.required]
     })
  
@@ -110,7 +110,7 @@ export class RegistrationComponent implements OnInit {
       } else if (controlName === 'username') {
         return 'Username must be alphanumeric and at least 3 characters long';
       } else if (controlName === 'password') {
-        return 'Password must be alphanumeric with a minimum length of 8 characters';
+        return 'Password must be 8+ chars with uppercase, lowercase, number, and special character';
       } else if (controlName === 'name') {
         return 'Name must be letters only, with a minimum length of 3 characters';
       }
@@ -120,5 +120,3 @@ export class RegistrationComponent implements OnInit {
   }
  
 }
- 
- 

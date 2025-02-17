@@ -1,59 +1,60 @@
+ 
 .center-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
+ 
 .register-card {
   max-width: 400px;
   width: 100%;
   padding: 2rem;
   text-align: center;
 }
-
+ 
 .full-width {
   width: 100%;
 }
-
+ 
 .role-selection {
   margin-top: 1rem;
 }
-
+ 
 .button-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
-
+ 
 .center-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
+ 
 .register-card {
   max-width: 400px;
   width: 100%;
   padding: 2rem;
   text-align: center;
 }
-
+ 
 .full-width {
   width: 100%;
 }
-
+ 
 .role-selection {
   margin-top: 1rem;
 }
-
+ 
 .button-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
-
+ 
 .center-container {
   display: flex;
   justify-content: center;
@@ -61,7 +62,7 @@
   height: 100vh;
   background-color: #f4f4f4; /* Optional: Light background for better visibility */
 }
-
+ 
 .register-card {
   max-width: 400px;
   width: 100%;
@@ -70,33 +71,70 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add box-shadow for better distinction */
   background-color: #ffffff; /* Ensure the card has a white background */
 }
-
+ 
 .full-width {
   width: 100%;
 }
-
+ 
 .role-selection {
   margin-top: 1rem;
   text-align: left; /* Align the label and radio buttons to the left */
 }
-
+ 
 .mat-radio-group {
   display: flex;
   flex-direction: column; /* Stack the radio buttons vertically */
   margin-top: 0.5rem;
 }
-
+ 
 .mat-radio-button {
   margin-bottom: 0.5rem; /* Add space between radio buttons */
 }
-
+ 
 .button-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
-
-
+ 
+ 
 btn-1 {
   color : #673AB7
+}
+ 
+button[type="submit"] {
+  background-color: #023e8a; /* Changed color to #023e8a */
+  color: white;
+}
+ 
+
+.heading {
+  width: 50%;
+  text-align: center;
+}
+
+.head {
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 600;
+  font-style: italic;
+  opacity: 60%;
+  color: #023e8a;
+}
+
+.mr {
+  margin-right: 40px;
+}
+
+.heading p {
+  text-align: right;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 500;
+  padding-right: 50px;
+}
+
+button#liveToastBtn {
+  background-color: #023e8a; /* Changed color to #023e8a */
+  color: white;
 }

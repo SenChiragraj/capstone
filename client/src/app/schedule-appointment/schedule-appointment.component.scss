@@ -4,20 +4,26 @@
   align-items: center;
   margin-top: 150px;
 }
-
+ 
 .login-card {
   max-width: 400px;
   width: 100%;
   padding: 2rem;
   text-align: center;
 }
-
+ 
 .full-width {
   width: 100%;
 }
-
+ 
 .button-container {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
+ 
+button[type="submit"] {
+  background-color: #023e8a; 
+  color: white;
+}
+ 

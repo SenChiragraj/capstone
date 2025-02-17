@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/doctors/register", "/api/patient/register", "/api/receptionist/register", "/api/user/login", "/api/patient/doctors" ).permitAll()
+                .antMatchers("/api/doctors/register", "/api/patient/register", "/api/receptionist/register", "/api/user/login", "/api/patient/doctors","/api/patient/medicalrecord" ).permitAll()
                 .antMatchers(HttpMethod.GET, "/api/patient/appointments").hasAnyAuthority("PATIENT", "RECEPTIONIST")
                 .antMatchers(HttpMethod.GET, "/api/patient/medicalrecords").hasAnyAuthority("PATIENT", "RECEPTIONIST", "DOCTOR")
                 .antMatchers(HttpMethod.POST, "/api/patient/appointment", "/api/patient/medicalrecord").hasAnyAuthority("PATIENT", "RECEPTIONIST")
@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/doctor/appointments").hasAnyAuthority("RECEPTIONIST", "DOCTOR")
                 .antMatchers(HttpMethod.GET, "/api/doctor/appointments").hasAnyAuthority("DOCTOR", "RECEPTIONIST")
                 .antMatchers(HttpMethod.GET, "/receptionist/**", "/api/receptionist/**").hasAnyAuthority("RECEPTIONIST")
-                .antMatchers("/api/user/**", "/api/all/**", "/health", "/api/receptionist/appointments", "/api/receptionist/appointment/**", "/api/patient/doctors", "/api/patient/medicalrecords", "/api/patient/medicalrecord").hasAnyAuthority("PATIENT", "RECEPTIONIST", "DOCTOR")
+                .antMatchers("/api/user/**", "/api/all/**", "/health", "/api/receptionist/appointments/**", "/api/receptionist/appointment/**", "/api/patient/medicalrecords/**").hasAnyAuthority("PATIENT", "RECEPTIONIST", "DOCTOR")
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

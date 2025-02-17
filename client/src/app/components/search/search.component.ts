@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Doctor } from '../../models/appointment.model';
 import { HttpService } from '../../../services/http.service';
-
+ 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -9,16 +9,16 @@ import { HttpService } from '../../../services/http.service';
 })
 export class SearchComponent implements OnInit {
   filteredDoctors: Doctor[] = [];
-
+ 
   constructor(private httpService : HttpService) { }
-
+ 
   ngOnInit(): void {
-
+ 
     this.toLoadDoctors()
   }
-
+ 
   errorMessage : string = '';
-
+ 
   doctors: Doctor[] = []
   toLoadDoctors () {
     this.httpService.getDoctors().subscribe({
@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
       }
     })
   }
-
+ 
   //modified for search
   searchDoc(event: Event): void {
     const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
@@ -41,5 +41,5 @@ export class SearchComponent implements OnInit {
       doctor.specialty.toLowerCase().includes(searchTerm)
     );
   }
-
+ 
 }

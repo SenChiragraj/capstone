@@ -72,7 +72,11 @@ export class HttpService {
     })
   }
 
-  ScheduleAppointment (
+  getAllDoctors () : Observable<any>{
+    return this.http.get<any>(`${this.serverName}/api/patient/doctors`)
+  }
+
+  ScheduleAppointment ( 
     patientId: number,
     doctorId: number,
     appointmentTime: any
@@ -179,7 +183,7 @@ export class HttpService {
 
   getAllAppointmentsForAppointments (): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(
-      `${this.serverName}/api/receptionist/appointments`
+      `${this.serverName}/api/receptionist/appointments`, {headers : this.getHeaders()}
     )
   }
 
@@ -222,7 +226,7 @@ export class HttpService {
 
   createMedicalRecords (patientId : number, doctorId : number, medicalRecord : any) : Observable<any>  {
     return this.http.post<any>(
-      `${this.serverName}/api/patient/medicalrecord?patientId=${patientId}&doctorId=${doctorId}`, medicalRecord, {headers: this.getHeaders()}
+      `${this.serverName}/api/patient/medicalrecord?patientId=${patientId}&doctorId=${doctorId}`, medicalRecord, { headers: this.getHeaders() }
     )
   }
 
@@ -232,9 +236,9 @@ export class HttpService {
     )
   }
 
-  deleteMedicalRecords (patientId : number) : Observable<any>  {
+  deleteMedicalRecords (medicalRecordId : number) : Observable<any>  {
     return this.http.delete<any>(
-      `${this.serverName}/api/patient/medicalrecord?patientId=${patientId}`, {headers: this.getHeaders()}
+      `${this.serverName}/api/patient/medicalrecord?medicalRecordId=${medicalRecordId}`, {headers: this.getHeaders()}
     )
   }
 
