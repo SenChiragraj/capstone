@@ -1,3 +1,6 @@
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Appointment } from '../models/appointment.model';
@@ -10,6 +13,7 @@ import { HttpService } from '../../services/http.service';
 
 export class ReceptionistScheduleAppointmentsComponent implements OnInit {
   appointment!: Appointment;
+  minDateTime!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,6 +24,12 @@ export class ReceptionistScheduleAppointmentsComponent implements OnInit {
   ngOnInit(): void {
     const appointmentId = +this.route.snapshot.paramMap.get('appointmentId')!;
     this.getAppointmentById(appointmentId);
+    this.setMinDateTime();
+  }
+
+  setMinDateTime(): void {
+    const now = new Date();
+    this.minDateTime = now.toISOString().slice(0, 16);
   }
 
   getAppointmentById(appointmentId: number): void {
@@ -34,6 +44,8 @@ export class ReceptionistScheduleAppointmentsComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log("After submit clicked inside component : " + this.appointment.appointmentTime);
+    
     this.httpService.updateAppointment(this.appointment).subscribe(
       () => {
         console.log('Appointment rescheduled successfully');
@@ -45,4 +57,3 @@ export class ReceptionistScheduleAppointmentsComponent implements OnInit {
     );
   }
 }
-

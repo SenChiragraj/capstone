@@ -20,8 +20,7 @@ public class Appointment {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")    
+    @Temporal(TemporalType.TIMESTAMP)    
     private Date appointmentTime;
     private String status;
 

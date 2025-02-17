@@ -40,12 +40,23 @@ export class ScheduleAppointmentComponent implements OnInit {
 
 
 
+  // loadDoctors(): void {
+  //   this.httpService.getDoctors().subscribe({
+  //     next: doctors => this.doctors = doctors,
+  //     error: error => this.errorMessage = 'Error loading doctors'
+  //   });
+  // }
+
+
   loadDoctors(): void {
-    this.httpService.getDoctors().subscribe({
-      next: doctors => this.doctors = doctors,
-      error: error => this.errorMessage = 'Error loading doctors'
-    });
-  }
+      this.httpService.getDoctors().subscribe({
+        next: doctors => {
+          // Filter out doctors whose availability is "no" or "NO"
+          this.doctors = doctors.filter((doctor: { availability: string; }) => doctor.availability.toLowerCase() !== 'no');
+        },
+        error: error => this.errorMessage = 'Error loading doctors'
+      });
+    }
 
   scheduleAppointment(): void {
     if (this.appointmentForm.invalid) {

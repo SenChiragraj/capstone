@@ -84,6 +84,7 @@ public class ReceptionistController {
         public ResponseEntity<Appointment> updateAppointment(
                 @PathVariable Long appointmentId,
                 @RequestBody Appointment appointmentDetails) {
+                    System.out.println("Appointment Time in R Controller : "+appointmentDetails.getAppointmentTime());
             Appointment updatedAppointment = appointmentService.updateAppointment(appointmentId, appointmentDetails);
             return ResponseEntity.ok(updatedAppointment);
         }

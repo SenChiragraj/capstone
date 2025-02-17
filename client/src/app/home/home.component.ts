@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   bookAppointment (): void {
-    this.router.navigate(['/schedule-appointment']) // Adjust the route as needed
+    this.router.navigate(['/schedule-appointment']) 
   }
 
   showAllAppointments (): void {
@@ -45,7 +45,14 @@ export class HomeComponent implements OnInit {
     } else if (this.role === 'RECEPTIONIST') {
       this.router.navigateByUrl('/receptionist-appointments')
     } else {
-      this.router.navigate(['/patient-appointment']) // Adjust the route as needed
+      this.router.navigate(['/patient-appointment']) 
     }
   }
+
+  manageAvailability():void{
+  if (this.role === 'DOCTOR') {
+    this.router.navigateByUrl('/doctor-availability');
+  }
+}
+
 }

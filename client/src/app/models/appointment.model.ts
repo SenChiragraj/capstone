@@ -1,6 +1,7 @@
 import { PatientAppointmentComponent } from '../patient-appointment/patient-appointment.component'
 
 export interface Appointment {
+  formattedTime: string | null
   id: number
   patient: {
     id: number

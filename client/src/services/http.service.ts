@@ -3,18 +3,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { AuthService } from './auth.service'
 import { Appointment } from '../app/models/appointment.model'
+import { environment } from '../environments/environment.development'
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
-  // public serverName = 'http://your-server-url' // Replace with your server URL
+export class HttpService {  
 
-  serverName =
-    'https://ec2-3-108-225-226.projects.wecreateproblems.com/proxy/5000';
+  // serverName =
+  //   'https://ec2-3-7-58-160.projects.wecreateproblems.com/proxy/5000';
+
+    private apiUrl=environment.apiUrl;
 
   cancelAppointment (appointmentId: number): Observable<any> {
-    return this.http.delete(`${this.serverName}/cancel/${appointmentId}`, {
+    return this.http.delete(`${this.apiUrl}/cancel/${appointmentId}`, {
       headers: this.getHeaders()
     })
   }
@@ -31,7 +33,7 @@ export class HttpService {
 
   registerPatient (details: any): Observable<any> {
     return this.http.post<any>(
-      `${this.serverName}/api/patient/register`,
+      `${this.apiUrl}/api/patient/register`,
       details,
       {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -41,7 +43,7 @@ export class HttpService {
 
   registerDoctors (details: any): Observable<any> {
     return this.http.post<any>(
-      `${this.serverName}/api/doctors/register`,
+      `${this.apiUrl}/api/doctors/register`,
       details,
       {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -51,7 +53,7 @@ export class HttpService {
 
   registerReceptionist (details: any): Observable<any> {
     return this.http.post<any>(
-      `${this.serverName}/api/receptionist/register`,
+      `${this.apiUrl}/api/receptionist/register`,
       details,
       {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -60,7 +62,7 @@ export class HttpService {
   }
 
   getUserById (id: number) {
-    return this.http.get<any>(`${this.serverName}/api/user/${id}`, {
+    return this.http.get<any>(`${this.apiUrl}/api/user/${id}`, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     })
   }
@@ -101,7 +103,7 @@ export class HttpService {
   ScheduleAppointmentByReceptionist (details: any): Observable<any> {
     const { patientId, doctorId } = details
     return this.http.post<any>(
-      `${this.serverName}/api/receptionist/appointment?patientId=${patientId}&doctorId=${doctorId}`,
+      `${this.apiUrl}/api/receptionist/appointment?patientId=${patientId}&doctorId=${doctorId}`,
       details,
       {
         headers: this.getHeaders()
@@ -114,7 +116,7 @@ export class HttpService {
     formvalue: any
   ): Observable<any> {
     return this.http.put<any>(
-      `${this.serverName}/api/receptionist/appointment-reschedule/${appointmentId}`,
+      `${this.apiUrl}/api/receptionist/appointment-reschedule/${appointmentId}`,
       formvalue,
       {
         headers: this.getHeaders()
@@ -125,7 +127,7 @@ export class HttpService {
   // Change this name to getAllAppointmentsByDoctorId because Anuj have to use a method getAllAppointments()
   getAllAppointments (doctorId: number): Observable<any> {
     return this.http.get<any>(
-      `${this.serverName}/api/doctor/appointments/doctorId=${doctorId}`,
+      `${this.apiUrl}/api/doctor/appointments/doctorId=${doctorId}`,
       {
         headers: this.getHeaders()
       }
@@ -136,7 +138,7 @@ export class HttpService {
     console.log(doctorId)
 
     return this.http.get<any>(
-      `${this.serverName}/api/doctor/appointments?doctorId=${doctorId}`,
+      `${this.apiUrl}/api/doctor/appointments?doctorId=${doctorId}`,
       {
         headers: this.getHeaders()
       }
@@ -145,7 +147,7 @@ export class HttpService {
 
   getAppointmentByPatient (patientId: number): Observable<any> {
     return this.http.get<any>(
-      `${this.serverName}/api/patient/appointments/?patientId=${patientId}`,
+      `${this.apiUrl}/api/patient/appointments/?patientId=${patientId}`,
       {
         headers: this.getHeaders()
       }
@@ -154,7 +156,7 @@ export class HttpService {
 
   deleteByAppointmentId (id: number): Observable<any> {
     return this.http.delete<any>(
-      `${this.serverName}/api/delete/appointment/${id}`,
+      `${this.apiUrl}/api/delete/appointment/${id}`,
       {
         headers: this.getHeaders()
       }
@@ -166,7 +168,7 @@ export class HttpService {
     availability: string
   ): Observable<any> {
     return this.http.post<any>(
-      `${this.serverName}/api/doctor/availability?doctorId=${doctorId}&availability=${availability}`,
+      `${this.apiUrl}/api/doctor/availability?doctorId=${doctorId}&availability=${availability}`,
       {},
       {
         headers: this.getHeaders()
@@ -176,44 +178,33 @@ export class HttpService {
 
   Login (loginDetails: any): Observable<any> {
     return this.http.post<any>(
-      `${this.serverName}/api/user/login`,
+      `${this.apiUrl}/api/user/login`,
       loginDetails
     )
   }
 
   getRegisteredPatients (token: string): Observable<any[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
-    return this.http.get<any[]>(`${this.serverName}/patients`, { headers })
+    return this.http.get<any[]>(`${this.apiUrl}/patients`, { headers })
   }
 
   getRegisteredDoctors (token: string): Observable<any[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
-    return this.http.get<any[]>(`${this.serverName}/doctors`, { headers })
+    return this.http.get<any[]>(`${this.apiUrl}/doctors`, { headers })
   }
+  
 
-  // For testing the component only -- later to be removed
-  saveDummyData (): void {
-    const dummyPatients = [
-      { id: 1, username: 'patient1', email: 'patient1@example.com' },
-      { id: 2, username: 'patient2', email: 'patient2@example.com' }
-    ]
-    const dummyDoctors = [
-      { id: 1, username: 'doctor1', email: 'doctor1@example.com' },
-      { id: 2, username: 'doctor2', email: 'doctor2@example.com' }
-    ]
-    localStorage.setItem('patients', JSON.stringify(dummyPatients))
-    localStorage.setItem('doctors', JSON.stringify(dummyDoctors))
-  }
-
-  getAllAppointmentsForAppointments (): Observable<Appointment[]> {
+  getAllAppointmentsForAppointments (): Observable<Appointment[]> {    
     return this.http.get<Appointment[]>(
-      `https://ec2-13-203-23-18.projects.wecreateproblems.com/proxy/5000/api/receptionist/appointments`
+      `${this.apiUrl}/api/receptionist/appointments`,{
+        headers: this.getHeaders()
+      }
     )
   }
 
   getAppointmentById (appointmentId: number): Observable<Appointment> {
     return this.http.get<Appointment>(
-      `${this.serverName}/api/receptionist/appointments/${appointmentId}`,
+      `${this.apiUrl}/api/receptionist/appointments/${appointmentId}`,
       {
         headers: this.getHeaders()
       }
@@ -225,7 +216,7 @@ export class HttpService {
     appointment: Appointment
   ): Observable<any> {
     return this.http.put(
-      `${this.serverName}/api/receptionist/appointment-reschedule/${appointmentId}`,
+      `${this.apiUrl}/api/receptionist/appointment-reschedule/${appointmentId}`,
       appointment,
       {
         headers: this.getHeaders()
@@ -235,7 +226,7 @@ export class HttpService {
 
   updateAppointment (appointment: Appointment): Observable<any> {
     return this.http.put(
-      `${this.serverName}/api/receptionist/appointment/${appointment.id}`,
+      `${this.apiUrl}/api/receptionist/appointment/${appointment.id}`,
       appointment
     )
   }
@@ -247,7 +238,7 @@ export class HttpService {
 
 // lastminute
 getDoctors(): Observable<any> {
-    const url = `${this.serverName}/api/patient/doctors`;
+    const url = `${this.apiUrl}/api/patient/doctors`;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authService.getToken()}`
     });
@@ -256,7 +247,7 @@ getDoctors(): Observable<any> {
 
   // Method to schedule appointment
   ScheduleAppointment(patientId: number, doctorId: number, timeDto: any): Observable<any> {
-    const url = `${this.serverName}/api/patient/appointment?patientId=${patientId}&doctorId=${doctorId}`;
+    const url = `${this.apiUrl}/api/patient/appointment?patientId=${patientId}&doctorId=${doctorId}`;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authService.getToken()}`
     });

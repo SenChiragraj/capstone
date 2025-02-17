@@ -16,9 +16,10 @@
       <tr *ngFor="let appointment of appointments">
         <td>{{ appointment.id }}</td>
         <td>
-          {{
-            datePipe.transform(appointment.appointmentTime, 'yyyy-MM-dd HH:mm')
-          }}
+          <!-- {{
+              datePipe.transform(appointment.appointmentTime, 'dd-MM-yyyy HH:mm:ss', 'Asia/Kolkata')
+          }} -->
+              {{ appointment.formattedTime }}
         </td>
         <td>{{ appointment.status }}</td>
         <td>

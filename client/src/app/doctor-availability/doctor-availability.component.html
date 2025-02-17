@@ -1,16 +1,22 @@
-<section class="d-flex justify-content-center align-items-top vh-100 mt-5" style="background-color: #f8f9fa;">
-    <div class="container-fluid text-center mt-5">
-        <div class="mb-4">
-            <h1>Update Availability</h1>
-        </div>
-        <form [formGroup]="availabilityForm" (ngSubmit)="onSubmit()">
-            <select formControlName="availability" class="form-control mb-2 w-100">
-                <option value="" disabled selected>--Select an option--</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select> 
-            <br>
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
-        </form>
+<app-navbar></app-navbar>
+<section class="d-flex justify-content-center align-items-center vh-100" style="background-color: #f8f9fa;">
+  <div class="container-fluid text-center mt-5">
+    <div class="mb-4">
+      <h1>Update Availability</h1>
     </div>
+    <form [formGroup]="availabilityForm" (ngSubmit)="onSubmit()">
+      <select formControlName="availability" class="form-control mb-2 w-100">
+        <option value="" disabled selected>--Select an option--</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+      <div *ngIf="availabilityForm.get('availability')?.invalid && availabilityForm.get('availability')?.touched" class="error-message">
+        Availability is required
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+    <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+  </div>
 </section>

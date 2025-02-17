@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { HttpService } from '../../services/http.service'
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-doctor-availability',
@@ -9,6 +9,8 @@ import { HttpService } from '../../services/http.service'
 })
 export class DoctorAvailabilityComponent implements OnInit {
   availabilityForm: FormGroup;
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
 
   constructor(private fb: FormBuilder, private httpService: HttpService) {
     this.availabilityForm = this.fb.group({
@@ -19,18 +21,23 @@ export class DoctorAvailabilityComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
+    this.successMessage = null;
+    this.errorMessage = null;
+
     if (this.availabilityForm.valid) {
       const availability = this.availabilityForm.get('availability')?.value;
       const userIdString = localStorage.getItem('userId');
       const userId = userIdString ? parseInt(userIdString, 10) : 0;
       this.httpService.updateDoctorAvailability(userId, availability).subscribe(
         () => {
-          alert('Availability updated successfully!');
+          this.successMessage = 'Availability updated successfully!';
         },
         error => {
-          alert('Failed to update availability.');
+          this.errorMessage = 'Failed to update availability.';
         }
       );
     }
   }
 }
+
+

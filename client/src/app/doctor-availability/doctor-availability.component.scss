@@ -1,0 +1,45 @@
+.section {
+  background-color: #f8f9fa;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-fluid {
+  max-width: 600px;
+  margin-top: 5rem;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+}
+
+.alert {
+  margin-top: 1.5rem;
+}
+
+.alert-success {
+  color: green;
+}
+
+.alert-danger {
+  color: red;
+}

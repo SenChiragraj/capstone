@@ -20,12 +20,19 @@ export class ReceptionistAppointmentsComponent implements OnInit {
 
   ngOnInit (): void {
     this.fetchAppointments()
-  }
+  }  
 
-  fetchAppointments (): void {
+
+fetchAppointments (): void {
     this.httpService.getAllAppointmentsForAppointments().subscribe(
       data => {
-        this.appointments = data
+        this.appointments = data.map(appointment => {
+          appointment.formattedTime = this.datePipe.transform(appointment.appointmentTime, 'dd-MM-yyyy HH:mm:ss', 'Asia/Kolkata')
+          console.log(appointment.formattedTime);
+          
+
+          return appointment
+        })
         console.log(this.appointments)
       },
       error => {
@@ -34,32 +41,11 @@ export class ReceptionistAppointmentsComponent implements OnInit {
     )
   }
 
-  // fetchAppointments (): void {
-  //   // Dummy data for testing
-  //   this.appointments = [
-  //     {
-  //       id: 1,
-  //       appointmentTime: new Date(),
-  //       status: 'Scheduled',
-  //       doctor: { username: 'doc1', email: 'doc1@example.com' },
-  //       patient: { username: 'patient1', email: 'patient1@example.com' }
-  //     },
-  //     {
-  //       id: 2,
-  //       appointmentTime: new Date(),
-  //       status: 'Completed',
-  //       doctor: { username: 'doc2', email: 'doc2@example.com' },
-  //       patient: { username: 'patient2', email: 'patient2@example.com' }
-  //     }
-  //   ]
-  //   console.log(this.appointments)
-  // }
 
-  // rescheduleAppointment (appointmentId: number): void {
-  //   this.router.navigate(['/receptionist-schedule-appointments'], {
-  //     queryParams: { appointmentId }
-  //   })
-  // }
+
+
+
+ 
 
   rescheduleAppointment (appointmentId: number): void {
     this.router.navigate(['/receptionist-schedule-appointments', appointmentId])

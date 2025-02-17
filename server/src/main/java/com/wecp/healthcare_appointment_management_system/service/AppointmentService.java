@@ -71,6 +71,7 @@ public Appointment getAppointmentById(Long appointmentId) {
     }
 
     public Appointment updateAppointment(Long appointmentId, Appointment appointmentDetails) {
+        
         Appointment appointment = appointmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new AppointmentNotFoundException("Appointment not found with id " + appointmentId));
 

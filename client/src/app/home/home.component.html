@@ -19,15 +19,18 @@
         <button color="accent" class="rounded" (click)="showAllAppointments()">
           Show All Appointments
         </button>
+        <button color="accent" class="rounded" (click)="manageAvailability()" *ngIf="role === 'DOCTOR'">
+          Manage Availability
+        </button>
       </div>
     </div>
     <img
-      src="../../assets/Screenshot_2025-02-13_182850-removebg-preview.png"
+      src="assets/Screenshot_2025-02-13_182850-removebg-preview.png"
       alt="Doctor Illustration"
       class="illustration ml-20"
     />
   </div>
-  >
+  
 
   <div class="banner" *ngIf="role === 'PAITENT'">
     <div class="banner-inner">
