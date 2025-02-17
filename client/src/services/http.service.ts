@@ -62,9 +62,9 @@ export class HttpService {
 
   getUserById (id: number) {
     return this.http.get<any>(`${this.serverName}/api/user/${id}`, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    })
-  }
+      headers: this.getHeaders() })
+    }
+
 
   getDoctors (): Observable<any> {
     return this.http.get<any>(`${this.serverName}/api/patient/doctors`, {
@@ -209,31 +209,32 @@ export class HttpService {
     console.log("date: "+appointment)
     return this.http.put(
       `${this.serverName}/api/receptionist/appointment/${appointment.id}`,
-      appointment
+      appointment, 
+      {headers: this.getHeaders()}
     )
   }
 
   getMedicalRecords (patientId : number) : Observable<any>  {
     return this.http.get<any>(
-      `${this.serverName}/api/patient/medicalrecords?patientId=${patientId}`
+      `${this.serverName}/api/patient/medicalrecords?patientId=${patientId}`, {headers: this.getHeaders()}
     )
   }
 
   createMedicalRecords (patientId : number, doctorId : number, medicalRecord : any) : Observable<any>  {
     return this.http.post<any>(
-      `${this.serverName}/api/patient/medicalrecord?patientId=${patientId}&doctorId=${doctorId}`, medicalRecord
+      `${this.serverName}/api/patient/medicalrecord?patientId=${patientId}&doctorId=${doctorId}`, medicalRecord, {headers: this.getHeaders()}
     )
   }
 
   editMedicalRecords (medicalRecordId : number, medicalRecord : any) : Observable<any>  {
     return this.http.put<any>(
-      `${this.serverName}/api/patient/medicalrecord?medicalRecordId=${medicalRecordId}`, medicalRecord
+      `${this.serverName}/api/patient/medicalrecord?medicalRecordId=${medicalRecordId}`, medicalRecord, {headers: this.getHeaders()}
     )
   }
 
   deleteMedicalRecords (patientId : number) : Observable<any>  {
     return this.http.delete<any>(
-      `${this.serverName}/api/patient/medicalrecord?patientId=${patientId}`
+      `${this.serverName}/api/patient/medicalrecord?patientId=${patientId}`, {headers: this.getHeaders()}
     )
   }
 
