@@ -1,0 +1,105 @@
+// Define color variables
+$primary-color: #007bff; // Primary color
+$light-color: #f8f9fa; // Light background color
+$white-color: #ffffff; // White color for text
+
+.container-fluid {
+ padding: 5rem 2rem; // Added padding on the sides
+
+ .container {
+  .text-center {
+   max-width: 500px;
+   margin: 0 auto 3rem auto; // Center align and add margin
+
+   h5 {
+    display: inline-block;
+    color: $primary-color;
+    text-transform: uppercase;
+    border-bottom: 5px solid $primary-color;
+    font-size: 1.2rem; // Reduced font size
+    margin-bottom: 0.8rem;
+    font-weight: bold;
+   }
+
+   h1 {
+    font-size: 2.2rem; // Reduced font size
+    font-weight: bold;
+   }
+  }
+
+  .carousel-inner {
+   .carousel-item {
+    .row {
+     display: flex;
+     justify-content: space-between; // Ensure proper spacing between columns
+
+     .service-item {
+      background-color: $light-color;
+      border-radius: 0.5rem; // Rounded corners
+      padding: 1.5rem 1rem; // Add horizontal and vertical padding
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add subtle shadow
+      height: 300px; // Fixed height for all cards to be the same
+      display: flex; // Flexbox to take full height
+      flex-direction: column; // Align items in a column
+      justify-content: space-between; // Space them evenly
+
+      .service-icon {
+       width: 3rem; // Smaller size
+       height: 3rem; // Smaller size
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       border-radius: 50%;
+       background-color: $primary-color;
+       margin-bottom: 1rem;
+
+       i {
+        font-size: 1.5rem; // Reduced font size
+        color: $white-color;
+       }
+      }
+
+      h4 {
+       font-size: 1rem; // Reduced font size
+       font-weight: bold;
+       margin-bottom: 0.5rem; // Reduced margin
+      }
+
+      p {
+       font-size: 0.825rem; // Further reduced text size
+       margin-bottom: 1rem; // Reduced spacing
+       color: #666; // Subtle text color
+      }
+
+      a {
+       font-size: 0.875rem; // Slightly reduced font size
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+       width: 2.5rem; // Reduced size
+       height: 2.5rem; // Reduced size
+       border-radius: 50%;
+       background-color: $primary-color;
+       color: $white-color;
+       text-decoration: none;
+
+       i {
+        font-size: 0.875rem; // Reduced icon size
+       }
+      }
+     }
+    }
+   }
+  }
+
+  .carousel-control-prev, .carousel-control-next {
+   width: 5%; // Smaller controls
+  }
+
+  .carousel-control-prev-icon, .carousel-control-next-icon {
+   background-color: $primary-color; // Primary color for controls
+   border-radius: 50%; // Rounded controls
+   padding: 0.5rem; // Padding inside controls
+  }
+ }
+}

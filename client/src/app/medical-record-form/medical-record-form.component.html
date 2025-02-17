@@ -1,0 +1,24 @@
+<!-- medical-record-form.component.html -->
+<h2>{{ isEditMode ? 'Edit Medical Record' : 'New Medical Record' }}</h2>
+<form [formGroup]="medicalRecordForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <mat-label>Date</mat-label>
+    <!-- <input matInput type="date" formControlName="date"> -->
+    <input matInput type="datetime-local"  [min]="minDateTime"  formControlName="date" required />
+
+    <mat-error *ngIf="medicalRecordForm.get('date')?.invalid">
+      Date is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Details</mat-label>
+    <textarea matInput formControlName="details"></textarea>
+    <mat-error *ngIf="medicalRecordForm.get('details')?.invalid">
+      Details are required
+    </mat-error>
+  </mat-form-field>
+  <div class="button-container">
+    <button mat-raised-button color="primary" type="submit">{{ isEditMode ? 'Save Changes' : 'Save' }}</button>
+    <button mat-raised-button color="warn" type="button" (click)="close()">Cancel</button>
+  </div>
+</form>

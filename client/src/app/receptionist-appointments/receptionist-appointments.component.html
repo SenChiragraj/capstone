@@ -1,1 +1,49 @@
-//todo: complete missing code..
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="banner">
+    <h1>All Appointments</h1>
+    <p>View and manage the upcoming consultations.</p>
+    <div class="search-container">
+      <input type="text" placeholder="Search by doctor name or patient name" class="search-bar" (input)="searchAppointment($event)"/>
+      <!-- <button class="btn btn-primary">Search</button> -->
+    </div>
+  </div>
+  <h2 class="section-title">Appointments</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Appointment Id</th>
+        <th>Appointment Time</th>
+        <th>Status</th>
+        <th>Doctor</th>
+        <th>Patient</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of filteredAppointments"><!--modified to let appointment of filteredAppointments-->
+        <td>{{ appointment.id }}</td>
+        <td>
+          {{
+            datePipe.transform(appointment.appointmentTime, 'yyyy-MM-dd HH:mm')
+          }}
+        </td>
+        <td>{{ appointment.status }}</td>
+        <td>
+          {{ appointment.doctor.username }} ({{ appointment.doctor.email }})
+        </td>
+        <td>
+          {{ appointment.patient.username }} ({{ appointment.patient.email }})
+        </td>
+        <td>
+          <button
+            (click)="rescheduleAppointment(appointment.id)"
+            class="btn btn-primary"
+          >
+            Reschedule
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

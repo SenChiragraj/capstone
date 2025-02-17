@@ -1,0 +1,91 @@
+.main-container {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+
+}
+
+.banner {
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.appointment-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.appointment-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.no-appointments {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  padding: 20px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #023e8a;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #023e8a;
+  margin-top: -2px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.search-bar {
+  width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+table {
+  align-items: center;
+  border-radius: 20px;
+  width: 900px;
+}

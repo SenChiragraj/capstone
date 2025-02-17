@@ -1,0 +1,85 @@
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; // White background
+  color: #333333; // Dark text color
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    color: #023e8a;
+    text-decoration: none;
+    font-size: 25px;
+    font-style: italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    .logo {
+      height: 50px; // Adjust based on your logo size
+      width: auto;
+    }
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    margin-right: 2rem;
+
+    .nav-link {
+      color: #333333; // Dark text color
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+
+      &:hover {
+        color: #673ab7; // Primary color on hover
+      }
+    }
+  }
+
+  .cta-button {
+    color: #ffffff; // White text
+    border-radius: 25px; // Rounded corners
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-right: 1rem;
+
+    background-color: #1976d2; // Primary color
+    &:hover {
+      background-color: #1565c0; // Darker shade on hover
+    }
+  }
+
+  .icon-button {
+    color: #333333; // Dark icon color
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1); // Light hover effect
+    }
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sticky-navbar {
+    padding: 0 1rem;
+
+    .nav-links {
+      display: none; // Hide nav links on small screens
+    }
+
+    .cta-button {
+      display: none; // Hide CTA button on small screens
+    }
+  }
+}

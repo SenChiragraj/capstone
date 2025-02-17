@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="">
+  <div class="container flex flex-row align-items-center">
+    <div class="text-container">
+      <ng-container class="salutation"> Welcome back! <br /> </ng-container>
+      <h1 class="title" *ngIf="currentUser">
+        {{ currentUser.name }}
+      </h1>
+
+      <div class="button-container">
+        <button
+          color="#673AB7"
+          class="rounded btn-1"
+          (click)="bookAppointment()"
+          *ngIf="role === 'PATIENT' || role === 'RECEPTIONIST'"
+        >
+          Book an Appointment
+        </button>
+        <button color="accent" class="rounded" (click)="showAllAppointments()">
+          Show All Appointments
+        </button>
+        <button color="accent" class="rounded btn-1" (click)="manageAvailability()" *ngIf="role === 'DOCTOR'">
+          Manage Availability
+        </button>
+      </div>
+    </div>
+    <img
+      src="assets/Screenshot_2025-02-13_182850-removebg-preview.png"
+      alt="Doctor Illustration"
+      class="illustration ml-20"
+    />
+  </div>
+  >
+
+  <div class="banner" *ngIf="role === 'PAITENT'">
+    <div class="banner-inner">
+      <h1>Find the Best Doctors Near You</h1>
+      <p class="text-white">
+        Book your appointment with top specialists today.
+      </p>
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Search by doctor name or specialty"
+          class="search-bar"
+        />
+        <button class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-search *ngIf="currentUser.role === 'PATIENT'"></app-search>
+
+<app-testimonials></app-testimonials>
